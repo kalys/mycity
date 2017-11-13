@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113103321) do
+ActiveRecord::Schema.define(version: 20171113104555) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "message_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_images_on_message_id"
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
@@ -20,6 +33,8 @@ ActiveRecord::Schema.define(version: 20171113103321) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_messages_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
