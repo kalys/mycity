@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 	TheRoleManagementPanel::Routes.mixin(self)
   devise_for :users
   resources :users
-
+  resources :messages
+  resources :categories
 end
