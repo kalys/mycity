@@ -8,7 +8,7 @@ TheRole.configure do |config|
   config.layout = :the_role_management_panel
   # config.layout_title = 'The Role Gem'
 
-  # config.default_user_role          = nil
+  # config.default_user_role          = 'moderator'
   # config.first_user_should_be_admin = false
   # config.access_denied_method       = :access_denied
 
