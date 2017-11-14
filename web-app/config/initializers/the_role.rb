@@ -2,10 +2,10 @@
 
 TheRole.configure do |config|
   # [ Devise => :authenticate_user! | Sorcery => :require_login ]
-  # config.login_required_method = :authenticate_user!
+  config.login_required_method = :authenticate_user!
 
   # layout for Management panel
-  # config.layout = :the_role_management_panel
+  config.layout = :the_role_management_panel
   # config.layout_title = 'The Role Gem'
 
   # config.default_user_role          = nil
