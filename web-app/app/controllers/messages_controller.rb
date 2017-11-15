@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-before_action :authenticate_user!, except: [:index, :show]
   def index
     @messages = Message.all
   end
@@ -10,13 +9,31 @@ before_action :authenticate_user!, except: [:index, :show]
 
   def create
     @message = Message.new(message_params)
-    if @message.save
-      redirect_to root_path
-    else
-      render 'new'
-    end
+    @message.status = "actual"
+    @message.save
+    redirect_to root_path
   end
 
+  def done
+    @message = Message.find(params[:id])
+    @message.update({status: "Done"})
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  def hidden
+    @message = Message.find(params[:id])
+    @message.update({status: "Hidden"})
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  def not_relevant
+    @message = Message.find(params[:id])
+    @message.update({status: "Not relevant"})
+
+    redirect_back(fallback_location: root_path)
+  end
 
   def show
     @message = Message.find(params[:id])

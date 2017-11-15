@@ -1,2 +1,21 @@
 <h1>Messages#index</h1>
 <p>Find me in app/views/messages/index.html.erb</p>
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Status</th>
+		<th></th>
+	</tr>
+
+	<% @messages.each do |message| %>
+		<tr>
+			<td><%= message.body %></td>
+			<td><%= message.status%></td>
+			<td><%= link_to "Done", messages_done_path(message.id), :method => 'post' %></td>
+			<td><%= link_to "Hide", messages_hidden_path(message.id), :method => 'post' %></td>
+			<td><%= link_to "not relevant", messages_not_relevant_path(message.id), :method => 'post'%></td>
+		</tr>
+	<% end %>
+</table>
+
+<p><%= link_to "New category", new_message_path %></p>
