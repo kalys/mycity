@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :login_required #проверяет авторизирован ли пользователь
-  before_action :role_required #проверяет роль юзера
-
+  before_action :role_required # проверяет роль юзера
   def new
   	@user = User.new
   end
@@ -50,6 +48,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email, :password)
+  	params.require(:user).permit(:name, :email, :password, :role_id)
   end
 end

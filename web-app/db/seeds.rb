@@ -8,8 +8,8 @@
 
 admin_role = ::Role.where(name: :admin).first_or_create!(
         name:        :admin,
-        title:       "Role for admin",
-        description: "This user can do anything"
+        title:       "Администраторы",
+        description: "Пользователи этой группы имеют глобальный доступ"
       )
 admin_role.create_rule(:system, :administrator)
 admin_role.rule_on(:system, :administrator)
@@ -17,8 +17,10 @@ admin_role
 
 
 moderator_role = Role.create!(name: 'moderator', 
-															title: 'Role for moderator', 
-															description: 'Модератор может обрабатывать сообщения от пользователей')
+												title: 'Модераторы', 
+												description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
+												the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"update\":true}}")
+
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
 user = User.create!(name: 'User', email: 'user@user.ru', password: 'qweqweqwe', role_id: moderator_role.id)
