@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171113111736) do
+=======
+ActiveRecord::Schema.define(version: 20171114085713) do
+>>>>>>> access_rights
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -38,6 +42,15 @@ ActiveRecord::Schema.define(version: 20171113111736) do
     t.index ["category_id"], name: "index_messages_on_category_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "title", null: false
+    t.text "description", null: false
+    t.text "the_role", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -60,6 +73,7 @@ ActiveRecord::Schema.define(version: 20171113111736) do
     t.string "invited_by_type"
     t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.integer "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

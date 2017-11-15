@@ -18,6 +18,11 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <% if current_user.admin? %>
+            <%= link_to 'TheRole Manage Panel',  admin_roles_path %>
+          <% end %>
+        <% end %>
         <% if user_signed_in? %>
           <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-lg btn-danger" %>
         <% else %>
