@@ -1,5 +1,6 @@
 <%= simple_form_for(@message) do |f| %>
 	<%= f.input :body %>
-	<%= f.input :category_id, :label => 'Category', :as => :select, :collection => Category.all %>
+	
+	<%= f.hidden_field :category_id, value: nil %>
 	<%= f.submit %>
 <% end %>

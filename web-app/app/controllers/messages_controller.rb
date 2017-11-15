@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.status = "actual"
+    @message.category = Category.find_by(title: "default")
+    @message.status = "new"
     @message.save
     redirect_to root_path
   end
@@ -17,6 +18,13 @@ class MessagesController < ApplicationController
   def done
     @message = Message.find(params[:id])
     @message.update({status: "Done"})
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  def actual
+    @message = Message.find(params[:id])
+    @message.update({status: "Actual"})
 
     redirect_back(fallback_location: root_path)
   end

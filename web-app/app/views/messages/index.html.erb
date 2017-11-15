@@ -4,6 +4,7 @@
 	<tr>
 		<th>Title</th>
 		<th>Status</th>
+		<th>Category</th>
 		<th></th>
 	</tr>
 
@@ -11,9 +12,11 @@
 		<tr>
 			<td><%= message.body %></td>
 			<td><%= message.status%></td>
+			<td><%= message.category.title %></td>
 			<td><%= link_to "Done", messages_done_path(message.id), :method => 'post' %></td>
 			<td><%= link_to "Hide", messages_hidden_path(message.id), :method => 'post' %></td>
 			<td><%= link_to "not relevant", messages_not_relevant_path(message.id), :method => 'post'%></td>
+			<td><%= link_to "actual", messages_actual_path(message.id), :method => 'post' %></td>
 		</tr>
 	<% end %>
 </table>
