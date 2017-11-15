@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :login_required #проверяет авторизирован ли пользователь
-  before_action :role_required #проверяет роль юзера
-
+  before_action :role_required # проверяет роль юзера
   def new
   	@user = User.new
   end

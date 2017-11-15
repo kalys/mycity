@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-	root 'users#index'
+	root 'messages#index'
 	TheRoleManagementPanel::Routes.mixin(self)
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { :invitations => 'invitations' }
   resources :users
   resources :messages
   resources :categories

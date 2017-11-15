@@ -10,7 +10,7 @@ TheRole.configure do |config|
 
   # config.default_user_role          = 'moderator'
   # config.first_user_should_be_admin = false
-  # config.access_denied_method       = :access_denied
+  config.access_denied_method       = :access_denied
 
   # Dependent of Rails::VERSION
   #
