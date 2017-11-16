@@ -28,5 +28,17 @@ user = User.create!(name: 'User', email: 'user@user.ru', password: 'qweqweqwe', 
 default_category = Category.create(title: "default")
 
 30.times do
-	Message.create(body: "Some text", latitude: 123.0, longitude: 123.0, address: "some address", category_id: default_category.id)
+	mess = Message.new
+	mess.body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie aliquam malesuada. Aliquam ut malesuada sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id consectetur ligula. Quisque egestas ultrices turpis, eu imperdiet purus porta eu. Praesent vel urna at lorem aliquam tristique. Vivamus eu turpis ut diam pellentesqu"
+	mess.latitude = 123.1
+	mess.longitude = 123.1
+	mess.address = "some address"
+	mess.category_id = default_category.id
+	mess.save
+	image = Image.new
+	File.open(Rails.root.join("app", "assets", "images", "1.png")) do |f|
+		image.image = f
+	end
+	image.message_id = mess.id
+	image.save
 end
