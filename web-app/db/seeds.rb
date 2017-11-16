@@ -24,3 +24,9 @@ moderator_role = Role.create!(name: 'moderator',
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
 user = User.create!(name: 'User', email: 'user@user.ru', password: 'qweqweqwe', role_id: moderator_role.id)
+
+default_category = Category.create(title: "default")
+
+30.times do
+	Message.create(body: "Some text", latitude: 123.0, longitude: 123.0, address: "some address", category_id: default_category.id)
+end
