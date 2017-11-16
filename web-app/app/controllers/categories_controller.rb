@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-class CategoriesController < ApplicationController
-=======
 class CategoriesController < ApplicationController  
   before_action :role_required # проверяет роль юзера
   
->>>>>>> 34eb92328764bbc1fd35a4cc4a0f74fca594b334
   def index
     @categories = Category.all
   end
