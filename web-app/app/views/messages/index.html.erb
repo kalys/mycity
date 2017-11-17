@@ -1,28 +1,28 @@
 <% @messages.each do |message| %>
-	<div class="col-md-offset-1 col-md-10">
-
+	<div>
 		<div class="breadcrumb">
-			<h2>Status: <%= message.status if !message.status.nil? %> <%= "No status" if message.status.nil? %></h2>
+			<h4>Status: <%= message.status if !message.status.nil? %> <%= "No status" if message.status.nil? %></h4>
+			<hr>
 			<div class="row">
-				<div class="col-md-8">
-					<p><%= message.body %></p>
+				<div class="col-md-7">
+					<h3>Description: </h3>
+					<b><%= message.body %></b>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-5">
 					<% message.images.each do |image| %>
-						<%= image_tag(image.image_url, size: 150) %>
+						<%= image_tag(image.image_url(:medium)) %>
 					<% end %>
+					<div>
+						<h1>Google map coming soon</h1>
+					</div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="jumbotron"><h1>Google map coming soon</h1></div>
-			</div>
 
-			<div class="row">
-				<%= link_to "Done", messages_done_path(message.id), :method => 'post', class: "btn btn-lg btn-success" %>
-				<%= link_to "Hide", messages_hidden_path(message.id), :method => 'post', class: "btn btn-lg btn-warning" %>
-				<%= link_to "not relevant", messages_not_relevant_path(message.id), :method => 'post', class: "btn btn-lg btn-danger" %>
-				<%= link_to "actual", messages_actual_path(message.id), :method => 'post', class: "btn btn-lg btn-primary" %>
+			<div>
+				<%= link_to "Accept", messages_actual_path(message.id), :method => 'post', class: "btn btn-lg btn-primary" %>
+				<%= link_to "Decline", messages_not_relevant_path(message.id), :method => 'post', class: "btn btn-lg btn-danger" %>
+				<%= link_to "Hide", messages_hidden_path(message.id), :method => 'post', class: "btn btn-lg btn-primary" %>
 			</div>
 
 		</div>
