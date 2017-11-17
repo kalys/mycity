@@ -14,22 +14,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Send invitation", new_user_invitation_path %></li>
-        <li class="active"><%= link_to "Categories", categories_path %></li>
-        <li class="active"><%= link_to "Messages", messages_path %></li>
+        <li>
+          <%= link_to "Send invitation", new_user_invitation_path if current_user && current_user.admin? %>
+        </li>
+        <li><%= link_to "Категории", categories_path %></li>
+        <li><%= link_to "Сообщения", messages_path %></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-          <% if current_user.admin? %>
-            <%= link_to 'TheRole Manage Panel',  admin_roles_path %>
-          <% end %>
-        <% end %>
+        <%= link_to 'Админ панель',  admin_roles_path if current_user && current_user.admin? %>
         <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-lg btn-danger" %>
+          <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-danger" %>
         <% else %>
-          <%= link_to "Log in", new_user_session_path, class: "btn btn-lg btn-primary" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-default" %>
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default" %>
         <% end %>
       </ul>
 

@@ -27,19 +27,20 @@ class ApplicationController < ActionController::Base
         action_name:          action_name,
         has_access_to_action: current_user.try(:has_role?, controller_path, action_name),
 
-        current_user: { id: current_user.try(:id) },
+        current_user: { id: current_user.try(:id) }
 
-        owner_check_object: {
-          owner_check_object_id:    @owner_check_object.try(:id),
-          owner_check_object_class: @owner_check_object.try(:class).try(:to_s)
-        },
+        # owner_check_object: {
+        #   owner_check_object_id:    @owner_check_object.try(:id),
+        #   owner_check_object_class: @owner_check_object.try(:class).try(:to_s)
+        # },
 
-        has_access_to_object: current_user.try(:owner?, @owner_check_object)
+        # has_access_to_object: current_user.try(:owner?, @owner_check_object)
       }, status: 401
     else
       # When the user paste non authorized URL in browser the REFERER is blank and application crash
       if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-        redirect_to root_path, flash: { error: access_denied_msg }
+        # redirect_to root_path, flash: { error: access_denied_msg }
+        render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
       else
       	render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
         # redirect_to root_path, flash: { error: access_denied_msg }
