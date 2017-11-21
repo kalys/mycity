@@ -42,7 +42,7 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 					 body: session[:parameters][:text_of_problem],
 					 latitude: session[:parameters][:latitude],
 					 longitude: session[:parameters][:longitude],
-					 address: "location",
+					 address: nil,
 					 category_id: 1,
 					 status: "new" },
 			 

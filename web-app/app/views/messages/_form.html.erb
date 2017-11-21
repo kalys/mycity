@@ -1,6 +1,8 @@
 <%= simple_form_for(@message) do |f| %>
-	<%= f.input :body %>
-	
+	<%= f.input :body, input_html: { class: "form-control" } %>
+	<%= f.input :address, input_html: { class: "form-control" } %>
+	<%= f.input :latitude, input_html: { class: "form-control" } %>
+	<%= f.input :longitude, input_html: { class: "form-control" } %>
 	<%= f.hidden_field :category_id, value: nil %>
 	<%= f.submit %>
 <% end %>

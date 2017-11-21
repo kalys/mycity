@@ -3,7 +3,12 @@ class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def index
-    @messages = Message.all
+    @messages = Message.order(created_at: :desc)
+    @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
+      marker.lat message.latitude
+      marker.lng message.longitude
+      marker.infowindow message.address
+    end
   end
 
   def new
@@ -45,10 +50,15 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@message) do |message, marker|
+      marker.lat message.latitude
+      marker.lng message.longitude
+      marker.infowindow message.address
   end
 
   def edit
     @message = Message.find(params[:id])
+    end
   end
 
   def update
