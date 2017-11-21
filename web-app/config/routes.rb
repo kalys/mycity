@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, :controllers => { :invitations => 'invitations' }
   resources :users
-  resources :messages
   resources :categories
+
+  resources :messages do 
+  	resources :images, only: [:create]
+  end
 
 end
 

@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :role_required # проверяет роль юзера
-  
+  before_action :role_required, except: [:create]  # проверяет роль юзера
+  skip_before_action :authenticate_user!, only: [:create]
+
   def index
     @messages = Message.all
   end
@@ -10,11 +11,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-    @message.category = Category.find_by(title: "default")
-    @message.status = "new"
-    @message.save
-    redirect_to root_path
+    @message = Message.create(message_params)
+    @message.images.create(image_params)
   end
 
   def done
@@ -63,8 +61,11 @@ class MessagesController < ApplicationController
   end
 
   private
-
   def message_params
-    params.require(:message).permit(:body, :latitude, :longitude, :address, :status, :category_id, :image_id)
+    params.require(:message).permit(:body, :latitude, :longitude, :address, :status, :category_id)
+  end
+
+  def image_params
+    params.require(:image).permit(:image)
   end
 end

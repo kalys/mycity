@@ -26,19 +26,3 @@ admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: '
 moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
 
 default_category = Category.create(title: "default")
-
-30.times do
-	mess = Message.new
-	mess.body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis molestie aliquam malesuada. Aliquam ut malesuada sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id consectetur ligula. Quisque egestas ultrices turpis, eu imperdiet purus porta eu. Praesent vel urna at lorem aliquam tristique. Vivamus eu turpis ut diam pellentesqu"
-	mess.latitude = 123.1
-	mess.longitude = 123.1
-	mess.address = "some address"
-	mess.category_id = default_category.id
-	mess.save
-	image = Image.new
-	File.open(Rails.root.join("app", "assets", "images", "1.png")) do |f|
-		image.image = f
-	end
-	image.message_id = mess.id
-	image.save
-end

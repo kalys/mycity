@@ -64,4 +64,8 @@ gem 'devise_invitable'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'carrierwave'
+<<<<<<< HEAD
 
+=======
+gem 'mini_magick'
+>>>>>>> 1caf1e1b7ce8d79a382b1b8292a1a5abf74a7cd6
