@@ -23,7 +23,7 @@ moderator_role = Role.create!(name: 'moderator',
 
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
-user = User.create!(name: 'User', email: 'user@user.ru', password: 'qweqweqwe', role_id: moderator_role.id)
+moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
 
 default_category = Category.create(title: "default")
 

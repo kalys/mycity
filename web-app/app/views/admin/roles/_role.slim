@@ -86,7 +86,7 @@
     .panel-heading
       = t(:create_section, scope: t_scope)
     .panel-body
-      = form_tag admin_role_sections_path(role), class: "form-inline"do |f|
+      = form_tag admin_role_sections_path(role), class: "form-inline", id: "new_section" do |f|
         .form-group
           = text_field_tag :section_name, '', class: "form-control", placeholder: t(:new_section_placeholder, scope: t_scope)
         =<> submit_tag t(:create_section, scope: t_scope), class: "btn btn-success"
