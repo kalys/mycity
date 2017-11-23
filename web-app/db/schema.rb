@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20171123102420) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archive", default: false
+    t.boolean "archived", default: false
   end
 
   create_table "images", force: :cascade do |t|

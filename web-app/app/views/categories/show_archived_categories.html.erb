@@ -8,11 +8,11 @@
 	<% @categories.each do |category| %>
 		<tr>
 			<td><%= category.title %></td>
-			<td><%= link_to 'Архивировать', archiving_categories_path(category), method: :post %></td>
+			<td><%= link_to 'Восстановить', unarchiving_categories_path(category), method: :post %></td>
 		</tr>
 	<% end %>
 </table>
-
+<%= link_to "Показать все категории", categories_path %>
 
 
 

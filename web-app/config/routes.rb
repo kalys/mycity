@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :users
   resources :categories, except: [:destroy] do 
     collection do 
-      post ':id/archive' => 'categories#archiving', as: 'archiving'
+      post ':id/archiving' => 'categories#archiving', as: 'archiving'
+      post ':id/unarchiving' => 'categories#unarchiving', as: 'unarchiving'
       get '/archived' => 'categories#show_archived_categories', as: 'archived'
     end
   end

@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController  
   before_action :role_required # проверяет роль юзера
-  before_action :set_category, only: [:show, :edit, :update, :archiving]
+  before_action :set_category, only: [:show, :edit, :update, :archiving, :unarchiving]
   
   def index
-    @categories = Category.where(archive: false)
+    @categories = Category.where(archived: false)
   end
 
   def new
@@ -38,9 +38,16 @@ class CategoriesController < ApplicationController
     @category.save
     redirect_to categories_path
   end
+
+  def unarchiving
+    @category.archived = false
+    @category.save
+    redirect_to categories_path
+  end
+
   
   def show_archived_categories
-    @categories = Category.where(archive: true)
+    @categories = Category.where(archived: true)
   end
 
   private
