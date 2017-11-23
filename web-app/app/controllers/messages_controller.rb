@@ -1,9 +1,10 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:update, :show, :edit, :archiving]
   before_action :role_required, except: [:create]  # проверяет роль юзера
   skip_before_action :authenticate_user!, only: [:create]
 
   def index
-    @messages = Message.order(created_at: :desc)
+    @messages = Message.where.not(status: :hidden).order(created_at: :desc)
     @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
@@ -21,7 +22,6 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
     @hash = Gmaps4rails.build_markers(@message) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
@@ -29,12 +29,10 @@ class MessagesController < ApplicationController
   end
 
   def edit
-    @message = Message.find(params[:id])
     end
   end
 
   def update
-    @message = Message.find(params[:id])
     if @message.update(message_params)
       redirect_back(fallback_location: root_path)
     else
@@ -42,7 +40,17 @@ class MessagesController < ApplicationController
     end
   end
 
+  def archiving
+    @message.status = "hidden"
+    @message.save
+    redirect_to root_path
+  end
+
   private
+  def set_message
+    @message = Message.find(params[:id])
+  end
+
   def message_params
     params.require(:message).permit(:body, :latitude, :longitude, :address, :status, :category_id)
   end

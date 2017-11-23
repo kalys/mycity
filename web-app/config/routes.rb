@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :messages do
+    collection do
+      post ':id/destroy' => 'messages#archiving', as: 'archiving' 
+    end
   	resources :images, only: [:create]
   end
 
