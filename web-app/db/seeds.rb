@@ -19,7 +19,7 @@ admin_role
 moderator_role = Role.create!(name: 'moderator', 
 												title: 'Модераторы', 
 												description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
-												the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"update\":true}}")
+												the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true}}")
 
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
