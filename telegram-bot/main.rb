@@ -44,7 +44,7 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 					 longitude: session[:parameters][:longitude],
 					 address: nil,
 					 category_id: 1,
-					 status: "new" },
+					 status: 1 },
 			 
 			 	 :image => {
 					 image: File.new(file_name, 'rb')}

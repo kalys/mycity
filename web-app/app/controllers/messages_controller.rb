@@ -20,34 +20,6 @@ class MessagesController < ApplicationController
     @message.images.create(image_params)
   end
 
-  def done
-    @message = Message.find(params[:id])
-    @message.update({status: "Done"})
-
-    redirect_back(fallback_location: root_path)
-  end
-
-  def actual
-    @message = Message.find(params[:id])
-    @message.update({status: "Actual"})
-
-    redirect_back(fallback_location: root_path)
-  end
-
-  def hidden
-    @message = Message.find(params[:id])
-    @message.update({status: "Hidden"})
-
-    redirect_back(fallback_location: root_path)
-  end
-
-  def not_relevant
-    @message = Message.find(params[:id])
-    @message.update({status: "Not relevant"})
-
-    redirect_back(fallback_location: root_path)
-  end
-
   def show
     @message = Message.find(params[:id])
     @hash = Gmaps4rails.build_markers(@message) do |message, marker|
@@ -64,7 +36,7 @@ class MessagesController < ApplicationController
   def update
     @message = Message.find(params[:id])
     if @message.update(message_params)
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       render 'edit'
     end

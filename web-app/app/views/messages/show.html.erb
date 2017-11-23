@@ -17,14 +17,18 @@
 						<p>	<%= @message.body %>  </p>
 						<hr>
 						<p>Status: 
-						<b>	<%= @message.status if !@message.status.nil? %> <%= "No status" if @message.status.nil? %> </b></p>
+							<b>	<%= @message.status if !@message.status.nil? %> <%= "No status" if @message.status.nil? %> </b>
+						</p>
+						<%= form_for @message, url: message_path(@message) do |f| %>
+							<%= f.select(:status, 
+													options_for_select([['New', @message.status = 'new_message'], 
+																							['Done', @message.status = 'done'], 
+																							['Actual', @message.status = 'actual'], 
+																							['Hidden', @message.status = 'hidden'], 
+																							['Not relevant', @message.status = 'not_relevant']])) %>
+							<%= f.submit 'Обновить статус'%>
+						<% end %>
 					</h3>
-				
-					<%= link_to "Done", messages_done_path(@message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-					<%= link_to "Hide", messages_hidden_path(@message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-					<%= link_to "not relevant", messages_not_relevant_path(@message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-					<%= link_to "actual", messages_actual_path(@message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-
 				</div>
 			</div>
 			<div class="col-md-4">

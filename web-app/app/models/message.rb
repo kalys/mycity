@@ -1,4 +1,7 @@
 class Message < ApplicationRecord
+
+	enum status: [ :new_message, :done, :actual, :hidden, :not_relevant ]
+
 	has_many :images, dependent: :destroy
 	belongs_to :category
 

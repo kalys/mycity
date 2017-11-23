@@ -16,11 +16,10 @@
 							<p>Status: 
 							<b>	<%= message.status if !message.status.nil? %> <%= "No status" if message.status.nil? %> </b></p>
 						</h3>
-					
-						<%= link_to "Done", messages_done_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-						<%= link_to "Hide", messages_hidden_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-						<%= link_to "not relevant", messages_not_relevant_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
-						<%= link_to "actual", messages_actual_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
+						<% link_to "Done", messages_done_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
+						<% link_to "Hide", messages_hidden_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
+						<% link_to "not relevant", messages_not_relevant_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
+						<% link_to "actual", messages_actual_path(message.id), :method => 'post', class: "btn btn-lg btn-default" %>
 
 					</div>
 				</div>
