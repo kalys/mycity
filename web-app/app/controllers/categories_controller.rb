@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController  
   before_action :role_required # проверяет роль юзера
+  before_action :set_category, only: [:show, :edit, :update, :archiving]
   
   def index
-    @categories = Category.all
+    @categories = Category.where(archive: false)
   end
 
   def new
@@ -19,11 +20,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to root_path
     else
@@ -31,18 +30,26 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    @category = Category.destroy(params[:id])
-    redirect_to root_path
+  def show
   end
 
-  def show
-    @category = Category.find(params[:id])
+  def archiving
+    @category.archive = true
+    @category.save
+    redirect_to categories_path
+  end
+  
+  def show_archived_categories
+    @categories = Category.where(archive: true)
   end
 
   private
 
   def category_params
     params.require(:category).permit(:title)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 end

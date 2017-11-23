@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, :controllers => { :invitations => 'invitations' }
   resources :users
-  resources :categories
+  resources :categories, except: [:destroy] do 
+    collection do 
+      post ':id/archive' => 'categories#archiving', as: 'archiving'
+      get '/archived' => 'categories#show_archived_categories', as: 'archived'
+    end
+  end
 
   resources :messages do 
   	resources :images, only: [:create]

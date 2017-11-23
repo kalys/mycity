@@ -1,8 +1,8 @@
-<h1>Categories</h1>
+<h1>Архивные категории</h1>
 <table class="table">
 	<tr>
-		<th>Title</th>
-		<th>Action</th>
+		<th>Название</th>
+		<th>Действия</th>
 	</tr>
 
 	<% @categories.each do |category| %>
@@ -13,8 +13,7 @@
 	<% end %>
 </table>
 
-<%= link_to "Показать архивные категории", archived_categories_path %>
 
 
 
-<p><%= link_to "New category", new_category_path %></p>
+<p><%= link_to "Новая категория", new_category_path %></p>
