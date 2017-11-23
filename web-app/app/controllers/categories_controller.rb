@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
   end
 
   def archiving
-    @category.archive = true
+    @category.archived = true
     @category.save
     redirect_to categories_path
   end
