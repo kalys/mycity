@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'the_role', '~> 3.5'
+gem 'audited', '~> 4.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 gem 'simple_form'
