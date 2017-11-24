@@ -44,9 +44,8 @@ class CategoriesController < ApplicationController
     @category.save
     redirect_to categories_path
   end
-
   
-  def show_archived_categories
+  def archived_categories
     @categories = Category.where(archived: true)
   end
 

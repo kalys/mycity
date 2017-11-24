@@ -4,11 +4,16 @@ Rails.application.routes.draw do
 	TheRoleManagementPanel::Routes.mixin(self)
   devise_for :users, :controllers => { :invitations => 'invitations' }
   resources :users
+
   resources :categories, except: [:destroy] do 
+
     collection do 
-      post ':id/archiving' => 'categories#archiving', as: 'archiving'
-      post ':id/unarchiving' => 'categories#unarchiving', as: 'unarchiving'
-      get '/archived' => 'categories#show_archived_categories', as: 'archived'
+      get :archived_categories, as: 'archived'
+    end
+
+    member do
+      post :archiving
+      post :unarchiving
     end
   end
 
@@ -16,7 +21,8 @@ Rails.application.routes.draw do
     collection do
       post ':id/destroy' => 'messages#archiving', as: 'archiving' 
     end
-  	resources :images, only: [:create]
+
+    resources :images, only: [:create]
   end
 
 end

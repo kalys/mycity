@@ -8,12 +8,8 @@
 	<% @categories.each do |category| %>
 		<tr>
 			<td><%= category.title %></td>
-			<td><%= link_to 'Восстановить', unarchiving_categories_path(category), method: :post %></td>
+			<td><%= link_to 'Восстановить', unarchiving_category_path(category), method: :post %></td>
 		</tr>
 	<% end %>
 </table>
 <%= link_to "Показать все категории", categories_path %>
-
-
-
-<p><%= link_to "Новая категория", new_category_path %></p>
