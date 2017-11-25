@@ -47,15 +47,9 @@ When (/^залогинен пользователь с email "([^"]*)" и пар
 		fill_in('Email', with: email)
 		fill_in('Password', with: password)
 		click_button('Log in')
-		sleep 3
 	end
 	visit('/admin/roles')
 end
 
 When(/^его переадресует на страницу с ошибкой "([^"]*)"$/) do |error_title|
 	page.has_xpath?("//h1[contains(text(), '#{error_title}')]")
-end
-
-		# Допустим администратор заходит в управление группой "тест"
-		# Если он добавит доступ к странице "messages"
-		# То появляется надпись "Section created"

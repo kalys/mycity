@@ -3,7 +3,8 @@
 							options_for_select([['New', message.status = 'new_message'], 
 																	['Done', message.status = 'done'], 
 																	['Actual', message.status = 'actual'],
-																	['Not relevant', message.status = 'not_relevant']])) %>
+																	['Not relevant', message.status = 'not_relevant']])
+							) %>
 	<%= f.submit 'Обновить статус'%>
-	<%= link_to 'Удалить сообщение', archiving_messages_path(message), method: :post, class: 'btn btn-danger', data: {confirm: "Вы уверены?"} %>
+	<%= link_to 'Удалить сообщение', archiving_messages_path(message), method: :post, class: 'btn btn-danger' %>
 <% end %>
