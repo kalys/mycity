@@ -8,5 +8,6 @@ class Message < ApplicationRecord
 	geocoded_by :address
 	reverse_geocoded_by :latitude, :longitude
 
-	after_validation :geocode
+	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+	after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? and obj.address.nil? }
 end

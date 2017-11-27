@@ -11,7 +11,6 @@
 							Lng: <%= @message.longitude %><br \>
 							Adds: <%= @message.address %>
 					</h1>
-					<h1><%= raw @hash %></h1>
 					<h3>
 						<p> <b> Description: </b> </p> 
 						<p>	<%= @message.body %>  </p>
@@ -42,8 +41,8 @@
 
 <script type="text/javascript">
 	handler = Gmaps.build('Google');
-	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-	  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+	handler.buildMap({ provider: {mapTypeId: 'hybrid'}, internal: {id: 'map'}}, function(){
+	  markers = handler.addMarkers(<%=raw [{:lat=>@message.latitude, :lng=>@message.longitude, :infowindow=>@message.address}].to_json %>);
 	  handler.bounds.extendWith(markers);
 	  handler.fitMapToBounds();
 	});
