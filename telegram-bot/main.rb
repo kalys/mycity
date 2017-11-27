@@ -16,6 +16,7 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 			parameters: {
 				category_id: nil,
 				text_of_problem: '',
+				address: '',
 				latitude: nil,
 				longitude: nil,
 				images_of_problem: ''	},
@@ -24,6 +25,10 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 						
 	  session = sessions.find {|session| session[:chat_id] == message.chat.id}
 	
+	    if message.text == '/end' && session[:status_of_session] == ''
+	    	message.text = ''
+	    end	
+
 		case message.text
 		when '/start'
 			bot.api.send_message(chat_id: message.chat.id, text: 'Здрасте, Вы можете мне отправить проблему написав /new')
@@ -42,7 +47,7 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 					 body: session[:parameters][:text_of_problem],
 					 latitude: session[:parameters][:latitude],
 					 longitude: session[:parameters][:longitude],
-					 address: nil,
+					 address: session[:parameters][:address],
 					 category_id: 1,
 					 status: 'new_message' },
 			 
@@ -65,17 +70,18 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 			if message.text != '/new'
 				session[:parameters][:text_of_problem] = message.text
 				session[:status_of_problem] = 'location_of_problem'
-				bot.api.send_message(chat_id: message.chat.id, text: 'Локацию сюды э: ', reply_markup: markup)
+				bot.api.send_message(chat_id: message.chat.id, text: 'Вы можете отправить адрес написав где Вы находитесь, либо отправить ваши координаты, нажав кнопку "Show your location"', reply_markup: markup)
 			end	
 		when 'location_of_problem'
-			if session[:parameters][:latitude] == nil
-				unless message.location.nil?
-					session[:parameters][:latitude] = message.location.latitude 
-					session[:parameters][:longitude] = message.location.longitude
-
-					session[:status_of_problem] = 'images_of_problem'
-					bot.api.send_message(chat_id: message.chat.id, text: 'Отправте изображения проблемы, когда закончите, напишите /end')
-				end	
+			unless message.location.nil?
+				session[:parameters][:latitude] = message.location.latitude 
+				session[:parameters][:longitude] = message.location.longitude
+				session[:status_of_problem] = 'images_of_problem'
+				bot.api.send_message(chat_id: message.chat.id, text: 'Отправте изображения проблемы, когда закончите, напишите /end')	
+			else 
+				session[:parameters][:address] = message.text
+				session[:status_of_problem] = 'images_of_problem'
+				bot.api.send_message(chat_id: message.chat.id, text: 'Отправте изображения проблемы, когда закончите, напишите /end')
 			end	
 		when 'images_of_problem'  	
 			Dir.mkdir("./pictures/#{message.chat.id}") unless File.exists?("./pictures/#{message.chat.id}/")
@@ -87,8 +93,6 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 		end
 	end	
 end	
-
-
 
 
 
