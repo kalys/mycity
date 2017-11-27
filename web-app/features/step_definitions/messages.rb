@@ -21,12 +21,10 @@ end
 When(/^он перейдет на страницу с сообщениями и удалит сообщение "([^"]*)"$/) do |message_body|
   visit(root_path)
   click_link(message_body)
+  find_by_id('collapse10').click_link('Удалить сообщение')
 end
 
 When(/^сообщения "([^"]*)" больше не будет в списке сообщений$/) do |text|
-	assert page.has_content?(text)
+	visit('/messages')
+	assert page.has_no_content?(text)
 end
-
-	# Сценарий: Удаление сообщения
-	# 	Если он перейдет на страницу с сообщениям и нажмет на "Удалить сообщение"
-	# 	То сообщения "Уникальное сообщение" больше не будет в списке сообщений
