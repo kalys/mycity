@@ -40,7 +40,14 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 		when '/end'
 			bot.api.send_message(chat_id: message.chat.id, text: 'Всё заебись, спасибо.')
 			session[:status_of_problem] = ''
-			file_name = Dir["./pictures/#{message.chat.id}/*"].last
+			file_name = Dir["./pictures/#{message.chat.id}/*"]
+			files = []
+
+			file_name.each do |file|
+				files.push(File.new(file, 'rb'))
+			end	
+
+			puts files
 
 			RestClient.post('http://localhost:3000/messages', 
 			{  :message => { 
@@ -52,7 +59,7 @@ Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
 					 status: 'new_message' },
 			 
 			 	 :image => {
-					 image: File.new(file_name, 'rb')}
+					 image: files }
 			})
 		  	
 			sessions.delete(sessions.find {|session| session[:chat_id] == message.chat.id})
