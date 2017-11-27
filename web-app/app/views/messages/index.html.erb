@@ -1,51 +1,61 @@
-<% @messages.order(created_at: :desc).each_with_index do |message, index| %>
-<div class="col-md-offset-1 col-md-10">
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-	  <div class="panel panel-default">
-	    <div class="panel-heading" role="tab" id="headingOne">
-	      <h4 class="panel-title">
-	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">
-	          <%= message.status + ' ' + message.id.to_s %>
-	        </a>
-	      </h4>
-	    </div>
-	    <div id="collapse<%= index.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-	      <div class="panel-body">
-					<div class="breadcrumb">
-						<div class="row">
-							<div class="col-md-8">
-								<div class="desc">
-									<h3><%= link_to "View", message_path(message.id) %></h3>
-									<h3>
-										<p> <b> Description: </b> </p> 
-										<p>	<%= message.body %>  </p>
-										<hr>
-										<p>Status: 
-										<b>	<%= message.status %></b></p>
-									</h3>
-									<%= render partial: 'change_status', locals: { message: message } %>
+<div class="row">
+	<h2>Sort by status:</h2>
+	<%= link_to "New", messages_path(status: 0), class: "btn btn-primary" %>
+	<%= link_to "Done", messages_path(status: 1), class: "btn btn-primary" %>
+	<%= link_to "Actual", messages_path(status: 2), class: "btn btn-primary" %>
+	<%= link_to "Hidden", messages_path(status: 3), class: "btn btn-primary" %>
+	<%= link_to "Not Relevant", messages_path(status: 4), class: "btn btn-primary" %>
+</div><hr />
+<br />
+
+<% @messages.order(created_at: :desc).where(status: @status).each_with_index do |message, index| %>
+	<div class="col-md-offset-1 col-md-10">
+		<div class="panel-group" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a role="button" data-toggle="collapse" href="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">
+		          <%= message.status + ' ' + message.id.to_s %>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapse<%= index.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+						<div class="breadcrumb">
+							<div class="row">
+								<div class="col-md-8">
+									<div class="desc">
+										<h3><%= link_to "View", message_path(message.id) %></h3>
+										<h3>
+											<p> <b> Description: </b> </p> 
+											<p>	<%= message.body %>  </p>
+											<hr>
+											<p>Status: 
+											<b>	<%= message.status %></b></p>
+										</h3>
+										<%= render partial: 'change_status', locals: { message: message } %>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<% message.images.each do |image| %>
+										<%= image_tag(image.image_url, size: 300, class: 'problem_image') %>
+									<% end %>
 								</div>
 							</div>
-							<div class="col-md-4">
-								<% message.images.each do |image| %>
-									<%= image_tag(image.image_url, size: 300, class: 'problem_image') %>
-								<% end %>
+				 
+							<div class="row">
+
+								<div class="jumbotron">
+									<h1>Тут будет карта, когда запилим AJAX.</h1>
+								</div>
+
 							</div>
 						</div>
-			 
-						<div class="row">
-
-							<div class="jumbotron">
-								<h1>Тут будет карта, когда запилим AJAX.</h1>
-							</div>
-
-						</div>
-					</div>
-	      </div>
-	    </div>
-	  </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</div>
-</div>
 <% end %>
 
         
