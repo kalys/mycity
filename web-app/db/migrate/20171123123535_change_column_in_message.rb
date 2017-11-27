@@ -1,4 +1,4 @@
-class ChancheColumnInMessage < ActiveRecord::Migration[5.1]
+class ChangeColumnInMessage < ActiveRecord::Migration[5.1]
   def change
   	change_column :messages, :status, :integer
   end
