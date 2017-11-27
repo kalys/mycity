@@ -1,40 +1,51 @@
-<% @messages.each do |message| %>
-	<div class="col-md-offset-1 col-md-10">
-		<div class="breadcrumb">
-			<div class="row">
-				<div class="col-md-8">
-					<div class="desc">
-						<h1>Lat: <%= message.latitude %>
-								Lng: <%= message.longitude %><br \>
-								Adds: <%= message.address %>
-						</h1>
-						<h1><%= link_to "View", message_path(message.id) %></h1>
-						<h3>
-							<p> <b> Description: </b> </p> 
-							<p>	<%= message.body %>  </p>
-							<hr>
-							<p>Status: 
-							<b>	<%= message.status %></b></p>
-						</h3>
-						<%= render partial: 'change_status', locals: { message: message } %>
+<% @messages.order(created_at: :desc).each_with_index do |message, index| %>
+<div class="col-md-offset-1 col-md-10">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	  <div class="panel panel-default">
+	    <div class="panel-heading" role="tab" id="headingOne">
+	      <h4 class="panel-title">
+	        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">
+	          <%= message.status + ' ' + message.id.to_s %>
+	        </a>
+	      </h4>
+	    </div>
+	    <div id="collapse<%= index.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+	      <div class="panel-body">
+					<div class="breadcrumb">
+						<div class="row">
+							<div class="col-md-8">
+								<div class="desc">
+									<h3><%= link_to "View", message_path(message.id) %></h3>
+									<h3>
+										<p> <b> Description: </b> </p> 
+										<p>	<%= message.body %>  </p>
+										<hr>
+										<p>Status: 
+										<b>	<%= message.status %></b></p>
+									</h3>
+									<%= render partial: 'change_status', locals: { message: message } %>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<% message.images.each do |image| %>
+									<%= image_tag(image.image_url, size: 300, class: 'problem_image') %>
+								<% end %>
+							</div>
+						</div>
+			 
+						<div class="row">
+
+							<div class="jumbotron">
+								<h1>Тут будет карта, когда запилим AJAX.</h1>
+							</div>
+
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<% message.images.each do |image| %>
-						<%= image_tag(image.image_url, size: 300, class: 'problem_image') %>
-					<% end %>
-				</div>
-			</div>
- 
-			<div class="row">
-
-				<div class="jumbotron">
-					<h1>Тут будет карта, когда запилим AJAX.</h1>
-				</div>
-
-			</div>
-		</div>
+	      </div>
+	    </div>
+	  </div>
 	</div>
-
+</div>
 <% end %>
 
+        
