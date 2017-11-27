@@ -53,3 +53,4 @@ end
 
 When(/^его переадресует на страницу с ошибкой "([^"]*)"$/) do |error_title|
 	page.has_xpath?("//h1[contains(text(), '#{error_title}')]")
+end
