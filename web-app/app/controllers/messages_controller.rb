@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def index
     set_status
-    @messages = Message.all.order(created_at: :desc)
+    @messages = Message.all.where.not(status: 3).order(created_at: :desc)
     @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
