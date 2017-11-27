@@ -19,7 +19,10 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(message_params)
-    @message.images.create(image_params)
+    puts params[:image][:image] 
+    params[:image][:image].each do |file|
+      @message.images.create(image: file)
+    end
   end
 
   def show
@@ -57,7 +60,7 @@ class MessagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:image)
+    params.require(:image).permit({image: []}) 
   end
 
 end
