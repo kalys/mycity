@@ -4,7 +4,8 @@ class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def index
-    @messages = Message.where.not(status: :hidden).order(created_at: :desc)
+    @status = params[:status] if !params[:status].nil?
+    @messages = Message.all.order(created_at: :desc)
     @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
@@ -61,4 +62,5 @@ class MessagesController < ApplicationController
   def image_params
     params.require(:image).permit({image: []}) 
   end
+
 end

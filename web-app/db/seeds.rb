@@ -26,4 +26,7 @@ admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: '
 moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
 
 default_category = Category.create!(title: "default")
-message = Message.create!(body: "bugaga", category_id: default_category.id, status: 0)
+
+10.times do
+	Message.create!(body: "bugaga", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
+end
