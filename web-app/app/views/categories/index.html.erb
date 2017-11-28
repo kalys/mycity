@@ -9,6 +9,7 @@
 		<tr>
 			<td><%= category.title %></td>
 			<td><%= link_to 'Архивировать', archiving_category_path(category), method: :post %></td>
+			<td><%= link_to 'Обновить', edit_category_path(category), class: 'update', id: category.id %></td>
 		</tr>
 	<% end %>
 	

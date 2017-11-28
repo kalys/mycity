@@ -21,6 +21,7 @@ moderator_role = Role.create!(name: 'moderator',
 	description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
 	the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
 
+test_category = Category.create!(title: "zxcqwe")
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
 moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)

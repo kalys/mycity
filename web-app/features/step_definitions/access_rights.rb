@@ -25,7 +25,7 @@ end
 
 
 When(/^администратор находится в управлении группой модераторы$/) do 
-	visit('/admin/roles/2/edit')	
+	visit('/admin/roles/2/edit')
 end
 
 When(/^он добавит доступ к странице "([^"]*)"$/) do |title|
