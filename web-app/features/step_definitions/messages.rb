@@ -10,18 +10,18 @@ end
 When(/^он перейдет на страницу с сообщениями чтобы изменить статус сообщения c тесктом "([^"]*)" на done$/) do |body|
   visit(root_path)
   click_link(body)
-	find_by_id('edit_message_10').find("option[value='done']").click
-  find_by_id('edit_message_10').click_button('Обновить статус')
+	find_by_id('collapse0').find("option[value='done']").click
+  find_by_id('collapse0').click_button('Обновить статус')
 end
 
 When(/^статус сообщения сменится на "([^"]*)"$/) do |status|
-	page.has_xpath?("//div[@id='collapse10']//b[contains(text(), '#{status}')]")
+	page.has_xpath?("//div[@id='collapse0']//b[contains(text(), '#{status}')]")
 end
 
 When(/^он перейдет на страницу с сообщениями и удалит сообщение "([^"]*)"$/) do |message_body|
   visit(root_path)
   click_link(message_body)
-  find_by_id('collapse10').click_link('Удалить сообщение')
+  find_by_id('collapse0').click_link('Удалить сообщение')
 end
 
 When(/^сообщения "([^"]*)" больше не будет в списке сообщений$/) do |text|

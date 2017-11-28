@@ -21,18 +21,19 @@ moderator_role = Role.create!(name: 'moderator',
 	description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
 	the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
 
-test_category = Category.create!(title: "zxcqwe")
+test_category = Category.create!(title: "Тестовая категория")
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
 moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
 
 default_category = Category.create!(title: "default")
 
-test_message = Message.create!(body: "Уникальное сообщение", 
+10.times do
+	Message.create!(body: "bugaga", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
+end
+
+test_message = Message.create!(body: "Тестовое сообщение", 
 								category_id: default_category.id, 
 								status: 0,
 								latitude: rand(10..70),
 								longitude: rand(10..70))
-10.times do
-	Message.create!(body: "bugaga", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
-end
