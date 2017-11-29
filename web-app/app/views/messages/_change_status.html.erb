@@ -4,7 +4,6 @@
 																	['Done', message.status = 'done'], 
 																	['Actual', message.status = 'actual'],
 																	['Not relevant', message.status = 'not_relevant']])
-							) %>
+							) %><br />
 	<%= f.submit 'Обновить статус', class: 'btn btn-primary' %>
-	<%= link_to 'Удалить сообщение', archiving_messages_path(message), method: :post, class: 'btn btn-danger' %>
 <% end %>
