@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "theme";
 
 
 .map {
@@ -17,4 +18,12 @@
 
 .buttons {
 
+}
+
+body {
+	padding-top: 70px;
+}
+
+.navbar-right {
+	margin-right: auto;
 }
