@@ -13,11 +13,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :medium do
-    process resize_to_fill: [350, 350]
+    process resize_to_fill: [500, 300]
   end
 
   version :actual do
-    process resize_to_fill: [500, 300]
+    process resize_to_fill: [860, 800]
   end
 
   def extension_whitelist
