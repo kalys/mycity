@@ -4,4 +4,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable
+  validates :name, presence: true, length: { minimum: 2 }
 end
