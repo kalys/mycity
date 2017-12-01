@@ -29,12 +29,25 @@ When(/^он обновляет категорию "([^"]*)" на:$/) do |title, 
 	end
 end
 
+When(/^он создает категорию с пустыми данными:$/) do |table|
+	visit('/categories/new')
+		within('#new_category') do
+			fill_in('Title', with: table.hashes[0][:title])
+			click_button('Create Category')
+		end
+end
+
+When(/^его выкинет на страницу категорий$/) do
+	visit('/categories')
+end
+
+
 When(/^категория "([^"]*)" меняет название на asd$/) do |title|
 	page.has_xpath?("//table[@id='index_table_categories']//a[contains(text(), '#{title}')]")
 end
 
 When(/^он удаляет категорию "([^"]*)"$/) do |title|
-	visit('/categories')	
+	visit('/categories')
 	page.find_by_id('archiving_category_1').click
 	assert page.has_no_content?(title)
 end
@@ -61,4 +74,17 @@ When(/^категория пропадает в списке архивиров�
 	assert page.has_no_content?("Тестовая категория")
 	visit('/categories')
 	assert page.has_content?("Тестовая категория")
+end
+
+When(/^он обновляет категорию "([^"]*)" c пустыми данными:$/) do |title, table|
+	visit('/categories')
+		page.find_by_id('edit_category_1').click
+		within('#edit_category_1') do
+			fill_in('Title', with: table.hashes[0][:title])
+			click_button('Update Category')
+		end
+end
+
+When(/^его выкинет на страницу категорий где "([^"]*)" не изменится$/) do |title|
+	page.has_xpath?("//table[@id='index_table_categories']//a[contains(text(), '#{title}')]")
 end

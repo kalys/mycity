@@ -15,7 +15,7 @@ When(/^он перейдет на страницу добавления прав
 		fill_in('role[name]', with: table.hashes[0][:name])
 		fill_in('role[title]', with: table.hashes[0][:title])
 		fill_in('role[description]', with: table.hashes[0][:description])
-		click_button('Create new Role')
+		click_button('Создать новую роль')
 	end
 end
 
@@ -31,7 +31,7 @@ end
 When(/^он добавит доступ к странице "([^"]*)"$/) do |title|
 	within(:xpath, "//form[@id='new_section']") do 
 		fill_in('section_name', with: title)
-		click_button('Create new section')
+		click_button('Создать раздел')
 	end
 end
 

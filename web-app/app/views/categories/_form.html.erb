@@ -1,4 +1,5 @@
 <div class="col-sm-4">
+		<%= f.error_notification %>
 	<%= simple_form_for(@category) do |f| %>
 		<%= f.input :title, label: 'Название', class: 'form-control' %>
 		<%= f.submit "Создать", class: 'btn btn-success' %>

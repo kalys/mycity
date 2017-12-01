@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
-      marker.infowindow message.address
+      marker.infowindow message.body.split(//).first(50).join("")
     end
   end
 

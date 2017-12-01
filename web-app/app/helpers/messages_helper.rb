@@ -14,4 +14,5 @@ module MessagesHelper
 				"primary"
 			end
 	end
+
 end
