@@ -10,7 +10,7 @@
 	<div class="col-md-6">
 		<% @messages.each_with_index do |message, index| %>
 			<div class="panel-group" role="tablist" aria-multiselectable="true">
-			  <div class="panel panel-primary">
+			  <div class="panel panel-<%= panel_type(message) %>">
 			    <div class="panel-heading" role="tab" id="headingOne">
 			      <h4 class="panel-title">
 			        <a role="button" data-toggle="collapse" href="#collapse<%= index.to_s %>" aria-expanded="true" aria-controls="collapse<%= index.to_s %>">
@@ -66,6 +66,13 @@
 
   <div class="col-md-6">
     <div style='width: 585px; position: fixed;'>
+	  	<div class="btn-group btn-group-justified">
+				<a href="#" class="btn btn-info">New</a>
+			  <a href="#" class="btn btn-success">Done</a>
+			  <a href="#" class="btn btn-warning">Actual</a> 
+			  <a href="#" class="btn btn-default">Not Relevant</a>   		
+	  	</div>    	
+      <hr>
       <div id="map" style='width: 585px; height: 450px;'></div>
     </div>
   </div>
