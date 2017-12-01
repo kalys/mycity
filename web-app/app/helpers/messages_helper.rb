@@ -13,4 +13,5 @@ module MessagesHelper
 			return "primary"
 		end
 	end
+
 end
