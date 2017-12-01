@@ -1,6 +1,6 @@
 <div class="col-sm-4">
-	<%= simple_form_for(@category, html: { class: 'form-horizontal' }) do |f| %>
-		<%= f.input :title %>
-		<%= f.submit class: 'btn btn-success' %>
+	<%= simple_form_for(@category) do |f| %>
+		<%= f.input :title, label: 'Название', class: 'form-control' %>
+		<%= f.submit "Создать", class: 'btn btn-success' %>
 	<% end %>
 </div>

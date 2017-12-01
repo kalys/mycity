@@ -1,16 +1,17 @@
 module MessagesHelper
 	def panel_type(message)
-		case message.status
-		when "new_message"
-			return "info"
-		when "actual"
-			return "warning"
-		when "done"
-			return "success"
-		when "not_relevant"
-			return "default"
-		else
-			return "primary"
-		end
+		panel_type =
+			case message.status
+			when "new_message"
+				"info"
+			when "actual"
+				"warning"
+			when "done"
+				"success"
+			when "not_relevant"
+				"default"
+			else
+				"primary"
+			end
 	end
 end
