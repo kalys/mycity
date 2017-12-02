@@ -4,7 +4,23 @@ class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def index
-    @messages = Message.all.where.not(status: 3).order(created_at: :desc)
+    if params[:status].nil?
+      @messages = Message.all.where.not(status: :hidden).order(created_at: :desc)
+      @title = "Все сообщения"
+    else
+      @messages = Message.all.where(status: params[:status]).order(created_at: :desc)
+      @title =
+      case params[:status]
+      when "new_message"
+        "Новые сообщения"
+      when "done"
+        "Выполненные сообщения"
+      when "actual"
+        "Актуальные сообщения"
+      when "not_relevant"
+        "Неактуальные сообщения"
+      end
+    end
     @hash = Gmaps4rails.build_markers(@messages) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
@@ -18,7 +34,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(message_params)
-    puts params[:image][:image] 
+    puts params[:image][:image]
     params[:image][:image].each do |file|
       @message.images.create(image: file)
     end
@@ -60,7 +76,7 @@ class MessagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit({image: []}) 
+    params.require(:image).permit({image: []})
   end
 
 end
