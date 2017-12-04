@@ -10,8 +10,8 @@ end
 When(/^он создает категорию с данными:$/) do |table|
 	visit('/categories/new')
 		within('#new_category') do
-		fill_in('Title', with: table.hashes[0][:title])
-		click_button('Create Category')
+		fill_in('Название', with: table.hashes[0][:title])
+		click_button('Создать')
 	end
 	visit('/categories')
 end
@@ -24,16 +24,16 @@ When(/^он обновляет категорию "([^"]*)" на:$/) do |title, 
 	visit('/categories')
 	page.find_by_id('edit_category_1').click
 	within('#edit_category_1') do
-		fill_in('Title', with: table.hashes[0][:title])
-		click_button('Update Category')
+		fill_in('Название', with: table.hashes[0][:title])
+		click_button('Создать')
 	end
 end
 
 When(/^он создает категорию с пустыми данными:$/) do |table|
 	visit('/categories/new')
 		within('#new_category') do
-			fill_in('Title', with: table.hashes[0][:title])
-			click_button('Create Category')
+			fill_in('Название', with: table.hashes[0][:title])
+			click_button('Создать')
 		end
 end
 
@@ -80,8 +80,8 @@ When(/^он обновляет категорию "([^"]*)" c пустыми д�
 	visit('/categories')
 		page.find_by_id('edit_category_1').click
 		within('#edit_category_1') do
-			fill_in('Title', with: table.hashes[0][:title])
-			click_button('Update Category')
+			fill_in('Название', with: table.hashes[0][:title])
+			click_button('Создать')
 		end
 end
 
