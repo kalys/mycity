@@ -22,36 +22,52 @@
             <div id="collapse<%= index.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <h3>
                       <p> <b> Описание: </b> </p>
                       <p> <%= message.body %>  </p>
                       <hr>
-                      <p>Статус:
-                        <b> <%= message.status %></b></p>
                     </h3>
-                    <%= render partial: 'change_status', locals: { message: message } %>
-                    <hr>
-                    <% message.images.each do |image| %>
-                        <%= link_to image_tag(image.image_url(:medium), class: 'problem_image img-rounded' ), "#modal-#{image.id}", "data-toggle" => "modal" %>
-                        <div id="modal-<%= image.id %>" class="modal fade" role="dialog">
-                          <div class="modal-dialog modal-lg">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"><%= truncate(message.body, :length => 50) %></h4>
-                              </div>
-                              <div class="modal-body">
-                                <%= image_tag(image.image_url(:actual)) %>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
-                            </div>
+                    <div class="row">
+	                    <div class="col-md-6">
+		                    <h3>
+		                      <p>Статус:
+		                        <b> <%= message.status %></b></p>
+		                    </h3>
+		                    <%= render partial: 'change_status', locals: { message: message } %>
+	                    </div>
+	                    <div class="col-md-6">
+	                    	<h3>
+	                    		<p>Категория:
+	                    			<b><%= message.category %></b></p>
+	                    	</h3>
+												<select>
+												  <option value="mercedes">Mercedes</option>
+												  <option value="audi">Audi</option>
+												</select>
+	                    </div>
+	                  </div>
 
+                    <% message.images.each do |image| %>
+                  		<hr>
+                      <%= link_to image_tag(image.image_url(:medium), class: 'problem_image img-rounded' ), "#modal-#{image.id}", "data-toggle" => "modal" %>
+                      <div id="modal-<%= image.id %>" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><%= truncate(message.body, :length => 50) %></h4>
+                            </div>
+                            <div class="modal-body">
+                              <%= image_tag(image.image_url(:actual)) %>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
                           </div>
                         </div>
+                      </div>
                     <% end %>
                     <hr>
                     <%= link_to 'Удалить сообщение', archiving_messages_path(message), method: :post, class: 'btn btn-danger' %>
