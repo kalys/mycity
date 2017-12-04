@@ -39,12 +39,9 @@
 	                    <div class="col-md-6">
 	                    	<h3>
 	                    		<p>Категория:
-	                    			<b><%= message.category %></b></p>
+	                    			<b><%= message.category.title %></b></p>
 	                    	</h3>
-												<select>
-												  <option value="mercedes">Mercedes</option>
-												  <option value="audi">Audi</option>
-												</select>
+                        <%= render partial: 'change_category', locals: { message: message } %>
 	                    </div>
 	                  </div>
 
