@@ -63,6 +63,7 @@ class MessagesController < ApplicationController
   def archiving
     @message.status = "hidden"
     @message.save
+    flash[:success] = "Message successfully deleted!"
     redirect_to root_path
   end
 
