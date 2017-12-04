@@ -14,8 +14,10 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to categories_path
+      flash[:success] = "Category successfully created."
     else
       render 'new'
+      flash[:danger] = "Error."
     end
   end
 
@@ -25,8 +27,10 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       redirect_to root_path
+      flash[:success] = "Category successfully updated."
     else
       render 'edit'
+      flash[:danger] = "Error."
     end
   end
 
@@ -36,12 +40,14 @@ class CategoriesController < ApplicationController
   def archiving
     @category.archived = true
     @category.save
+    flash[:success] = "Category successfully archived."
     redirect_to categories_path
   end
 
   def unarchiving
     @category.archived = false
     @category.save
+    flash[:success] = "Category successfully unarchived."
     redirect_to categories_path
   end
 
