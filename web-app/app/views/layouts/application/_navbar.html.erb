@@ -18,10 +18,10 @@
       <li><%= link_to "Категории", categories_path %></li>
       <li><%= link_to "Сообщения", messages_path %></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" id="user_actions">
       <%= link_to 'Админ панель',  admin_roles_path, class: "navbar-brand" if current_user && current_user.admin? %>
       <% if user_signed_in? %>
-        <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %>
+          <%= link_to "Logout", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %>
       <% else %>
       <% end %>
     </ul>
