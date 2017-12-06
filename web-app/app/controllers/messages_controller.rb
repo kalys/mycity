@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:update, :show, :edit, :archiving]
-  before_action :role_required, except: [:create]  # проверяет роль юзера
-  skip_before_action :authenticate_user!, only: [:create]
+  before_action :role_required, except: [:create, :image_save]  # проверяет роль юзера
+  skip_before_action :authenticate_user!, only: [:create, :image_save]
 
   def index
     if params[:status].nil?
@@ -34,10 +34,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(message_params)
-    puts params[:image][:image]
-    params[:image][:image].each do |file|
-      @message.images.create(image: file)
-    end
+    render plain: @message.id
+  end
+
+  def image_save
+    Image.create(image: params[:image], message_id: params[:message_id])
   end
 
   def show

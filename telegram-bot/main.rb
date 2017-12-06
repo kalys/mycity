@@ -1,41 +1,11 @@
 require 'telegram/bot'
 require 'fileutils'
 require 'open-uri'
-require 'rest-client'
-
-class Session
-	attr_reader   :chat_id
-	attr_accessor :status, :text, :images, :text, :address, :latitude, :longitude 
-
-	def initialize(chat_id)
-		@chat_id   = chat_id
-		@status    = nil
-		@text      = nil
-		@address   = nil
-		@latitude  = nil
-		@longitude = nil
-		@images    = []
-	end
-
-	def send_parameters
-		RestClient.post('http://localhost:3000/messages', 
-		{  :message => { 
-				 category_id: 1,
-				 longitude:   @longitude,
-				 latitude:    @latitude,
-				 address:     @address,
-				 status:     'new_message', 
-				 body:        @text },
-		 
-		 	 :image => {
-				 image: @images }
-		})	
-	end
-end
+require './session.rb'
 
 class FixMyStreet
 	def initialize
-		@TOKEN     = '499660598:AAF-INPO3WiMq2DfO7KFLyfgMrUlpi9RvVQ'
+		@TOKEN     = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
 		@sessions  = []
 		@session   = nil
 	end
@@ -43,65 +13,57 @@ class FixMyStreet
 	def run
 		Telegram::Bot::Client.run(@TOKEN, logger: Logger.new(STDOUT)) do |bot|
 			bot.listen do |message|
-				check_session(message.chat.id)			
-				
-				if message.text == '/end' && @session.status == nil
-					message.text = ''
-				end	
+				current_chat = message.chat.id
 
-				case message.text 
-				when '/start'
-				  @session.status = '/start'
-				when '/new'
-          @session.status = '/new'
-				when '/end'
-					bot.api.send_message(chat_id: message.chat.id, text: 'Всё заебись, спасибо.')
-	
-					Dir["./pictures/#{message.chat.id}/*"].each do |file|
+				check_session(current_chat)			
+				
+				if message.text == '/start'
+					bot.api.send_message(chat_id: message.chat.id, text: 'Здрасте, Вы можете мне отправить проблему написав /new')
+				elsif message.text == '/new'
+					@session.status = '/new'
+				elsif message.text == '/end' && @session.status != nil
+					Dir["./pictures/#{current_chat}/*"].each do |file|
 						@session.images.push(File.new(file, 'rb'))
+						FileUtils.rm("#{file}")
 					end	
 					
 					@session.send_parameters
+					@session.status = nil
 
-					@sessions.delete(@sessions.find {|session| session.chat_id == message.chat.id})
-
-					Dir["./pictures/#{message.chat.id}/*"].each do |file|	
-						FileUtils.rm("#{file}")
-					end	
+					bot.api.send_message(chat_id: current_chat, text: 'Ваше сообщение отправлено на модерацию.')
 				end	
 
-				case @session.status
-				when '/start'
-					bot.api.send_message(chat_id: message.chat.id, text: 'Здрасте, Вы можете мне отправить проблему написав /new')
+
+				case @session.status	
 				when '/new'
 					kb = Telegram::Bot::Types::KeyboardButton.new(text: 'Show me your location', request_location: true) 
 					markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: kb)
-					bot.api.send_message(chat_id: message.chat.id, text: 'Вы можете отправить адрес написав где Вы находитесь, либо отправить ваши координаты, нажав кнопку "Show me your location"', reply_markup: markup)
+					bot.api.send_message(chat_id: current_chat, text: 'Вы можете отправить адрес написав где Вы находитесь, либо отправить ваши координаты, нажав кнопку "Show me your location"', reply_markup: markup)
 					@session.status = 'location'
 				when 'location'
 					unless message.location.nil?
 						@session.latitude = message.location.latitude 
 						@session.longitude = message.location.longitude
 						@session.status = 'text'
-						bot.api.send_message(chat_id: message.chat.id, text: 'Опишите проблему: ')	
+						bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')	
 					else 
 						@session.address = message.text
 						@session.status = 'text'
-						bot.api.send_message(chat_id: message.chat.id, text: 'Опишите проблему: ')
+						bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')
 					end					
 				when 'text'	
 				  @session.text = message.text
 				  @session.status = 'images'
-				  bot.api.send_message(chat_id: message.chat.id, text: 'Отправте изображения проблемы и когда закончите, напишите /end')
+				  bot.api.send_message(chat_id: current_chat, text: 'Отправте изображения проблемы и когда закончите, напишите /end')
 				when 'images'	
 					unless message.photo[0].nil?
 						Dir.mkdir("./pictures/") unless File.exists?("./pictures/")
-						Dir.mkdir("./pictures/#{message.chat.id}") unless File.exists?("./pictures/#{message.chat.id}/")
+						Dir.mkdir("./pictures/#{current_chat}") unless File.exists?("./pictures/#{current_chat}/")
 
 						file = bot.api.get_file(file_id: message.photo[2].file_id) 
 						file_path = file.dig('result', 'file_path')
 						photo_url = "https://api.telegram.org/file/bot#{@TOKEN}/#{file_path}"
-						File.write("./pictures/#{message.chat.id}/image_#{message.message_id}.jpg", open(photo_url).read)					
+						File.write("./pictures/#{current_chat}/image_#{current_chat}.jpg", open(photo_url).read)					
 					end
 				end
 			end	
@@ -115,6 +77,14 @@ class FixMyStreet
 		end
 
 		@session = @sessions.find {|session| session.chat_id == chat_id}
+	end
+
+	def is_text?(text)
+		
+	end
+
+	def is_image?(image)
+		
 	end
 end	
 

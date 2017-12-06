@@ -20,4 +20,5 @@ Rails.application.routes.draw do
     end
     resources :images, only: [:create]
   end
+  post '/messages/:message_id/image' => 'messages#image_save'
 end
