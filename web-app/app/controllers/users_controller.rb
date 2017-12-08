@@ -20,10 +20,10 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
   	if @user.save
   		redirect_to root_path
-  		flash[:success] = "User successfuly created."
+  		flash[:success] = "Пользователь успешно зарегистрирован."
   	else
   		render "new"
-  		flash[:danger] = "Error."
+  		flash[:danger] = "Ошибка."
   	end
   end
 
@@ -31,10 +31,10 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	if @user.update(user_params)
   		redirect_to root_path
-  		flash[:success] = "User successfuly updated"
+  		flash[:success] = "Пользователь успешно обновлен."
   	else
   		render "edit"
-  		flash[:danger] = "Error."
+  		flash[:danger] = "Ошибка."
   	end
   end
 

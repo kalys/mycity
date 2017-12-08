@@ -56,6 +56,7 @@ class MessagesController < ApplicationController
   def update
     if @message.update(message_params)
       redirect_back(fallback_location: root_path)
+      flash[:success] = "Статус сообщения успешно изменен!"
     else
       render 'edit'
     end
@@ -64,7 +65,7 @@ class MessagesController < ApplicationController
   def archiving
     @message.status = "hidden"
     @message.save
-    flash[:success] = "Message successfully deleted!"
+    flash[:success] = "Сообщение успешно удалено!"
     redirect_to root_path
   end
 
