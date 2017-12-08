@@ -12,7 +12,7 @@
 			<td><%= link_to 'Обновить', edit_category_path(category), class: 'update', id: "edit_category_#{category.id}" %></td>
 		</tr>
 	<% end %>
-	
+
 </table>
 <p><%= link_to "Добавить новую категорию", new_category_path, class: "btn btn-success" %></p>
 <p><%= link_to "Показать архивные категории", archived_categories_path %></p>
