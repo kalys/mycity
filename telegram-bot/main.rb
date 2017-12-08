@@ -5,7 +5,7 @@ require './session.rb'
 
 class FixMyStreet
 	def initialize
-		@TOKEN     = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
+		@TOKEN     = '499660598:AAF-INPO3WiMq2DfO7KFLyfgMrUlpi9RvVQ'
 		@sessions  = []
 		@session   = nil
 	end
