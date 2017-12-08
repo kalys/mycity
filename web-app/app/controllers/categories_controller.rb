@@ -34,6 +34,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @messages = @category.messages
   end
 
   def archiving

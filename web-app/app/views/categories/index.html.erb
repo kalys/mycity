@@ -7,7 +7,7 @@
 
 	<% @categories.each do |category| %>
 		<tr>
-			<td><%= category.title %></td>
+			<td><%= link_to category.title, category, id: "category_#{category.id}" %></td>
 			<td><%= link_to 'Архивировать', archiving_category_path(category), method: :post, id: "archiving_category_#{category.id}" %></td>
 			<td><%= link_to 'Обновить', edit_category_path(category), class: 'update', id: "edit_category_#{category.id}" %></td>
 		</tr>

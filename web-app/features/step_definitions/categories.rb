@@ -88,3 +88,12 @@ end
 When(/^его выкинет на страницу категорий где "([^"]*)" не изменится$/) do |title|
 	page.has_xpath?("//table[@id='index_table_categories']//a[contains(text(), '#{title}')]")
 end
+
+When(/^он нажимает на категорию "([^"]*)"$/) do |title|
+  visit('/categories')
+  page.find_by_id('category_2').click
+end
+
+When(/^отображены только сообщения этой категории$/) do
+	visit('/categories/2')
+end
