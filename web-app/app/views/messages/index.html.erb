@@ -44,7 +44,6 @@
                         <%= render partial: 'change_category', locals: { message: message } %>
 	                    </div>
 	                  </div>
-
                     <% message.images.each do |image| %>
                   		<hr>
                       <%= link_to image_tag(image.image_url(:medium), class: 'problem_image img-rounded' ), "#modal-#{image.id}", "data-toggle" => "modal" %>
