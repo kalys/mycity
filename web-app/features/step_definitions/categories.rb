@@ -53,24 +53,24 @@ When(/^он удаляет категорию "([^"]*)"$/) do |title|
 end
 
 When(/^категории больше нет в списке категорий$/) do
-	visit('/categories')	
+	visit('/categories')
 	assert page.has_no_content?("Тестовая категория")
 end
 
 When(/^она появляется в списке архивированных категорий$/) do
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	assert page.has_content?("Тестовая категория")
 end
 
 When(/^он восстанавливает категорию "([^"]*)"$/) do |title|
 	visit('/categories')
 	page.find_by_id('archiving_category_1').click
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	page.find_by_id('unarchiving_category_1').click
 end
 
 When(/^категория пропадает в списке архивированных и появляется в списке активных категорий$/) do
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	assert page.has_no_content?("Тестовая категория")
 	visit('/categories')
 	assert page.has_content?("Тестовая категория")

@@ -1,6 +1,6 @@
 When(/^залогинен администратор с email "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
 	visit('/users/sign_in')
-	within('#new_user') do 
+	within('#new_user') do
 		fill_in('Email', with: email)
 		fill_in('Password', with: password)
 		click_button('Log in')
@@ -24,12 +24,12 @@ When(/^появляется надпись "([^"]*)"$/) do |title|
 end
 
 
-When(/^администратор находится в управлении группой модераторы$/) do 
+When(/^администратор находится в управлении группой модераторы$/) do
 	visit('/admin/roles/2/edit')
 end
 
 When(/^он добавит доступ к странице "([^"]*)"$/) do |title|
-	within(:xpath, "//form[@id='new_section']") do 
+	within(:xpath, "//form[@id='new_section']") do
 		fill_in('section_name', with: title)
 		click_button('Создать раздел')
 	end
@@ -43,7 +43,7 @@ When (/^залогинен пользователь с email "([^"]*)" и пар
 	visit(root_path)
 	click_link('Logout')
 	visit('/users/sign_in')
-	within('#new_user') do 
+	within('#new_user') do
 		fill_in('Email', with: email)
 		fill_in('Password', with: password)
 		click_button('Log in')
