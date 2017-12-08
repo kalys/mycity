@@ -5,7 +5,7 @@ require './session.rb'
 
 class FixMyStreet
 	def initialize
-		@TOKEN     = '499660598:AAF-INPO3WiMq2DfO7KFLyfgMrUlpi9RvVQ'
+		@TOKEN     = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
 		@sessions  = []
 		@session   = nil
 	end
@@ -21,14 +21,8 @@ class FixMyStreet
 					bot.api.send_message(chat_id: message.chat.id, text: 'Здрасте, Вы можете мне отправить проблему написав /new')
 				elsif message.text == '/new'
 					@session.status = '/new'
-				elsif message.text == '/end' && @session.status != nil
-					Dir["./pictures/#{current_chat}/*"].each do |file|
-						@session.images.push(File.new(file, 'rb'))
-						FileUtils.rm("#{file}")
-					end	
-					
+				elsif message.text == '/end' && @session.status != nil			
 					@session.send_parameters
-					@session.status = nil
 
 					bot.api.send_message(chat_id: current_chat, text: 'Ваше сообщение отправлено на модерацию.')
 				end	
@@ -63,7 +57,13 @@ class FixMyStreet
 						file = bot.api.get_file(file_id: message.photo[2].file_id) 
 						file_path = file.dig('result', 'file_path')
 						photo_url = "https://api.telegram.org/file/bot#{@TOKEN}/#{file_path}"
-						File.write("./pictures/#{current_chat}/image_#{current_chat}.jpg", open(photo_url).read)					
+						File.write("./pictures/#{current_chat}/image_#{current_chat}.jpg", open(photo_url).read)		
+
+						path_to_file = "./pictures/#{current_chat}/image_#{current_chat}.jpg" 
+
+						@session.images.push(File.new(path_to_file, 'rb'))
+
+						FileUtils.rm(path_to_file)		
 					end
 				end
 			end	
@@ -77,14 +77,6 @@ class FixMyStreet
 		end
 
 		@session = @sessions.find {|session| session.chat_id == chat_id}
-	end
-
-	def is_text?(text)
-		
-	end
-
-	def is_image?(image)
-		
 	end
 end	
 

@@ -15,7 +15,7 @@ class Session
 	end
 
 	def send_parameters
-		response = RestClient.post('http://188.226.182.111/messages', 
+		response = RestClient.post('http://localhost:3000/messages', 
 		{  :message => { 
 				 category_id: 1,
 				 longitude:   @longitude,
@@ -28,8 +28,10 @@ class Session
 		message_id = response.body
 
 		@images.each do |image|
-			RestClient.post("http://188.226.182.111/messages/#{message_id}/image", :image => image)
+			RestClient.post("http://localhost:3000/messages/#{message_id}/image", :image => image)
 		end
+
+		initialize(@chat_id)
 	end
 end
 
