@@ -3,7 +3,7 @@ When(/^я перейду на страницу входа и в поле "([^"]*
   within('#new_user') do
     fill_in(email_field, with: email)
     fill_in(password_field, with: password)
-    click_button("Log in")
+    click_button("Войти")
   end
 end
 
@@ -15,11 +15,11 @@ When(/^пользователь, будучи залогинен под "([^"]*)
   visit('users/sign_in')
   within('#new_user') do
     fill_in('Email', with: email)
-    fill_in('Password', with: password)
-    click_button("Log in")
+    fill_in('Пароль', with: password)
+    click_button("Войти")
   end
   visit(messages_path)
-  click_link("Logout")
+  click_link(button)
 end
 
 When(/^он попадёт на страницу входа с заглавием "([^"]*)"$/) do |page_header|
@@ -31,11 +31,11 @@ When(/^пользователь при входе введёт заведомо 
   visit('users/sign_in')
   within('#new_user') do
     fill_in("Email", with: email)
-    fill_in("Password", with: password)
-    click_button('Log in')
+    fill_in("Пароль", with: password)
+    click_button('Войти')
   end
 end
 
-When(/^он продолжит видеть надпись "([^"]*)"$/) do |page_header|
+When(/^на мониторе появляется надпись "([^"]*)"$/) do |page_header|
   assert page.has_content?(page_header)
 end

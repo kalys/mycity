@@ -2,8 +2,8 @@ When(/^залогинен пользователь с email "([^"]*)" и пар�
 	visit('/users/sign_in')
 	within('#new_user') do
 		fill_in('Email', with: email)
-		fill_in('Password', with: password)
-		click_button('Log in')
+		fill_in('Пароль', with: password)
+		click_button('Войти')
 	end
 end
 
@@ -53,24 +53,24 @@ When(/^он удаляет категорию "([^"]*)"$/) do |title|
 end
 
 When(/^категории больше нет в списке категорий$/) do
-	visit('/categories')	
+	visit('/categories')
 	assert page.has_no_content?("Тестовая категория")
 end
 
 When(/^она появляется в списке архивированных категорий$/) do
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	assert page.has_content?("Тестовая категория")
 end
 
 When(/^он восстанавливает категорию "([^"]*)"$/) do |title|
 	visit('/categories')
 	page.find_by_id('archiving_category_1').click
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	page.find_by_id('unarchiving_category_1').click
 end
 
 When(/^категория пропадает в списке архивированных и появляется в списке активных категорий$/) do
-	visit('/categories/archived_categories')	
+	visit('/categories/archived_categories')
 	assert page.has_no_content?("Тестовая категория")
 	visit('/categories')
 	assert page.has_content?("Тестовая категория")
@@ -96,4 +96,17 @@ end
 
 When(/^отображены только сообщения этой категории$/) do
 	visit('/categories/2')
+
+
+When(/^модератор попытается создать категорию с пустым названием$/) do
+	visit('categories/new')
+  within('#new_category') do
+    click_button('Создать')
+  end
+end
+
+When(/^на экране появится фраза "([^"]*)", а под ней "([^"]*)" и в самом низу "([^"]*)"$/) do |main_warning, title, second_warning|
+	assert page.has_content?(main_warning)
+  assert page.has_content?(title)
+  assert page.has_content?(second_warning)
 end
