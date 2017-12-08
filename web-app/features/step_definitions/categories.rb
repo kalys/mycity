@@ -2,8 +2,8 @@ When(/^залогинен пользователь с email "([^"]*)" и пар�
 	visit('/users/sign_in')
 	within('#new_user') do
 		fill_in('Email', with: email)
-		fill_in('Password', with: password)
-		click_button('Log in')
+		fill_in('Пароль', with: password)
+		click_button('Войти')
 	end
 end
 
@@ -87,4 +87,18 @@ end
 
 When(/^его выкинет на страницу категорий где "([^"]*)" не изменится$/) do |title|
 	page.has_xpath?("//table[@id='index_table_categories']//a[contains(text(), '#{title}')]")
+end
+
+
+When(/^модератор попытается создать категорию с пустым названием$/) do
+	visit('categories/new')
+  within('#new_category') do
+    click_button('Создать')
+  end
+end
+
+When(/^на экране появится фраза "([^"]*)", а под ней "([^"]*)" и в самом низу "([^"]*)"$/) do |main_warning, title, second_warning|
+	assert page.has_content?(main_warning)
+  assert page.has_content?(title)
+  assert page.has_content?(second_warning)
 end
