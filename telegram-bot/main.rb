@@ -22,9 +22,12 @@ class FixMyStreet
 				elsif message.text == '/new'
 					@session.status = '/new'
 				elsif message.text == '/end' && @session.status != nil
-					@session.send_parameters
-
-					bot.api.send_message(chat_id: current_chat, text: 'Ваше сообщение отправлено на модерацию.')
+					if @session.send_p
+						@session.send_parameters
+						bot.api.send_message(chat_id: current_chat, text: 'Ваше сообщение отправлено на модерацию.')
+					else
+						bot.api.send_message(chat_id: current_chat, text: 'Вы не заполнили все поля.')
+					end
 				end
 
 
@@ -41,7 +44,7 @@ class FixMyStreet
 						@session.status = 'text'
 						bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')
 					else
-						unless message.text.nil?
+						if !message.text.nil? && message.text != '/end'
 							@session.address = message.text
 							@session.status = 'text'
 							bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')
@@ -50,7 +53,7 @@ class FixMyStreet
 						end
 					end
 				when 'text'
-				  unless message.text.nil?
+				  if !message.text.nil? && message.text != '/end'
 				  	@session.text = message.text
 					  @session.status = 'images'
 					  bot.api.send_message(chat_id: current_chat, text: 'Отправте изображения проблемы и когда закончите, напишите /end')
@@ -72,6 +75,8 @@ class FixMyStreet
 						@session.images.push(File.new(path_to_file, 'rb'))
 
 						FileUtils.rm(path_to_file)
+
+						@session.send_p = true
 					else
 						bot.api.send_message(chat_id: current_chat, text: 'Повторите попытку.')
 					end
