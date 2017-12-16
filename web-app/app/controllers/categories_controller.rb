@@ -34,7 +34,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @messages = @category.messages
+      if params[:status] == 'all'
+        @messages = @category.messages
+      else
+        @messages = @category.messages.where(status: params[:status])
+      end
   end
 
   def archiving
