@@ -9,6 +9,7 @@
     <hr />
   </div>
   <div class="col-md-6">
+    <%= paginate @messages %>
     <% @messages.each_with_index do |message, index| %>
       <div class="panel-group" role="tablist" aria-multiselectable="true">
         <div class="panel panel-<%= panel_type(message) %>">
@@ -99,3 +100,4 @@
         handler.fitMapToBounds();
     });
 </script>
+

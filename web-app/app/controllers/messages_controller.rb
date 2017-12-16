@@ -5,10 +5,10 @@ class MessagesController < ApplicationController
 
   def index
     if params[:status].nil?
-      @messages = Message.all.where.not(status: :hidden).order(created_at: :desc)
+      @messages = Message.all.where.not(status: :hidden).order(created_at: :desc).order(:body).page(params[:page])
       @title = "Все сообщения"
     else
-      @messages = Message.all.where(status: params[:status]).order(created_at: :desc)
+      @messages = Message.all.where(status: params[:status]).order(created_at: :desc).order(:body).page(params[:page])
       @title =
       case params[:status]
       when "new_message"

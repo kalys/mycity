@@ -10,4 +10,7 @@ class Message < ApplicationRecord
 
 	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 	after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? and obj.address.nil? }
+
+    paginates_per 5
+
 end

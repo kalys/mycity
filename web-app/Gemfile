@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'kaminari'
 gem 'the_role', '~> 3.5'
 gem 'audited', '~> 4.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
