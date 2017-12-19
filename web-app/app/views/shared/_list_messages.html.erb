@@ -18,7 +18,7 @@
           <td><%= message.body.truncate(30, separator: ' ') %></td>
           <td><%= message.address %></td>
           <td><%= message.status %></td>
-          <td><%= link_to "Редактировать", message_path(message.id), class: "btn btn-md btn-primary" %></td>
+          <td><%= link_to "Редактировать", message_path(message.id), class: "btn btn-md btn-info" %></td>
         </tr>
       <% end %>
     </table>
