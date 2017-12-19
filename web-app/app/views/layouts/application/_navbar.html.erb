@@ -20,10 +20,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right" id="user_actions">
       <%= link_to 'Админ панель',  admin_roles_path, class: "navbar-brand" if current_user && current_user.admin? %>
-      <% if user_signed_in? %>
-          <%= link_to "Выход", destroy_user_session_path, method: "delete", class: "btn btn-danger navbar-btn" %>
-      <% else %>
-      <% end %>
+
     </ul>
   </div>
 </nav>

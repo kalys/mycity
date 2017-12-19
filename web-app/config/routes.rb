@@ -21,4 +21,6 @@ Rails.application.routes.draw do
     resources :images, only: [:create]
   end
   post '/messages/:message_id/image' => 'messages#image_save'
+
+  get '/rss' => 'rss#rss'
 end
