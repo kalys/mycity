@@ -33,3 +33,4 @@ test_message = Message.create!(body: "Тестовое сообщение",
 								status: 0,
 								latitude: rand(10..70),
 								longitude: rand(10..70))
+

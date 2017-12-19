@@ -1,10 +1,10 @@
 <%= form_for message, url: message_path(message) do |f| %>
 	<div class="col-md-6">
 	<%= f.select(:status,
-							options_for_select([['New', message.status = 'new_message'],
-																	['Done', message.status = 'done'],
-																	['Actual', message.status = 'actual'],
-																	['Not relevant', message.status = 'not_relevant']])
+							options_for_select([['Новое', message.status = 'new_message'],
+																	['Выполнено', message.status = 'done'],
+																	['Актуально', message.status = 'actual'],
+																	['Не релевантно', message.status = 'not_relevant']])
 							) %>
 	</div>
 	<div class="col-md-6">
