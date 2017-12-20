@@ -4,9 +4,46 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
+  TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
 
+  class Image
+    def initialize(message, current_chat, session)
+      @message = message
+      @current_chat = current_chat
+      @session = session
+    end
 
+    def get_image
+      Telegram::Bot::Client.run(TOKEN) do |bot|
+        Dir.mkdir("./pictures/") unless File.exists?("./pictures/")
+        Dir.mkdir("./pictures/#{@current_chat}") unless File.exists?("./pictures/#{@current_chat}/")
+
+        file = bot.api.get_file(file_id: @message.photo[2].file_id)
+        file_path = file.dig('result', 'file_path')
+        photo_url = "https://api.telegram.org/file/bot#{TOKEN}/#{file_path}"
+        File.write("./pictures/#{@current_chat}/image_#{@current_chat}.jpg", open(photo_url).read)
+        path_to_file = "./pictures/#{@current_chat}/image_#{@current_chat}.jpg"
+        @session.images.push(File.new(path_to_file, 'rb'))
+        FileUtils.rm(path_to_file)
+      end
+    end
+  end
+
+  class Text
+    def initialize(message, current_chat, session)
+      @message = message
+      @session = session
+      @current_chat = current_chat
+    end
+
+    def get_text
+      if @session.check_address.nil?
+        @session.text += @message.text + " "
+      else
+        @session.check_address = nil
+      end
+    end
+  end
 
   class UserMessages
     class << self
