@@ -4,8 +4,49 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-  TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
+  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
 
+  class Run
+    attr_accessor :session
+
+    def initialize
+      @sessions = []
+      @session  = nil
+    end
+
+    def client_run
+      Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
+        bot.listen do |command|
+          current_chat = command.chat.id
+          check_session(current_chat)
+          case command.text
+          when '/start'
+            bot.api.send_message(chat_id: current_chat, text: UserMessages.greeting)
+          when '/new'
+            Location.new(current_chat, @session).get_adress
+            @session.check_address = @session.address
+            bot.api.send_message(chat_id: current_chat, text: UserMessages.information_message)
+              bot.listen do |message|
+                if message.text == '/send'
+                  bot.api.send_message(chat_id: current_chat, text: UserMessages.success_input)
+                  @session.send_parameters
+                  break
+                else
+                  Message.new(message, current_chat, @session).save_message
+                end
+              end
+          else
+            bot.api.send_message(chat_id: current_chat, text: UserMessages.error)
+          end
+        end
+      end
+    end
+
+    def check_session(chat_id)
+      @sessions.push(Session.new(chat_id)) unless @sessions.any? {|session| session.chat_id == chat_id}
+      @session = @sessions.find {|session| session.chat_id == chat_id}
+    end
+  end
 
   class Message
     def initialize(message, current_chat, session)
