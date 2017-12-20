@@ -6,6 +6,35 @@ module TelegramBot
 
   TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
 
+
+  class Message
+    def initialize(message, current_chat, session)
+      @message = message
+      @current_chat = current_chat
+      @session = session
+    end
+
+    def type
+      type = 'text' unless @message.text.nil?
+      type = 'image' unless @message.photo[0].nil?
+      type = 'incorrect' if type.nil?
+      return type
+    end
+
+    def save_message
+      case type
+      when 'text'
+        Text.new(@message, @current_chat, @session).get_text
+      when 'image'
+        Image.new(@message, @current_chat, @session).get_image
+      when 'incorrect'
+        Telegram::Bot::Client.run(TOKEN) do |bot|
+          bot.api.send_message(chat_id: @current_chat, text: UserMessages.error)
+        end
+      end
+    end
+  end
+
   class Location
     def initialize(current_chat, session)
       @current_chat = current_chat
