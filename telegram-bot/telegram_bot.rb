@@ -1,97 +1,35 @@
-require 'telegram/bot'
-require 'fileutils'
-require 'open-uri'
-require './session.rb'
+module TelegramBot
+  require 'telegram/bot'
+  require 'fileutils'
+  require 'open-uri'
+  require './session.rb'
 
-class TelegramBot
-  def initialize(token, url)
-    @URL      = url
-    @TOKEN    = token
-    @sessions = []
-    @session  = nil
-  end
-
-  def run
-    Telegram::Bot::Client.run(@TOKEN, logger: Logger.new(STDOUT)) do |bot|
-      bot.listen do |message|
-        current_chat = message.chat.id
-
-        check_session(current_chat)
-
-        if message.text == '/start'
-          bot.api.send_message(chat_id: message.chat.id, text: 'Здрасте, Вы можете мне отправить проблему написав /new')
-        elsif message.text == '/new'
-          @session.status = '/new'
-        elsif message.text == '/end' && @session.status != nil
-          if @session.send_p
-            @session.send_parameters(@URL)
-            bot.api.send_message(chat_id: current_chat, text: 'Ваше сообщение отправлено на модерацию.')
-          else
-            bot.api.send_message(chat_id: current_chat, text: 'Вы не заполнили все поля.')
-          end
-        end
+  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
 
 
-        case @session.status
-        when '/new'
-          kb = Telegram::Bot::Types::KeyboardButton.new(text: 'Show me your location', request_location: true)
-          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: kb)
-          bot.api.send_message(chat_id: current_chat, text: 'Вы можете отправить адрес написав где Вы находитесь, либо отправить ваши координаты, нажав кнопку "Show me your location"', reply_markup: markup)
-          @session.status = 'location'
-        when 'location'
-          unless message.location.nil?
-            @session.latitude = message.location.latitude
-            @session.longitude = message.location.longitude
-            @session.status = 'text'
-            bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')
-          else
-            if !message.text.nil? && message.text != '/end'
-              @session.address = message.text
-              @session.status = 'text'
-              bot.api.send_message(chat_id: current_chat, text: 'Опишите проблему: ')
-            else
-              bot.api.send_message(chat_id: current_chat, text: 'Повторите попытку.')
-            end
-          end
-        when 'text'
-          if !message.text.nil? && message.text != '/end'
-            @session.text = message.text
-            @session.status = 'images'
-            bot.api.send_message(chat_id: current_chat, text: 'Отправте изображения проблемы и когда закончите, напишите /end')
-          else
-            bot.api.send_message(chat_id: current_chat, text: 'Повторите попытку.')
-          end
-        when 'images'
-          unless message.photo[0].nil?
-            Dir.mkdir("./pictures/") unless File.exists?("./pictures/")
-            Dir.mkdir("./pictures/#{current_chat}") unless File.exists?("./pictures/#{current_chat}/")
 
-            file = bot.api.get_file(file_id: message.photo[2].file_id)
-            file_path = file.dig('result', 'file_path')
-            photo_url = "https://api.telegram.org/file/bot#{@TOKEN}/#{file_path}"
-            File.write("./pictures/#{current_chat}/image_#{current_chat}.jpg", open(photo_url).read)
+  class UserMessages
+    class << self
+      def greeting
+        "Привет, чтобы описать\nпроблему нажмите на кнопку \"Новая проблема\".\nЧтобы отправить ее на модерацию\nнажмите на кнопку \"Отправить сообщение\"."
+      end
 
-            path_to_file = "./pictures/#{current_chat}/image_#{current_chat}.jpg"
+      def success_input
+        "Ваще сообщение\nпринято и отправлено\nна модерацию"
+      end
 
-            @session.images.push(File.new(path_to_file, 'rb'))
+      def error
+        "Простите, но я Вас не понимаю.\nУбедитесь, что вводите корректные данные"
+      end
 
-            FileUtils.rm(path_to_file)
+      def location
+        "Отправьте вашу геолокацию\nили введите адрес вручную"
+      end
 
-            @session.send_p = true
-          else
-            bot.api.send_message(chat_id: current_chat, text: 'Повторите попытку.')
-          end
-        end
+      def information_message
+        "Теперь Вы можете отправить любое количество сообщений и фотографий"
       end
     end
   end
-
-  private
-  def check_session(chat_id)
-    unless @sessions.any? {|session| session.chat_id == chat_id}
-      @sessions.push(Session.new(chat_id))
-    end
-
-    @session = @sessions.find {|session| session.chat_id == chat_id}
-  end
 end
+
