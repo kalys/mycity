@@ -16,8 +16,8 @@ admin_role.rule_on(:system, :administrator)
 admin_role
 
 
-moderator_role = Role.create!(name: 'moderator', 
-	title: 'Модераторы', 
+moderator_role = Role.create!(name: 'moderator',
+	title: 'Модераторы',
 	description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
 	the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
 
@@ -29,8 +29,11 @@ moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweq
 default_category = Category.create!(title: "default")
 
 test_message = Message.create!(body: "Тестовое сообщение",
-								category_id: default_category.id, 
+								category_id: default_category.id,
 								status: 0,
 								latitude: rand(10..70),
 								longitude: rand(10..70))
 
+test_message1 = Message.create!(body: "Тестовое сообщение1", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
+test_message2 = Message.create!(body: "Тестовое сообщение2", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
+test_message3 = Message.create!(body: "Тестовое сообщение3", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
