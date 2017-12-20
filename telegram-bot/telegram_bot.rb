@@ -6,6 +6,34 @@ module TelegramBot
 
   TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
 
+  class Location
+    def initialize(current_chat, session)
+      @current_chat = current_chat
+      @session = session
+    end
+
+    def get_adress
+      Telegram::Bot::Client.run(TOKEN) do |bot|
+        kb = Telegram::Bot::Types::KeyboardButton.new(text: 'Отправить геопозицию', request_location: true)
+        markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: kb)
+        bot.api.send_message(chat_id: @current_chat, text: UserMessages.location, reply_markup: markup)
+        bot.listen do |location_message|
+          next if location_message.text == "/new"
+          if !location_message.text.nil?
+            @session.address = location_message.text
+            break
+          elsif !location_message.location.nil?
+            @session.latitude = location_message.location.latitude
+            @session.longitude = location_message.location.longitude
+            break
+          else
+            bot.api.send_message(chat_id: @current_chat, text: UserMessages.error)
+          end
+        end
+      end
+    end
+  end
+
   class Image
     def initialize(message, current_chat, session)
       @message = message
