@@ -34,6 +34,12 @@ test_message = Message.create!(body: "Тестовое сообщение",
 								latitude: rand(10..70),
 								longitude: rand(10..70))
 
-test_message1 = Message.create!(body: "Тестовое сообщение1", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
-test_message2 = Message.create!(body: "Тестовое сообщение2", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
-test_message3 = Message.create!(body: "Тестовое сообщение3", category_id: default_category.id, status: 0, latitude: rand(10..70), longitude: rand(10..70))
+40.times do
+    Message.create!(
+        body: Faker::LordOfTheRings.character,
+        category_id: default_category.id,
+        status: Faker::Number.between(0, 4),
+        latitude: Faker::Number.between(10, 70),
+        longitude: Faker::Number.between(10, 70)
+        )
+end
