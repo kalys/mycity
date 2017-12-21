@@ -28,12 +28,6 @@ moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweq
 
 default_category = Category.create!(title: "default")
 
-test_message = Message.create!(body: "Тестовое сообщение",
-								category_id: default_category.id,
-								status: 0,
-								latitude: rand(10..70),
-								longitude: rand(10..70))
-
 40.times do
     Message.create!(
         body: Faker::LordOfTheRings.character,
@@ -43,3 +37,9 @@ test_message = Message.create!(body: "Тестовое сообщение",
         longitude: Faker::Number.between(10, 70)
         )
 end
+
+test_message = Message.create!(body: "Тестовое сообщение",
+								category_id: default_category.id,
+								status: 0,
+								latitude: rand(10..70),
+								longitude: rand(10..70))
