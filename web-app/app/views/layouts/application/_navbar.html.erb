@@ -26,7 +26,7 @@
       <%= link_to 'Выход', destroy_user_session_path if current_user %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to_unless_current "Новые", messages_path(status: :new_message) %></li>
+      <li><%= link_to "Новые", messages_path(status: :new_message) %></li>
       <li><%= link_to "Выполненные", messages_path(status: :done) %></li>
       <li><%= link_to "Все", messages_path(status: nil) %></li>
       <li><%= link_to "Актуальные", messages_path(status: :actual) %></li>

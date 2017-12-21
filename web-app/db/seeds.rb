@@ -32,14 +32,9 @@ default_category = Category.create!(title: "default")
     Message.create!(
         body: Faker::LordOfTheRings.character,
         category_id: default_category.id,
-        status: Faker::Number.between(0, 4),
-        latitude: Faker::Number.between(10, 70),
-        longitude: Faker::Number.between(10, 70)
-        )
+        status: Faker::Number.between(0, 4))
 end
 
 test_message = Message.create!(body: "Тестовое сообщение",
 								category_id: default_category.id,
-								status: 0,
-								latitude: rand(10..70),
-								longitude: rand(10..70))
+								status: 0)
