@@ -14,7 +14,7 @@
         <th>Действия</th>
       </tr>
       <% @messages.each_with_index do |message, index| %>
-        <tr>
+        <tr id="message_<%= index %>">
           <td><%= message.body.truncate(30, separator: ' ') %></td>
           <td><%= message.address %></td>
           <td><%= message.status %></td>
