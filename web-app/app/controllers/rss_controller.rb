@@ -1,15 +1,25 @@
 require "rss"
+
 class RssController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:rss]
+  skip_before_action :authenticate_user!, only: [:rss, :atom]
 
   def rss
+    render :plain => maker("2.0")
+  end
+
+  def atom
+    render :plain => maker("atom")
+  end
+
+  def maker(xml)
+    xml_link = "http://my-city.com/" + xml
     messages = Message.all
 
-    rss = RSS::Maker.make("2.0") do |maker|
+    rss = RSS::Maker.make(xml) do |maker|
       maker.channel.author = "my-city"
       maker.channel.updated = Time.now.to_s
-      maker.channel.link = "http://my-city.com/rss"
-      maker.channel.description = "http://my-city.com/rss"
+      xml == "2.0" ? maker.channel.description = xml_link : maker.channel.about = xml_link
+      maker.channel.link = xml_link
       maker.channel.title = "My City Feed"
 
       messages.each do |message|
@@ -21,6 +31,7 @@ class RssController < ApplicationController
       end
     end
 
-    render :plain => rss
+    return rss
   end
 end
+
