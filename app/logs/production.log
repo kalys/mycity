@@ -1,0 +1,1140 @@
+I, [2017-12-22T10:57:23.562125 #12]  INFO -- : [ada8fe60-231f-4ebf-b8d0-448494649999] Started GET "/" for 172.18.0.3 at 2017-12-22 10:57:23 +0000
+I, [2017-12-22T10:57:23.574501 #12]  INFO -- : [ada8fe60-231f-4ebf-b8d0-448494649999] Processing by MessagesController#index as HTML
+I, [2017-12-22T10:57:23.585159 #12]  INFO -- : [ada8fe60-231f-4ebf-b8d0-448494649999] Completed 401 Unauthorized in 10ms
+I, [2017-12-22T10:57:24.101824 #12]  INFO -- : [89236560-2225-45d7-8f18-b4ad40482ccc] Started GET "/users/sign_in" for 172.18.0.3 at 2017-12-22 10:57:24 +0000
+I, [2017-12-22T10:57:24.104019 #12]  INFO -- : [89236560-2225-45d7-8f18-b4ad40482ccc] Processing by Devise::SessionsController#new as HTML
+I, [2017-12-22T10:57:24.174384 #12]  INFO -- : [89236560-2225-45d7-8f18-b4ad40482ccc] Completed 500 Internal Server Error in 70ms (ActiveRecord: 1.1ms)
+F, [2017-12-22T10:57:24.178120 #12] FATAL -- : [89236560-2225-45d7-8f18-b4ad40482ccc]   
+F, [2017-12-22T10:57:24.178224 #12] FATAL -- : [89236560-2225-45d7-8f18-b4ad40482ccc] ActiveRecord::StatementInvalid (Could not find table 'users'):
+F, [2017-12-22T10:57:24.178254 #12] FATAL -- : [89236560-2225-45d7-8f18-b4ad40482ccc]   
+F, [2017-12-22T10:57:24.178475 #12] FATAL -- : [89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:417:in `table_structure'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/connection_adapters/abstract_adapter.rb:166:in `columns'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/connection_adapters/schema_cache.rb:67:in `columns'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/connection_adapters/schema_cache.rb:73:in `columns_hash'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/model_schema.rb:471:in `load_schema!'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/attributes.rb:233:in `load_schema!'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/attribute_decorators.rb:50:in `load_schema!'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/model_schema.rb:464:in `block in load_schema'
+[89236560-2225-45d7-8f18-b4ad40482ccc] /usr/local/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/model_schema.rb:461:in `load_schema'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/model_schema.rb:353:in `attribute_types'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/attribute_methods.rb:179:in `has_attribute?'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/inheritance.rb:55:in `new'
+[89236560-2225-45d7-8f18-b4ad40482ccc] devise (4.3.0controllers) devise/sessions_controller.rb:9:in `new'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/callbacks.rb:108:in `block in run_callbacks'
+[89236560-2225-45d7-8f18-b4ad40482ccc] audited (4.5.0) lib/audited/sweeper.rb:14:in `around'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+[89236560-2225-45d7-8f18-b4ad40482ccc] audited (4.5.0) lib/audited/sweeper.rb:14:in `around'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/callbacks.rb:135:in `run_callbacks'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+[89236560-2225-45d7-8f18-b4ad40482ccc] warden (1.2.7) lib/warden/manager.rb:35:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/etag.rb:25:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/head.rb:12:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+[89236560-2225-45d7-8f18-b4ad40482ccc] railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+[89236560-2225-45d7-8f18-b4ad40482ccc] railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] railties (5.1.4) lib/rails/engine.rb:522:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+[89236560-2225-45d7-8f18-b4ad40482ccc] puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+[89236560-2225-45d7-8f18-b4ad40482ccc] puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+[89236560-2225-45d7-8f18-b4ad40482ccc] puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+[89236560-2225-45d7-8f18-b4ad40482ccc] puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+I, [2017-12-22T10:57:24.695442 #12]  INFO -- : [fd108701-f7ad-4d95-a7c5-94d819076383] Started GET "/favicon.ico" for 172.18.0.3 at 2017-12-22 10:57:24 +0000
+F, [2017-12-22T10:57:24.696025 #12] FATAL -- : [fd108701-f7ad-4d95-a7c5-94d819076383]   
+F, [2017-12-22T10:57:24.696078 #12] FATAL -- : [fd108701-f7ad-4d95-a7c5-94d819076383] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+F, [2017-12-22T10:57:24.696104 #12] FATAL -- : [fd108701-f7ad-4d95-a7c5-94d819076383]   
+F, [2017-12-22T10:57:24.696141 #12] FATAL -- : [fd108701-f7ad-4d95-a7c5-94d819076383] actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+[fd108701-f7ad-4d95-a7c5-94d819076383] railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+[fd108701-f7ad-4d95-a7c5-94d819076383] activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+[fd108701-f7ad-4d95-a7c5-94d819076383] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+[fd108701-f7ad-4d95-a7c5-94d819076383] railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] railties (5.1.4) lib/rails/engine.rb:522:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+[fd108701-f7ad-4d95-a7c5-94d819076383] puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+[fd108701-f7ad-4d95-a7c5-94d819076383] puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+[fd108701-f7ad-4d95-a7c5-94d819076383] puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+[fd108701-f7ad-4d95-a7c5-94d819076383] puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+D, [2017-12-22T10:58:08.192551 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+D, [2017-12-22T10:58:08.214818 #32] DEBUG -- :   [1m[35m (22.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+D, [2017-12-22T10:58:08.261985 #32] DEBUG -- :   [1m[35m (27.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-22T10:58:08.274966 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2017-12-22T10:58:08.275077 #32]  INFO -- : Migrating to CreateUsers (20171109090843)
+D, [2017-12-22T10:58:08.289529 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.290797 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-22T10:58:08.293196 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109090843"]]
+D, [2017-12-22T10:58:08.308345 #32] DEBUG -- :   [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.311998 #32]  INFO -- : Migrating to AddDeviseToUsers (20171109090959)
+D, [2017-12-22T10:58:08.312879 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.313678 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+D, [2017-12-22T10:58:08.314117 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+D, [2017-12-22T10:58:08.314379 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+D, [2017-12-22T10:58:08.314653 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+D, [2017-12-22T10:58:08.314894 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+D, [2017-12-22T10:58:08.321371 #32] DEBUG -- :   [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+D, [2017-12-22T10:58:08.322898 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" datetime[0m
+D, [2017-12-22T10:58:08.323421 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+D, [2017-12-22T10:58:08.323927 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" varchar[0m
+D, [2017-12-22T10:58:08.324396 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+D, [2017-12-22T10:58:08.388952 #32] DEBUG -- :   [1m[35m (63.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+D, [2017-12-22T10:58:08.389811 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.390336 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+D, [2017-12-22T10:58:08.391545 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109090959"]]
+D, [2017-12-22T10:58:08.414595 #32] DEBUG -- :   [1m[35m (22.8ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.414732 #32]  INFO -- : Migrating to DeviseInvitableAddToUsers (20171109100521)
+D, [2017-12-22T10:58:08.415225 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.423090 #32] DEBUG -- :   [1m[35m (4.6ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" varchar[0m
+D, [2017-12-22T10:58:08.423966 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" datetime[0m
+D, [2017-12-22T10:58:08.424356 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" datetime[0m
+D, [2017-12-22T10:58:08.424645 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" datetime[0m
+D, [2017-12-22T10:58:08.424942 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_limit" integer[0m
+D, [2017-12-22T10:58:08.429999 #32] DEBUG -- :   [1m[35m (4.8ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_type" varchar[0m
+D, [2017-12-22T10:58:08.430574 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_id" integer[0m
+D, [2017-12-22T10:58:08.431423 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.431685 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.432102 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invited_by_type_and_invited_by_id" ON "users" ("invited_by_type", "invited_by_id")[0m
+D, [2017-12-22T10:58:08.433487 #32] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "invitations_count" integer DEFAULT 0[0m
+D, [2017-12-22T10:58:08.434087 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.434346 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.434557 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.434859 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invitations_count" ON "users" ("invitations_count")[0m
+D, [2017-12-22T10:58:08.435180 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.435446 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.435689 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.435998 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.436390 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+D, [2017-12-22T10:58:08.436779 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.437004 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.437238 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.437477 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.437676 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.437956 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invited_by_id" ON "users" ("invited_by_id")[0m
+D, [2017-12-22T10:58:08.438767 #32] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109100521"]]
+D, [2017-12-22T10:58:08.462201 #32] DEBUG -- :   [1m[35m (23.2ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.462354 #32]  INFO -- : Migrating to CreateMessages (20171113103321)
+D, [2017-12-22T10:58:08.462920 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.463823 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "latitude" float, "longitude" float, "address" varchar, "status" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-22T10:58:08.465608 #32] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113103321"]]
+D, [2017-12-22T10:58:08.493738 #32] DEBUG -- :   [1m[35m (27.4ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.493836 #32]  INFO -- : Migrating to CreateImages (20171113104014)
+D, [2017-12-22T10:58:08.494298 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.495413 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_7d1500beb3"
+FOREIGN KEY ("message_id")
+  REFERENCES "messages" ("id")
+)[0m
+D, [2017-12-22T10:58:08.496062 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_images_on_message_id" ON "images" ("message_id")[0m
+D, [2017-12-22T10:58:08.497125 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104014"]]
+D, [2017-12-22T10:58:08.522752 #32] DEBUG -- :   [1m[35m (25.4ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.522849 #32]  INFO -- : Migrating to CreateCategories (20171113104217)
+D, [2017-12-22T10:58:08.523310 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.524118 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-22T10:58:08.525038 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104217"]]
+D, [2017-12-22T10:58:08.554815 #32] DEBUG -- :   [1m[35m (29.3ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.554962 #32]  INFO -- : Migrating to AddCategoryToMessages (20171113104555)
+D, [2017-12-22T10:58:08.555427 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.556041 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "messages" ADD "category_id" integer[0m
+D, [2017-12-22T10:58:08.556512 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_category_id" ON "messages" ("category_id")[0m
+D, [2017-12-22T10:58:08.557301 #32] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104555"]]
+D, [2017-12-22T10:58:08.590840 #32] DEBUG -- :   [1m[35m (33.3ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.590959 #32]  INFO -- : Migrating to AddImageToImages (20171113111736)
+D, [2017-12-22T10:58:08.591417 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.592313 #32] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "images" ADD "image" varchar[0m
+D, [2017-12-22T10:58:08.595197 #32] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113111736"]]
+D, [2017-12-22T10:58:08.622193 #32] DEBUG -- :   [1m[35m (26.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.622301 #32]  INFO -- : Migrating to AddColumnToUser (20171114085315)
+D, [2017-12-22T10:58:08.622763 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.623551 #32] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "role_id" integer[0m
+D, [2017-12-22T10:58:08.624831 #32] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171114085315"]]
+D, [2017-12-22T10:58:08.653317 #32] DEBUG -- :   [1m[35m (27.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.653426 #32]  INFO -- : Migrating to CreateRoles (20171114085713)
+D, [2017-12-22T10:58:08.653888 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.654665 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "the_role" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-22T10:58:08.659309 #32] DEBUG -- :   [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171114085713"]]
+D, [2017-12-22T10:58:08.683413 #32] DEBUG -- :   [1m[35m (23.3ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.683535 #32]  INFO -- : Migrating to AddColunnToCategory (20171123102420)
+D, [2017-12-22T10:58:08.684038 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.684944 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ADD "archived" boolean DEFAULT 'f'[0m
+D, [2017-12-22T10:58:08.685919 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123102420"]]
+D, [2017-12-22T10:58:08.713515 #32] DEBUG -- :   [1m[35m (27.3ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.713657 #32]  INFO -- : Migrating to ChangeColumnInMessage (20171123123535)
+D, [2017-12-22T10:58:08.714229 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.717425 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amessages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text DEFAULT NULL, "latitude" float DEFAULT NULL, "longitude" float DEFAULT NULL, "address" varchar DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "category_id" integer DEFAULT NULL)[0m
+D, [2017-12-22T10:58:08.717746 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_category_id' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.718579 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_amessages_on_category_id" ON "amessages" ("category_id")[0m
+D, [2017-12-22T10:58:08.719249 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "amessages" ("id","body","latitude","longitude","address","status","created_at","updated_at","category_id")
+                     SELECT "id","body","latitude","longitude","address","status","created_at","updated_at","category_id" FROM "messages"[0m
+D, [2017-12-22T10:58:08.719558 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "messages"[0m
+D, [2017-12-22T10:58:08.720726 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text DEFAULT NULL, "latitude" float DEFAULT NULL, "longitude" float DEFAULT NULL, "address" varchar DEFAULT NULL, "status" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "category_id" integer DEFAULT NULL)[0m
+D, [2017-12-22T10:58:08.720998 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_amessages_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_amessages_on_category_id' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.721854 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_category_id" ON "messages" ("category_id")[0m
+D, [2017-12-22T10:58:08.722443 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "messages" ("id","body","latitude","longitude","address","status","created_at","updated_at","category_id")
+                     SELECT "id","body","latitude","longitude","address","status","created_at","updated_at","category_id" FROM "amessages"[0m
+D, [2017-12-22T10:58:08.722681 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amessages"[0m
+D, [2017-12-22T10:58:08.724487 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123123535"]]
+D, [2017-12-22T10:58:08.747166 #32] DEBUG -- :   [1m[35m (22.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:08.747257 #32]  INFO -- : Migrating to InstallAudited (20171124114054)
+D, [2017-12-22T10:58:08.747845 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.748773 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "audits"[0m
+D, [2017-12-22T10:58:08.749512 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "audits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "auditable_id" integer, "auditable_type" varchar, "associated_id" integer, "associated_type" varchar, "user_id" integer, "user_type" varchar, "username" varchar, "action" varchar, "audited_changes" text, "version" integer DEFAULT 0, "comment" varchar, "remote_address" varchar, "request_uuid" varchar, "created_at" datetime)[0m
+D, [2017-12-22T10:58:08.751598 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "auditable_index" ON "audits" ("auditable_id", "auditable_type")[0m
+D, [2017-12-22T10:58:08.752227 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.752859 #32] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "associated_index" ON "audits" ("associated_id", "associated_type")[0m
+D, [2017-12-22T10:58:08.753491 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.753855 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.757036 #32] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "user_index" ON "audits" ("user_id", "user_type")[0m
+D, [2017-12-22T10:58:08.758186 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='user_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='user_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.758507 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.758743 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.759109 #32] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_audits_on_request_uuid" ON "audits" ("request_uuid")[0m
+D, [2017-12-22T10:58:08.762085 #32] DEBUG -- :   [1m[35m (0.7ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audits_on_request_uuid' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audits_on_request_uuid' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.762516 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='user_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='user_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.762782 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.763071 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-22T10:58:08.763363 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_audits_on_created_at" ON "audits" ("created_at")[0m
+D, [2017-12-22T10:58:08.764529 #32] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171124114054"]]
+D, [2017-12-22T10:58:08.783035 #32] DEBUG -- :   [1m[35m (18.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:08.789531 #32] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:08.797593 #32] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:08.798860 #32] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "production"], ["created_at", "2017-12-22 10:58:08.797856"], ["updated_at", "2017-12-22 10:58:08.797856"]]
+D, [2017-12-22T10:58:08.968693 #32] DEBUG -- :   [1m[35m (169.6ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:15.988222 #37] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+D, [2017-12-22T10:58:15.995021 #37] DEBUG -- :   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."name" = ? ORDER BY "roles"."id" ASC LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:15.999953 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.001821 #37] DEBUG -- :   [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.002390 #37] DEBUG -- :   [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "Администраторы"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.475990 #37] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "roles" ("name", "title", "description", "the_role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "admin"], ["title", "Администраторы"], ["description", "Пользователи этой группы имеют глобальный доступ"], ["the_role", "{}"], ["created_at", "2017-12-22 10:58:16.474747"], ["updated_at", "2017-12-22 10:58:16.474747"]]
+D, [2017-12-22T10:58:16.502126 #37] DEBUG -- :   [1m[35m (25.5ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.502985 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.504300 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{}}"], ["updated_at", "2017-12-22 10:58:16.503274"], ["id", 1]]
+D, [2017-12-22T10:58:16.532606 #37] DEBUG -- :   [1m[35m (28.0ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.533307 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.534390 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{\"administrator\":false}}"], ["updated_at", "2017-12-22 10:58:16.533577"], ["id", 1]]
+D, [2017-12-22T10:58:16.562308 #37] DEBUG -- :   [1m[35m (27.5ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.562940 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.564090 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{\"administrator\":true}}"], ["updated_at", "2017-12-22 10:58:16.563232"], ["id", 1]]
+D, [2017-12-22T10:58:16.592050 #37] DEBUG -- :   [1m[35m (27.7ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.592485 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.593226 #37] DEBUG -- :   [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."name" = ? LIMIT ?[0m  [["name", "moderator"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.593687 #37] DEBUG -- :   [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "Модераторы"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.594630 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "roles" ("name", "title", "description", "the_role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "moderator"], ["title", "Модераторы"], ["description", "Пользователи этой группы могут обрабатывать сообщения от пользователей"], ["the_role", "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}"], ["created_at", "2017-12-22 10:58:16.593948"], ["updated_at", "2017-12-22 10:58:16.593948"]]
+D, [2017-12-22T10:58:16.622619 #37] DEBUG -- :   [1m[35m (27.7ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.628816 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.629986 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Тестовая категория"], ["created_at", "2017-12-22 10:58:16.629143"], ["updated_at", "2017-12-22 10:58:16.629143"]]
+D, [2017-12-22T10:58:16.652940 #37] DEBUG -- :   [1m[35m (22.6ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:16.935201 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:16.963061 #37] DEBUG -- :   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.964694 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+D, [2017-12-22T10:58:16.965903 #37] DEBUG -- :   [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.ru"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:16.967090 #37] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at", "email", "encrypted_password", "role_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Administrator"], ["created_at", "2017-12-22 10:58:16.966183"], ["updated_at", "2017-12-22 10:58:16.966183"], ["email", "admin@admin.ru"], ["encrypted_password", "$2a$11$e9ONvgHamU3fz9C.8/aF..YDT9bSJI9L1/aPDB3/Adj039fjGr6/m"], ["role_id", 1]]
+D, [2017-12-22T10:58:16.991972 #37] DEBUG -- :   [1m[35m (24.4ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:17.114945 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:17.115965 #37] DEBUG -- :   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-22T10:58:17.116547 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+D, [2017-12-22T10:58:17.117260 #37] DEBUG -- :   [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "moder@moder.ru"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:17.118527 #37] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at", "email", "encrypted_password", "role_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Moderator"], ["created_at", "2017-12-22 10:58:17.117485"], ["updated_at", "2017-12-22 10:58:17.117485"], ["email", "moder@moder.ru"], ["encrypted_password", "$2a$11$qdxTbdJY3DZLsWOiAIWWFeCDDav4fFIcOK5fue2eivqyGTOflNOR2"], ["role_id", 2]]
+D, [2017-12-22T10:58:17.142126 #37] DEBUG -- :   [1m[35m (23.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:17.142558 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:17.143512 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "default"], ["created_at", "2017-12-22 10:58:17.142804"], ["updated_at", "2017-12-22 10:58:17.142804"]]
+D, [2017-12-22T10:58:17.172485 #37] DEBUG -- :   [1m[35m (28.6ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:17.196943 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:17.199225 #37] DEBUG -- :   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-22T10:58:17.859784 #37] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение"], ["latitude", 21.0], ["longitude", 46.0], ["status", 0], ["created_at", "2017-12-22 10:58:17.858634"], ["updated_at", "2017-12-22 10:58:17.858634"], ["category_id", 2]]
+D, [2017-12-22T10:58:17.873786 #37] DEBUG -- :   [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:17.874231 #37] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:17.875514 #37] DEBUG -- :   [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-22T10:58:18.192834 #37] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение1"], ["latitude", 17.0], ["longitude", 14.0], ["address", "Nguigmi, Niger"], ["status", 0], ["created_at", "2017-12-22 10:58:18.191879"], ["updated_at", "2017-12-22 10:58:18.191879"], ["category_id", 2]]
+D, [2017-12-22T10:58:18.208516 #37] DEBUG -- :   [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:18.212240 #37] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:18.213224 #37] DEBUG -- :   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-22T10:58:18.533138 #37] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение2"], ["latitude", 60.0], ["longitude", 15.0], ["address", "50, 714 91 Grängesberg, Sweden"], ["status", 0], ["created_at", "2017-12-22 10:58:18.532164"], ["updated_at", "2017-12-22 10:58:18.532164"], ["category_id", 2]]
+D, [2017-12-22T10:58:18.547999 #37] DEBUG -- :   [1m[35m (14.3ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-22T10:58:18.551687 #37] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:18.553036 #37] DEBUG -- :   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-22T10:58:18.713729 #37] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение3"], ["latitude", 42.0], ["longitude", 58.0], ["status", 0], ["created_at", "2017-12-22 10:58:18.712719"], ["updated_at", "2017-12-22 10:58:18.712719"], ["category_id", 2]]
+D, [2017-12-22T10:58:18.739128 #37] DEBUG -- :   [1m[35m (25.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:21.095630 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0] Started GET "/users/sign_in" for 172.18.0.3 at 2017-12-22 10:58:21 +0000
+I, [2017-12-22T10:58:21.112399 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0] Processing by Devise::SessionsController#new as HTML
+I, [2017-12-22T10:58:21.166149 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2017-12-22T10:58:21.580898 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0]   Rendered devise/shared/_links.html.erb (2.1ms)
+I, [2017-12-22T10:58:21.581236 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0]   Rendered devise/sessions/new.html.erb within layouts/application (414.9ms)
+I, [2017-12-22T10:58:21.585521 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0]   Rendered layouts/application/_navbar.html.erb (2.2ms)
+I, [2017-12-22T10:58:21.586058 #14]  INFO -- : [b0118b7b-9940-48a7-982a-81e7df2a30e0] Completed 200 OK in 473ms (Views: 424.0ms | ActiveRecord: 2.0ms)
+I, [2017-12-22T10:58:39.020461 #14]  INFO -- : [90f1465c-eae6-432e-85f9-e5fa19708a87] Started POST "/users/sign_in" for 172.18.0.3 at 2017-12-22 10:58:39 +0000
+I, [2017-12-22T10:58:39.021283 #14]  INFO -- : [90f1465c-eae6-432e-85f9-e5fa19708a87] Processing by Devise::SessionsController#create as HTML
+I, [2017-12-22T10:58:39.021361 #14]  INFO -- : [90f1465c-eae6-432e-85f9-e5fa19708a87]   Parameters: {"utf8"=>"✓", "authenticity_token"=>"fM+ZqFoimUGnn3cIiqodZbYkatLRAcV/yuuBZYLFQOM39PO3V4e+L8SkkZ2XuSX3cegqF5g335751uMGX9+Ipg==", "user"=>{"email"=>"admin@admin.ru", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Войти"}
+D, [2017-12-22T10:58:39.058898 #14] DEBUG -- : [90f1465c-eae6-432e-85f9-e5fa19708a87]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "admin@admin.ru"], ["LIMIT", 1]]
+D, [2017-12-22T10:58:39.199576 #14] DEBUG -- : [90f1465c-eae6-432e-85f9-e5fa19708a87]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-22T10:58:39.201394 #14] DEBUG -- : [90f1465c-eae6-432e-85f9-e5fa19708a87]   [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2017-12-22 10:58:39.199109"], ["last_sign_in_at", "2017-12-22 10:58:39.199109"], ["current_sign_in_ip", "172.18.0.3"], ["last_sign_in_ip", "172.18.0.3"], ["sign_in_count", 1], ["updated_at", "2017-12-22 10:58:39.200038"], ["id", 1]]
+D, [2017-12-22T10:58:39.215374 #14] DEBUG -- : [90f1465c-eae6-432e-85f9-e5fa19708a87]   [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-22T10:58:39.222093 #14]  INFO -- : [90f1465c-eae6-432e-85f9-e5fa19708a87] Redirected to http://localhost:8080/
+I, [2017-12-22T10:58:39.222280 #14]  INFO -- : [90f1465c-eae6-432e-85f9-e5fa19708a87] Completed 302 Found in 201ms (ActiveRecord: 14.2ms)
+I, [2017-12-22T10:58:39.237508 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1] Started GET "/" for 172.18.0.3 at 2017-12-22 10:58:39 +0000
+I, [2017-12-22T10:58:39.238794 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1] Processing by MessagesController#index as HTML
+D, [2017-12-22T10:58:39.240675 #14] DEBUG -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-22T10:58:39.245531 #14] DEBUG -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-22T10:58:39.359144 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-22T10:58:39.361085 #14] DEBUG -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-22T10:58:39.383274 #14] DEBUG -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-22T10:58:39.390877 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   Rendered shared/_list_messages.html.erb (30.9ms)
+I, [2017-12-22T10:58:39.390988 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   Rendered messages/index.html.erb within layouts/application (31.7ms)
+I, [2017-12-22T10:58:39.392575 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1]   Rendered layouts/application/_navbar.html.erb (1.0ms)
+I, [2017-12-22T10:58:39.392898 #14]  INFO -- : [9432ec9a-5765-4c5e-8381-e5f3a02056c1] Completed 200 OK in 154ms (Views: 34.4ms | ActiveRecord: 2.4ms)
+I, [2017-12-22T11:45:07.781526 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c] Started GET "/" for 172.18.0.3 at 2017-12-22 11:45:07 +0000
+I, [2017-12-22T11:45:07.803235 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c] Processing by MessagesController#index as HTML
+D, [2017-12-22T11:45:08.103367 #10] DEBUG -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-22T11:45:08.141548 #10] DEBUG -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-22T11:45:09.713513 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-22T11:45:09.716972 #10] DEBUG -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-22T11:45:09.728652 #10] DEBUG -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-22T11:45:09.802758 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   Rendered shared/_list_messages.html.erb (87.2ms)
+I, [2017-12-22T11:45:09.802932 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   Rendered messages/index.html.erb within layouts/application (89.3ms)
+I, [2017-12-22T11:45:09.838194 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c]   Rendered layouts/application/_navbar.html.erb (3.1ms)
+I, [2017-12-22T11:45:09.839788 #10]  INFO -- : [2c62a333-e240-4de3-b8c4-3605eedf425c] Completed 200 OK in 2036ms (Views: 182.6ms | ActiveRecord: 86.7ms)
+I, [2017-12-25T11:09:30.889471 #10]  INFO -- : [532cb48b-1f69-4f04-af80-81d571e99a6f] Started GET "/" for 172.18.0.3 at 2017-12-25 11:09:30 +0000
+I, [2017-12-25T11:09:30.921800 #10]  INFO -- : [532cb48b-1f69-4f04-af80-81d571e99a6f] Processing by MessagesController#index as HTML
+I, [2017-12-25T11:09:30.971402 #10]  INFO -- : [532cb48b-1f69-4f04-af80-81d571e99a6f] Completed 401 Unauthorized in 30ms
+I, [2017-12-25T11:09:32.786605 #12]  INFO -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab] Started GET "/users/sign_in" for 172.18.0.3 at 2017-12-25 11:09:32 +0000
+I, [2017-12-25T11:09:32.808252 #12]  INFO -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab] Processing by Devise::SessionsController#new as HTML
+I, [2017-12-25T11:09:32.973276 #12]  INFO -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab] Completed 500 Internal Server Error in 165ms (ActiveRecord: 20.2ms)
+F, [2017-12-25T11:09:32.982172 #12] FATAL -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab]   
+F, [2017-12-25T11:09:32.982263 #12] FATAL -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab] ActiveRecord::StatementInvalid (Could not find table 'users'):
+F, [2017-12-25T11:09:32.982287 #12] FATAL -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab]   
+F, [2017-12-25T11:09:32.982320 #12] FATAL -- : [65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/connection_adapters/sqlite3_adapter.rb:417:in `table_structure'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/connection_adapters/abstract_adapter.rb:166:in `columns'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/connection_adapters/schema_cache.rb:67:in `columns'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/connection_adapters/schema_cache.rb:73:in `columns_hash'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/model_schema.rb:471:in `load_schema!'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/attributes.rb:233:in `load_schema!'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/attribute_decorators.rb:50:in `load_schema!'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/model_schema.rb:464:in `block in load_schema'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] /usr/local/lib/ruby/2.4.0/monitor.rb:214:in `mon_synchronize'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/model_schema.rb:461:in `load_schema'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/model_schema.rb:353:in `attribute_types'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/attribute_methods.rb:179:in `has_attribute?'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/inheritance.rb:55:in `new'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] devise (4.3.0controllers) devise/sessions_controller.rb:9:in `new'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/abstract_controller/base.rb:186:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/callbacks.rb:108:in `block in run_callbacks'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] audited (4.5.0) lib/audited/sweeper.rb:14:in `around'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] audited (4.5.0) lib/audited/sweeper.rb:14:in `around'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/callbacks.rb:135:in `run_callbacks'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/rescue.rb:20:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/notifications.rb:166:in `block in instrument'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/notifications.rb:166:in `instrument'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activerecord (5.1.4) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/abstract_controller/base.rb:124:in `process'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionview (5.1.4) lib/action_view/rendering.rb:30:in `process'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal.rb:189:in `dispatch'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_controller/metal.rb:253:in `dispatch'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `each'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/journey/router.rb:33:in `serve'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] warden (1.2.7) lib/warden/manager.rb:35:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/etag.rb:25:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/head.rb:12:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/callbacks.rb:97:in `run_callbacks'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] railties (5.1.4) lib/rails/engine.rb:522:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+[65743d70-fbcc-4ed2-8978-23d5db3bfeab] puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+I, [2017-12-25T11:09:33.817738 #12]  INFO -- : [9e96a095-15f7-4049-ade5-807535e7bf70] Started GET "/favicon.ico" for 172.18.0.3 at 2017-12-25 11:09:33 +0000
+F, [2017-12-25T11:09:33.818898 #12] FATAL -- : [9e96a095-15f7-4049-ade5-807535e7bf70]   
+F, [2017-12-25T11:09:33.819238 #12] FATAL -- : [9e96a095-15f7-4049-ade5-807535e7bf70] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+F, [2017-12-25T11:09:33.819634 #12] FATAL -- : [9e96a095-15f7-4049-ade5-807535e7bf70]   
+F, [2017-12-25T11:09:33.819705 #12] FATAL -- : [9e96a095-15f7-4049-ade5-807535e7bf70] actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+[9e96a095-15f7-4049-ade5-807535e7bf70] railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+[9e96a095-15f7-4049-ade5-807535e7bf70] activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+[9e96a095-15f7-4049-ade5-807535e7bf70] activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+[9e96a095-15f7-4049-ade5-807535e7bf70] railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] railties (5.1.4) lib/rails/engine.rb:522:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+[9e96a095-15f7-4049-ade5-807535e7bf70] puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+[9e96a095-15f7-4049-ade5-807535e7bf70] puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+[9e96a095-15f7-4049-ade5-807535e7bf70] puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+[9e96a095-15f7-4049-ade5-807535e7bf70] puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+D, [2017-12-25T11:10:17.613662 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+D, [2017-12-25T11:10:18.032966 #30] DEBUG -- :   [1m[35m (418.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+D, [2017-12-25T11:10:18.262079 #30] DEBUG -- :   [1m[35m (169.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-25T11:10:18.404875 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2017-12-25T11:10:18.405048 #30]  INFO -- : Migrating to CreateUsers (20171109090843)
+D, [2017-12-25T11:10:18.484734 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:18.488966 #30] DEBUG -- :   [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-25T11:10:18.505063 #30] DEBUG -- :   [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109090843"]]
+D, [2017-12-25T11:10:18.804184 #30] DEBUG -- :   [1m[35m (298.7ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:18.804327 #30]  INFO -- : Migrating to AddDeviseToUsers (20171109090959)
+D, [2017-12-25T11:10:18.814648 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:18.815371 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+D, [2017-12-25T11:10:18.818880 #30] DEBUG -- :   [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+D, [2017-12-25T11:10:18.819686 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+D, [2017-12-25T11:10:18.819943 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+D, [2017-12-25T11:10:18.822802 #30] DEBUG -- :   [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+D, [2017-12-25T11:10:18.824143 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+D, [2017-12-25T11:10:18.824454 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" datetime[0m
+D, [2017-12-25T11:10:18.824749 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+D, [2017-12-25T11:10:18.825019 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" varchar[0m
+D, [2017-12-25T11:10:18.825301 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+D, [2017-12-25T11:10:18.828968 #30] DEBUG -- :   [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+D, [2017-12-25T11:10:18.833253 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.833747 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+D, [2017-12-25T11:10:18.834807 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109090959"]]
+D, [2017-12-25T11:10:18.964102 #30] DEBUG -- :   [1m[35m (129.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:18.964214 #30]  INFO -- : Migrating to DeviseInvitableAddToUsers (20171109100521)
+D, [2017-12-25T11:10:18.973032 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:18.973698 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" varchar[0m
+D, [2017-12-25T11:10:18.974040 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" datetime[0m
+D, [2017-12-25T11:10:18.974390 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" datetime[0m
+D, [2017-12-25T11:10:18.974829 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" datetime[0m
+D, [2017-12-25T11:10:18.975177 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_limit" integer[0m
+D, [2017-12-25T11:10:18.975535 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_type" varchar[0m
+D, [2017-12-25T11:10:18.975853 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_id" integer[0m
+D, [2017-12-25T11:10:18.976284 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.976538 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.976797 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invited_by_type_and_invited_by_id" ON "users" ("invited_by_type", "invited_by_id")[0m
+D, [2017-12-25T11:10:18.977136 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitations_count" integer DEFAULT 0[0m
+D, [2017-12-25T11:10:18.977510 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.977752 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.977976 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.978264 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invitations_count" ON "users" ("invitations_count")[0m
+D, [2017-12-25T11:10:18.978622 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.978850 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.979086 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.979290 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.979696 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+D, [2017-12-25T11:10:18.980114 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitation_token' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.980332 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invitations_count' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.980746 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_invited_by_type_and_invited_by_id' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.981010 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.981229 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+D, [2017-12-25T11:10:18.981531 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_users_on_invited_by_id" ON "users" ("invited_by_id")[0m
+D, [2017-12-25T11:10:18.982259 #30] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171109100521"]]
+D, [2017-12-25T11:10:19.193898 #30] DEBUG -- :   [1m[35m (210.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:19.194032 #30]  INFO -- : Migrating to CreateMessages (20171113103321)
+D, [2017-12-25T11:10:19.254566 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:19.263356 #30] DEBUG -- :   [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "latitude" float, "longitude" float, "address" varchar, "status" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-25T11:10:19.274106 #30] DEBUG -- :   [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113103321"]]
+D, [2017-12-25T11:10:19.528976 #30] DEBUG -- :   [1m[35m (254.5ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:19.529123 #30]  INFO -- : Migrating to CreateImages (20171113104014)
+D, [2017-12-25T11:10:19.585630 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:19.587478 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_7d1500beb3"
+FOREIGN KEY ("message_id")
+  REFERENCES "messages" ("id")
+)[0m
+D, [2017-12-25T11:10:19.588470 #30] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_images_on_message_id" ON "images" ("message_id")[0m
+D, [2017-12-25T11:10:19.591705 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104014"]]
+D, [2017-12-25T11:10:19.803141 #30] DEBUG -- :   [1m[35m (210.9ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:19.803543 #30]  INFO -- : Migrating to CreateCategories (20171113104217)
+D, [2017-12-25T11:10:19.864842 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:19.868983 #30] DEBUG -- :   [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-25T11:10:19.878003 #30] DEBUG -- :   [1m[35mSQL (7.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104217"]]
+D, [2017-12-25T11:10:19.943658 #30] DEBUG -- :   [1m[35m (64.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:19.943858 #30]  INFO -- : Migrating to AddCategoryToMessages (20171113104555)
+D, [2017-12-25T11:10:20.001609 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.002523 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "messages" ADD "category_id" integer[0m
+D, [2017-12-25T11:10:20.003129 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_category_id" ON "messages" ("category_id")[0m
+D, [2017-12-25T11:10:20.004297 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113104555"]]
+D, [2017-12-25T11:10:20.149610 #30] DEBUG -- :   [1m[35m (145.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:20.149736 #30]  INFO -- : Migrating to AddImageToImages (20171113111736)
+D, [2017-12-25T11:10:20.205177 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.205898 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "images" ADD "image" varchar[0m
+D, [2017-12-25T11:10:20.213310 #30] DEBUG -- :   [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171113111736"]]
+D, [2017-12-25T11:10:20.284148 #30] DEBUG -- :   [1m[35m (70.2ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:20.284266 #30]  INFO -- : Migrating to AddColumnToUser (20171114085315)
+D, [2017-12-25T11:10:20.294435 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.295271 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "role_id" integer[0m
+D, [2017-12-25T11:10:20.300062 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171114085315"]]
+D, [2017-12-25T11:10:20.344463 #30] DEBUG -- :   [1m[35m (41.3ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:20.344560 #30]  INFO -- : Migrating to CreateRoles (20171114085713)
+D, [2017-12-25T11:10:20.400880 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.401685 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "the_role" text NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2017-12-25T11:10:20.402458 #30] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171114085713"]]
+D, [2017-12-25T11:10:20.639275 #30] DEBUG -- :   [1m[35m (236.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:20.639437 #30]  INFO -- : Migrating to AddColunnToCategory (20171123102420)
+D, [2017-12-25T11:10:20.705041 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.705901 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "categories" ADD "archived" boolean DEFAULT 'f'[0m
+D, [2017-12-25T11:10:20.706735 #30] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123102420"]]
+D, [2017-12-25T11:10:20.809718 #30] DEBUG -- :   [1m[35m (102.7ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:20.809840 #30]  INFO -- : Migrating to ChangeColumnInMessage (20171123123535)
+D, [2017-12-25T11:10:20.874411 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:20.880075 #30] DEBUG -- :   [1m[35m (0.8ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amessages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text DEFAULT NULL, "latitude" float DEFAULT NULL, "longitude" float DEFAULT NULL, "address" varchar DEFAULT NULL, "status" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "category_id" integer DEFAULT NULL)[0m
+D, [2017-12-25T11:10:20.885309 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_messages_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_messages_on_category_id' AND type='index'
+[0m
+D, [2017-12-25T11:10:20.899975 #30] DEBUG -- :   [1m[35m (13.8ms)[0m  [1m[35mCREATE  INDEX "tindex_amessages_on_category_id" ON "amessages" ("category_id")[0m
+D, [2017-12-25T11:10:20.904546 #30] DEBUG -- :   [1m[35m (3.7ms)[0m  [1m[32mINSERT INTO "amessages" ("id","body","latitude","longitude","address","status","created_at","updated_at","category_id")
+                     SELECT "id","body","latitude","longitude","address","status","created_at","updated_at","category_id" FROM "messages"[0m
+D, [2017-12-25T11:10:20.904989 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "messages"[0m
+D, [2017-12-25T11:10:20.908083 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text DEFAULT NULL, "latitude" float DEFAULT NULL, "longitude" float DEFAULT NULL, "address" varchar DEFAULT NULL, "status" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "category_id" integer DEFAULT NULL)[0m
+D, [2017-12-25T11:10:20.908787 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_amessages_on_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_amessages_on_category_id' AND type='index'
+[0m
+D, [2017-12-25T11:10:20.910800 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_messages_on_category_id" ON "messages" ("category_id")[0m
+D, [2017-12-25T11:10:20.911705 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("id","body","latitude","longitude","address","status","created_at","updated_at","category_id")
+                     SELECT "id","body","latitude","longitude","address","status","created_at","updated_at","category_id" FROM "amessages"[0m
+D, [2017-12-25T11:10:20.912035 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "amessages"[0m
+D, [2017-12-25T11:10:20.913115 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171123123535"]]
+D, [2017-12-25T11:10:21.113999 #30] DEBUG -- :   [1m[35m (200.4ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:21.114151 #30]  INFO -- : Migrating to InstallAudited (20171124114054)
+D, [2017-12-25T11:10:21.179088 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:21.180940 #30] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "audits"[0m
+D, [2017-12-25T11:10:21.181865 #30] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "audits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "auditable_id" integer, "auditable_type" varchar, "associated_id" integer, "associated_type" varchar, "user_id" integer, "user_type" varchar, "username" varchar, "action" varchar, "audited_changes" text, "version" integer DEFAULT 0, "comment" varchar, "remote_address" varchar, "request_uuid" varchar, "created_at" datetime)[0m
+D, [2017-12-25T11:10:21.182586 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "auditable_index" ON "audits" ("auditable_id", "auditable_type")[0m
+D, [2017-12-25T11:10:21.183200 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.183647 #30] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "associated_index" ON "audits" ("associated_id", "associated_type")[0m
+D, [2017-12-25T11:10:21.184500 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.184859 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.185196 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "user_index" ON "audits" ("user_id", "user_type")[0m
+D, [2017-12-25T11:10:21.185729 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='user_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='user_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.186026 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.186416 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.186792 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_audits_on_request_uuid" ON "audits" ("request_uuid")[0m
+D, [2017-12-25T11:10:21.187465 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audits_on_request_uuid' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audits_on_request_uuid' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.187965 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='user_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='user_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.188335 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='associated_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='associated_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.188601 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='auditable_index' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='auditable_index' AND type='index'
+[0m
+D, [2017-12-25T11:10:21.188945 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_audits_on_created_at" ON "audits" ("created_at")[0m
+D, [2017-12-25T11:10:21.190170 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20171124114054"]]
+D, [2017-12-25T11:10:21.454941 #30] DEBUG -- :   [1m[35m (264.5ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:21.456643 #30] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:21.460166 #30] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:21.461235 #30] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "production"], ["created_at", "2017-12-25 11:10:21.460431"], ["updated_at", "2017-12-25 11:10:21.460431"]]
+D, [2017-12-25T11:10:21.558856 #30] DEBUG -- :   [1m[35m (97.3ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:31.065114 #36] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+D, [2017-12-25T11:10:31.170673 #36] DEBUG -- :   [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."name" = ? ORDER BY "roles"."id" ASC LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:31.177939 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:31.180102 #36] DEBUG -- :   [1m[36mRole Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."name" = ? LIMIT ?[0m  [["name", "admin"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:31.180942 #36] DEBUG -- :   [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "Администраторы"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:31.870270 #36] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "roles" ("name", "title", "description", "the_role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "admin"], ["title", "Администраторы"], ["description", "Пользователи этой группы имеют глобальный доступ"], ["the_role", "{}"], ["created_at", "2017-12-25 11:10:31.869106"], ["updated_at", "2017-12-25 11:10:31.869106"]]
+D, [2017-12-25T11:10:31.894477 #36] DEBUG -- :   [1m[35m (23.7ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:31.895071 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:31.896677 #36] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{}}"], ["updated_at", "2017-12-25 11:10:31.895338"], ["id", 1]]
+D, [2017-12-25T11:10:31.925113 #36] DEBUG -- :   [1m[35m (28.0ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:31.925945 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:31.927387 #36] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{\"administrator\":false}}"], ["updated_at", "2017-12-25 11:10:31.926501"], ["id", 1]]
+D, [2017-12-25T11:10:31.954386 #36] DEBUG -- :   [1m[35m (26.7ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:31.955030 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:31.956209 #36] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "roles" SET "the_role" = ?, "updated_at" = ? WHERE "roles"."id" = ?[0m  [["the_role", "{\"system\":{\"administrator\":true}}"], ["updated_at", "2017-12-25 11:10:31.955342"], ["id", 1]]
+D, [2017-12-25T11:10:31.985315 #36] DEBUG -- :   [1m[35m (28.8ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:31.985754 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:31.986452 #36] DEBUG -- :   [1m[36mRole Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."name" = ? LIMIT ?[0m  [["name", "moderator"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:31.990435 #36] DEBUG -- :   [1m[36mRole Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "roles" WHERE "roles"."title" = ? LIMIT ?[0m  [["title", "Модераторы"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:31.994754 #36] DEBUG -- :   [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "roles" ("name", "title", "description", "the_role", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "moderator"], ["title", "Модераторы"], ["description", "Пользователи этой группы могут обрабатывать сообщения от пользователей"], ["the_role", "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}"], ["created_at", "2017-12-25 11:10:31.990797"], ["updated_at", "2017-12-25 11:10:31.990797"]]
+D, [2017-12-25T11:10:32.010101 #36] DEBUG -- :   [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:32.016382 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:32.017674 #36] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "Тестовая категория"], ["created_at", "2017-12-25 11:10:32.016767"], ["updated_at", "2017-12-25 11:10:32.016767"]]
+D, [2017-12-25T11:10:32.040544 #36] DEBUG -- :   [1m[35m (22.6ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:32.351486 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:32.362033 #36] DEBUG -- :   [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:10:32.365654 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+D, [2017-12-25T11:10:32.367139 #36] DEBUG -- :   [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.ru"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:32.368671 #36] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at", "email", "encrypted_password", "role_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Administrator"], ["created_at", "2017-12-25 11:10:32.367488"], ["updated_at", "2017-12-25 11:10:32.367488"], ["email", "admin@admin.ru"], ["encrypted_password", "$2a$11$R9N087f/fSI5vmWUoLFsteBeRr.aAvbbHvRl8L243Ibuh4NCK6XE2"], ["role_id", 1]]
+D, [2017-12-25T11:10:32.383838 #36] DEBUG -- :   [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:32.563023 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:32.564144 #36] DEBUG -- :   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-25T11:10:32.564774 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+D, [2017-12-25T11:10:32.565574 #36] DEBUG -- :   [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "moder@moder.ru"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:32.566675 #36] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at", "email", "encrypted_password", "role_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Moderator"], ["created_at", "2017-12-25 11:10:32.565843"], ["updated_at", "2017-12-25 11:10:32.565843"], ["email", "moder@moder.ru"], ["encrypted_password", "$2a$11$stayxJvEx/Xr3IuipzshK.FaOOX4qfVU71K5K.b3JqmiHoC76.p5a"], ["role_id", 2]]
+D, [2017-12-25T11:10:32.591266 #36] DEBUG -- :   [1m[35m (24.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:32.593757 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:32.594833 #36] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "default"], ["created_at", "2017-12-25 11:10:32.594086"], ["updated_at", "2017-12-25 11:10:32.594086"]]
+D, [2017-12-25T11:10:32.620836 #36] DEBUG -- :   [1m[35m (25.6ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:32.633685 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:32.636121 #36] DEBUG -- :   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-25T11:10:33.079580 #36] DEBUG -- :   [1m[35mSQL (39.0ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение"], ["latitude", 28.0], ["longitude", 39.0], ["address", "Unnamed Road Saudi Arabia"], ["status", 0], ["created_at", "2017-12-25 11:10:33.039636"], ["updated_at", "2017-12-25 11:10:33.039636"], ["category_id", 2]]
+D, [2017-12-25T11:10:33.110889 #36] DEBUG -- :   [1m[35m (30.8ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:33.114895 #36] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:33.116105 #36] DEBUG -- :   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-25T11:10:33.424569 #36] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение1"], ["latitude", 55.0], ["longitude", 55.0], ["address", "Unnamed Road, Respublika Bashkortostan, Russia, 452244"], ["status", 0], ["created_at", "2017-12-25 11:10:33.423151"], ["updated_at", "2017-12-25 11:10:33.423151"], ["category_id", 2]]
+D, [2017-12-25T11:10:33.439210 #36] DEBUG -- :   [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:33.439729 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:33.440772 #36] DEBUG -- :   [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-25T11:10:33.625077 #36] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение2"], ["latitude", 32.0], ["longitude", 38.0], ["status", 0], ["created_at", "2017-12-25 11:10:33.620915"], ["updated_at", "2017-12-25 11:10:33.620915"], ["category_id", 2]]
+D, [2017-12-25T11:10:34.673092 #36] DEBUG -- :   [1m[35m (1047.5ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:34.673592 #36] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:34.674539 #36] DEBUG -- :   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+D, [2017-12-25T11:10:35.002640 #36] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "Тестовое сообщение3"], ["latitude", 40.0], ["longitude", 29.0], ["address", "Topuk Mahallesi, Unnamed Road, 16980 Orhaneli/Bursa, Turkey"], ["status", 0], ["created_at", "2017-12-25 11:10:35.001645"], ["updated_at", "2017-12-25 11:10:35.001645"], ["category_id", 2]]
+D, [2017-12-25T11:10:35.015820 #36] DEBUG -- :   [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:38.958334 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3] Started GET "/users/sign_in" for 172.18.0.3 at 2017-12-25 11:10:38 +0000
+I, [2017-12-25T11:10:38.960997 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3] Processing by Devise::SessionsController#new as HTML
+I, [2017-12-25T11:10:39.051277 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2017-12-25T11:10:39.059398 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3]   Rendered devise/shared/_links.html.erb (0.8ms)
+I, [2017-12-25T11:10:39.059540 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3]   Rendered devise/sessions/new.html.erb within layouts/application (8.1ms)
+I, [2017-12-25T11:10:39.074917 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3]   Rendered layouts/application/_navbar.html.erb (1.2ms)
+I, [2017-12-25T11:10:39.075327 #10]  INFO -- : [7d1f8aad-8bc1-4be4-a3a8-99ab50cf0ee3] Completed 200 OK in 114ms (Views: 67.4ms | ActiveRecord: 2.1ms)
+I, [2017-12-25T11:10:43.556597 #10]  INFO -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5] Started POST "/users/sign_in" for 172.18.0.3 at 2017-12-25 11:10:43 +0000
+I, [2017-12-25T11:10:43.560700 #10]  INFO -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5] Processing by Devise::SessionsController#create as HTML
+I, [2017-12-25T11:10:43.560965 #10]  INFO -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   Parameters: {"utf8"=>"✓", "authenticity_token"=>"3W2gU7XaJmGUAhogxG/bx878fvhRw6Q3pTRq9tP6i9rxlsi+a4g3ZHfanDw0Vl4x8EEoFJaqJwN5Qcnd4RQagQ==", "user"=>{"email"=>"admin@admin.ru", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Войти"}
+D, [2017-12-25T11:10:43.592045 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "admin@admin.ru"], ["LIMIT", 1]]
+D, [2017-12-25T11:10:43.753250 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:43.754761 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["remember_created_at", "2017-12-25 11:10:43.752716"], ["updated_at", "2017-12-25 11:10:43.753580"], ["id", 1]]
+D, [2017-12-25T11:10:43.776394 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35m (21.2ms)[0m  [1m[36mcommit transaction[0m
+D, [2017-12-25T11:10:43.777188 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:10:43.778357 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2017-12-25 11:10:43.777370"], ["sign_in_count", 1], ["current_sign_in_at", "2017-12-25 11:10:43.776923"], ["last_sign_in_at", "2017-12-25 11:10:43.776923"], ["current_sign_in_ip", "172.18.0.3"], ["last_sign_in_ip", "172.18.0.3"], ["id", 1]]
+D, [2017-12-25T11:10:43.826301 #10] DEBUG -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5]   [1m[35m (47.6ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:10:43.835368 #10]  INFO -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5] Redirected to http://localhost:8080/
+I, [2017-12-25T11:10:43.835751 #10]  INFO -- : [2ce9faa8-21af-40a3-ac9b-66f5330e6ad5] Completed 302 Found in 275ms (ActiveRecord: 69.7ms)
+I, [2017-12-25T11:10:43.867203 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574] Started GET "/" for 172.18.0.3 at 2017-12-25 11:10:43 +0000
+I, [2017-12-25T11:10:43.868505 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:10:43.871166 #10] DEBUG -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:10:43.876498 #10] DEBUG -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:10:43.975958 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:10:43.981846 #10] DEBUG -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:10:43.991625 #10] DEBUG -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:10:44.060346 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   Rendered shared/_list_messages.html.erb (83.1ms)
+I, [2017-12-25T11:10:44.060490 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   Rendered messages/index.html.erb within layouts/application (84.4ms)
+I, [2017-12-25T11:10:44.062071 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574]   Rendered layouts/application/_navbar.html.erb (1.0ms)
+I, [2017-12-25T11:10:44.062361 #10]  INFO -- : [eae0f7cb-4db1-44de-881b-789a91f9c574] Completed 200 OK in 194ms (Views: 87.0ms | ActiveRecord: 3.1ms)
+I, [2017-12-25T11:12:17.963048 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300] Started GET "/" for 172.18.0.3 at 2017-12-25 11:12:17 +0000
+I, [2017-12-25T11:12:17.976401 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:12:18.001205 #10] DEBUG -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:12:18.056769 #10] DEBUG -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:12:18.932067 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:12:18.935797 #10] DEBUG -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:12:18.957397 #10] DEBUG -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:12:18.970919 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   Rendered shared/_list_messages.html.erb (37.2ms)
+I, [2017-12-25T11:12:18.971947 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   Rendered messages/index.html.erb within layouts/application (39.6ms)
+I, [2017-12-25T11:12:18.976680 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300]   Rendered layouts/application/_navbar.html.erb (1.9ms)
+I, [2017-12-25T11:12:18.977191 #10]  INFO -- : [75b6a245-8e52-40ff-a337-41f0f9f95300] Completed 200 OK in 1001ms (Views: 46.0ms | ActiveRecord: 4.5ms)
+I, [2017-12-25T11:13:25.635385 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3] Started GET "/" for 172.18.0.3 at 2017-12-25 11:13:25 +0000
+I, [2017-12-25T11:13:25.636404 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:13:25.638793 #10] DEBUG -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:13:25.640060 #10] DEBUG -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:13:25.641337 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:13:25.642218 #10] DEBUG -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:13:25.644634 #10] DEBUG -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:13:25.657649 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   Rendered shared/_list_messages.html.erb (16.1ms)
+I, [2017-12-25T11:13:25.658169 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   Rendered messages/index.html.erb within layouts/application (16.7ms)
+I, [2017-12-25T11:13:25.667778 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3]   Rendered layouts/application/_navbar.html.erb (7.3ms)
+I, [2017-12-25T11:13:25.668063 #10]  INFO -- : [19500f22-a40e-4d91-af5d-01b128ef97f3] Completed 200 OK in 32ms (Views: 26.2ms | ActiveRecord: 1.1ms)
+I, [2017-12-25T11:15:40.283802 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9] Started GET "/" for 172.18.0.4 at 2017-12-25 11:15:40 +0000
+I, [2017-12-25T11:15:40.335860 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:15:40.588068 #12] DEBUG -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:15:40.628799 #12] DEBUG -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:15:42.213153 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:15:42.233154 #12] DEBUG -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:15:42.263247 #12] DEBUG -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:15:42.286487 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   Rendered shared/_list_messages.html.erb (58.4ms)
+I, [2017-12-25T11:15:42.286619 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   Rendered messages/index.html.erb within layouts/application (73.3ms)
+I, [2017-12-25T11:15:42.295137 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9]   Rendered layouts/application/_navbar.html.erb (2.3ms)
+I, [2017-12-25T11:15:42.295559 #12]  INFO -- : [9edb1760-f8b9-461b-92c6-add6515c3ac9] Completed 200 OK in 1959ms (Views: 83.6ms | ActiveRecord: 82.1ms)
+I, [2017-12-25T11:15:44.689441 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95] Started GET "/messages" for 172.18.0.4 at 2017-12-25 11:15:44 +0000
+I, [2017-12-25T11:15:44.698650 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:15:44.725624 #10] DEBUG -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:15:44.763124 #10] DEBUG -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:15:45.207352 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:15:45.210121 #10] DEBUG -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:15:45.217630 #10] DEBUG -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:15:45.225496 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   Rendered shared/_list_messages.html.erb (16.7ms)
+I, [2017-12-25T11:15:45.225645 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   Rendered messages/index.html.erb within layouts/application (18.0ms)
+I, [2017-12-25T11:15:45.231192 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95]   Rendered layouts/application/_navbar.html.erb (3.4ms)
+I, [2017-12-25T11:15:45.231572 #10]  INFO -- : [ab29da77-02df-49b0-9780-6b29569d2e95] Completed 200 OK in 533ms (Views: 25.5ms | ActiveRecord: 4.5ms)
+I, [2017-12-25T11:17:05.171780 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5] Started POST "/messages" for 172.18.0.4 at 2017-12-25 11:17:05 +0000
+I, [2017-12-25T11:17:05.184031 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5] Processing by MessagesController#create as */*
+I, [2017-12-25T11:17:05.184134 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   Parameters: {"message"=>{"category_id"=>"1", "longitude"=>nil, "latitude"=>nil, "address"=>"Бишкек Киргизия", "status"=>"new_message", "body"=>"член "}}
+D, [2017-12-25T11:17:05.223489 #11] DEBUG -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2017-12-25T11:17:05.231404 #11] DEBUG -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:17:05.976450 #11] DEBUG -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "latitude", "longitude", "address", "status", "created_at", "updated_at", "category_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["body", "член "], ["latitude", 42.8746212], ["longitude", 74.5697617], ["address", "Бишкек Киргизия"], ["status", 0], ["created_at", "2017-12-25 11:17:05.975204"], ["updated_at", "2017-12-25 11:17:05.975204"], ["category_id", 1]]
+D, [2017-12-25T11:17:05.994499 #11] DEBUG -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   [1m[35m (17.0ms)[0m  [1m[36mcommit transaction[0m
+I, [2017-12-25T11:17:05.997478 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   Rendering text template
+I, [2017-12-25T11:17:05.997887 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5]   Rendered text template (0.1ms)
+I, [2017-12-25T11:17:05.998960 #11]  INFO -- : [c43a2a8c-ffe2-47a9-a222-70ae055c09d5] Completed 200 OK in 814ms (Views: 3.5ms | ActiveRecord: 20.6ms)
+I, [2017-12-25T11:17:09.003209 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b] Started GET "/messages" for 172.18.0.3 at 2017-12-25 11:17:09 +0000
+I, [2017-12-25T11:17:09.014890 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:17:09.045426 #15] DEBUG -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:17:09.097176 #15] DEBUG -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:17:09.623026 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:17:09.625483 #15] DEBUG -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:17:09.639953 #15] DEBUG -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:17:09.651197 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   Rendered shared/_list_messages.html.erb (27.1ms)
+I, [2017-12-25T11:17:09.651303 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   Rendered messages/index.html.erb within layouts/application (28.0ms)
+I, [2017-12-25T11:17:09.654252 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b]   Rendered layouts/application/_navbar.html.erb (1.6ms)
+I, [2017-12-25T11:17:09.654757 #15]  INFO -- : [1e9a59e5-3b90-40a4-b59e-e4137ecb2d5b] Completed 200 OK in 640ms (Views: 31.7ms | ActiveRecord: 6.8ms)
+I, [2017-12-25T11:17:10.214533 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781] Started GET "/messages" for 172.18.0.3 at 2017-12-25 11:17:10 +0000
+I, [2017-12-25T11:17:10.215177 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781] Processing by MessagesController#index as HTML
+D, [2017-12-25T11:17:10.216704 #15] DEBUG -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+D, [2017-12-25T11:17:10.217687 #15] DEBUG -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+I, [2017-12-25T11:17:10.219026 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   Rendering messages/index.html.erb within layouts/application
+D, [2017-12-25T11:17:10.220008 #15] DEBUG -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE ("messages"."status" != ?) ORDER BY "messages"."created_at" DESC, "messages"."body" ASC LIMIT ? OFFSET ?[0m  [["status", 3], ["LIMIT", 1], ["OFFSET", 0]]
+D, [2017-12-25T11:17:10.221289 #15] DEBUG -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != ?)[0m  [["status", 3]]
+I, [2017-12-25T11:17:10.228732 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   Rendered shared/_list_messages.html.erb (9.5ms)
+I, [2017-12-25T11:17:10.228875 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   Rendered messages/index.html.erb within layouts/application (9.7ms)
+I, [2017-12-25T11:17:10.230586 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781]   Rendered layouts/application/_navbar.html.erb (1.0ms)
+I, [2017-12-25T11:17:10.230872 #15]  INFO -- : [a1dafda1-ebe7-46b7-97c9-2d294f6aa781] Completed 200 OK in 16ms (Views: 11.5ms | ActiveRecord: 0.8ms)

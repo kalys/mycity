@@ -1,0 +1,29 @@
+version: '3'
+services:
+  web-app:
+    build: ./web-app
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: secret
+    volumes:
+      - rails_public:/app/public
+      - ./app/logs:/app/log
+  nginx:
+    build: ./nginx
+    ports:
+      - 8080:80
+    volumes:
+      - rails_public:/rails_public
+    links:
+      - web-app
+    depends_on:
+      - web-app
+  telegram-bot:
+    build: ./telegram-bot
+    links:
+      - web-app
+    depends_on:
+      - web-app
+
+volumes:
+  rails_public:
