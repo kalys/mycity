@@ -1,55 +1,53 @@
+# Предыстория
 When(/^залогинен модератор с email "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
 	visit('/users/sign_in')
 	within('#new_user') do
 		fill_in('Email', with: email)
-		fill_in('Пароль', with: password)
-		click_button('Войти')
-	end
+    fill_in('Пароль', with: password)
+    click_button('Войти')
+  end
 end
 
-When(/^он перейдет на страницу с сообщениями чтобы изменить статус сообщения c тесктом "([^"]*)" на done$/) do |body|
-  visit('/messages/1')
-  click_link(body)
-  find_by_id('collapse0').find("option[value='done']").click
-  find_by_id('collapse0').click_button('Обновить статус')
+When(/^он находится на главной странице$/) do
+  visit(root_path)
+end
+
+When(/^он нажмет на кнопку "([^"]*)" у сообщения "Тестовое сообщение"$/) do |title|
+  find_by_id('message_0').click_link(title)
+end
+
+# Общие шаги
+When(/^он увидит сообщение "([^"]*)"$/) do |title|
+  page.has_xpath?("//div[contains(text(), title)]")
+end
+
+When(/^нажмет на кнопку "([^"]*)"$/) do |title|
+  click_button(title)
+end
+
+# Смена статуса у сообщения
+When(/^на странице редактирования он сменит статус сообщения на "([^"]*)"$/) do |title|
+  find("option[value='done']").click
 end
 
 When(/^статус сообщения сменится на "([^"]*)"$/) do |status|
-	page.has_xpath?("//div[@id='collapse0']//b[contains(text(), '#{status}')]")
+  page.has_xpath?("//b[contains(text(), status)]")
 end
 
-When(/^он перейдет на страницу с сообщениями и удалит сообщение "([^"]*)"$/) do |message_body|
-  visit(root_path)
-  click_link(message_body)
-  find_by_id('collapse0').click_link('Удалить сообщение')
+# Удаление сообщения
+When(/^на странице редактирования он нажмет на кнопку "([^"]*)"$/) do |title|
+  click_link(title)
 end
 
-When(/^сообщения "([^"]*)" больше не будет в списке сообщений$/) do |text|
-	visit('/messages')
-	assert page.has_no_content?(text)
+When(/^на странице с сообщениями больше не будет сообщения "([^"]*)"$/) do |title|
+  assert page.has_no_content?(title)
 end
 
-When(/^он изменит категорию для сообщения "([^"]*)" на "([^"]*)"$/) do |message_body, category_title|
-	visit(root_path)
-	sleep 2
-	click_link(message_body)
-	sleep 2
-	find_by_id('collapse0').find('option[value="1"]').click
-	sleep 2
-	find_by_id('collapse0').click_button('Обновить категорию')
-	sleep 2
+# Изменение категории
+When(/^на странице редактирования он изменит категорию на "([^"]*)"$/) do |category_title|
+  find('option[value="1"]').click
 end
 
-When(/^категория сообщения сменится на "([^"]*)"$/) do |category|
-	page.has_xpath?("//div[@id='collapse0']//b[contains(text(), '#{category}')]")
+When(/^категория сообщения сменится на "([^"]*)"$/) do |category_title|
+	page.has_xpath?("//b[contains(text(), category_title)]")
 end
-
-When(/^он в списке сообщений перейдет на страницу 3$/) do
-    visit('/messages')
-    find(:xpath, "//a[@href='/?page=3']").click
-end
-
-When(/^его перекинет на страницу 3 где будут отображаться сообщения этой страницы$/) do
-    visit('/?page=3')
-end
-

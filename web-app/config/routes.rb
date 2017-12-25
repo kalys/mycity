@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   post '/messages/:message_id/image' => 'messages#image_save'
 
   get '/rss' => 'rss#rss'
+  get '/atom' => 'rss#atom'
 end
