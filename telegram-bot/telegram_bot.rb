@@ -4,8 +4,8 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
-
+  # TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
+TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
   class Run
     attr_accessor :session
 
@@ -21,20 +21,28 @@ module TelegramBot
           check_session(current_chat)
           case command.text
           when '/start'
-            bot.api.send_message(chat_id: current_chat, text: UserMessages.greeting)
-          when '/new'
+            bot.api.send_message(chat_id: current_chat,
+                                text: UserMessages.first_greeting_message)
+            bot.api.send_message(chat_id: current_chat,
+                                text: UserMessages.second_greeting_message,
+                                reply_markup: UserMessages.buttons('Сообщить о новой проблеме'))
+          when 'Сообщить о новой проблеме'
             Location.new(current_chat, @session).get_adress
             @session.check_address = @session.address
-            bot.api.send_message(chat_id: current_chat, text: UserMessages.information_message)
-              bot.listen do |message|
-                if message.text == '/send'
-                  bot.api.send_message(chat_id: current_chat, text: UserMessages.success_input)
-                  @session.send_parameters
-                  break
-                else
-                  Message.new(message, current_chat, @session).save_message
-                end
+            bot.api.send_message(chat_id: current_chat,
+                                text: UserMessages.information_message,
+                                reply_markup: UserMessages.buttons('Сообщить о проблеме'))
+            bot.listen do |message|
+              if message.text == 'Сообщить о проблеме'
+                @session.send_parameters
+                bot.api.send_message(chat_id: current_chat,
+                                    text: UserMessages.success_input,
+                                    reply_markup: UserMessages.buttons('Сообщить о новой проблеме'))
+                break
+              else
+                Message.new(message, current_chat, @session).save_message
               end
+            end
           else
             bot.api.send_message(chat_id: current_chat, text: UserMessages.error)
           end
@@ -56,6 +64,7 @@ module TelegramBot
     end
 
     def type
+      type = 'geolocation' unless @message.location.nil?
       type = 'text' unless @message.text.nil?
       type = 'image' unless @message.photo[0].nil?
       type = 'incorrect' if type.nil?
@@ -84,11 +93,11 @@ module TelegramBot
 
     def get_adress
       Telegram::Bot::Client.run(TOKEN) do |bot|
-        kb = Telegram::Bot::Types::KeyboardButton.new(text: 'Отправить геопозицию', request_location: true)
-        markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: kb)
-        bot.api.send_message(chat_id: @current_chat, text: UserMessages.location, reply_markup: markup)
+        bot.api.send_message(chat_id: @current_chat,
+                            text: UserMessages.location,
+                            reply_markup: UserMessages.buttons('Отправить геопозицию', true))
         bot.listen do |location_message|
-          next if location_message.text == "/new"
+          next if location_message.text == 'Сообщить о новой проблеме'
           if !location_message.text.nil?
             @session.address = location_message.text
             break
@@ -145,8 +154,12 @@ module TelegramBot
 
   class UserMessages
     class << self
-      def greeting
-        "Привет, чтобы описать\nпроблему нажмите на кнопку \"Новая проблема\".\nЧтобы отправить ее на модерацию\nнажмите на кнопку \"Отправить сообщение\"."
+      def first_greeting_message
+        "Привет!\nЧтобы описать проблему\nнажмите на кнопку\n\"Сообщить о новой проблеме\""
+      end
+
+      def second_greeting_message
+        "Чтобы отправить ее на модерацию\nнажмите на кнопку\n\"Сообщить о проблеме\"."
       end
 
       def success_input
@@ -158,11 +171,21 @@ module TelegramBot
       end
 
       def location
-        "Отправьте вашу геолокацию\nили введите адрес вручную"
+        "Отправьте вашу геопозицию\nили введите адрес вручную"
       end
 
       def information_message
-        "Теперь Вы можете отправить любое количество сообщений и фотографий"
+        "Теперь Вы можете отправить любое количество сообщений и фотографий. Чтобы отправить сообщение на модерацию нажмите на кнопку \"Сообщить о проблеме\""
+      end
+
+      def buttons(button_text, boolean=false)
+        first_button = Telegram::Bot::Types::KeyboardButton.new(text: button_text, request_location: boolean)
+        second_button = Telegram::Bot::Types::KeyboardButton.new(text: 'Отменить')
+        if button_text == 'Сообщить о новой проблеме'
+          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button], resize_keyboard: true)
+        else
+          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button, second_button], resize_keyboard: true)
+        end
       end
     end
   end
