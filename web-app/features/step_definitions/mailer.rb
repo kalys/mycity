@@ -1,22 +1,22 @@
-# When(/администратор нажмёт кнопку "([^"]*)"/) do |link|
-#   visit(root_path)
-#   click_link(link)
-# end
-#
-# When(/^появится выпадающий список в котором есть такие ссылки, как "([^"]*)", "([^"]*)" и "([^"]*)"$/) do |categories, messages, registration|
-#   assert page.has_content?(categories)
-#   assert page.has_content?(messages)
-#   assert page.has_content?(registration)
-# end
-#
-# When(/администратор в выпадающем списке нажмёт на ссылку "([^"]*)"$/) do |link|
-#   click_link(link)
-# end
-#
-# When(/он окажется на странице регистрации, где сможет указать электронную почту, на которую нужно отправить приглашение$/) do
-#   assert page.current_path == new_user_invitation_path
-# end
-#
+When(/администратор нажмёт кнопку "([^"]*)"/) do |link|
+  visit(root_path)
+  click_link(link)
+end
+
+When(/^появится выпадающий список в котором есть такие ссылки, как "([^"]*)", "([^"]*)" и "([^"]*)"$/) do |categories, messages, registration|
+  assert page.has_content?(categories)
+  assert page.has_content?(messages)
+  assert page.has_content?(registration)
+end
+
+When(/администратор в выпадающем списке нажмёт на ссылку "([^"]*)"$/) do |link|
+  click_link(link)
+end
+
+When(/он окажется на странице регистрации, где сможет указать электронную почту, на которую нужно отправить приглашение$/) do
+  assert page.current_path == new_user_invitation_path
+end
+
 When(/^администратор введёт в форме отправки "([^"]*)" и нажмёт кнопку отправки$/) do |email|
   visit('users/invitation/new')
   within('#new_user') do
