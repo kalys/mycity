@@ -32,7 +32,7 @@ default_category = Category.create!(title: "default")
     Message.create!(
         body: Faker::LordOfTheRings.character,
         category_id: default_category.id,
-        status: Faker::Number.between(0, 4))
+        status: Faker::Number.between(0, 3))
 end
 
 test_message = Message.create!(body: "Тестовое сообщение",

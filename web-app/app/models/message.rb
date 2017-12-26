@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
 
-	enum status: [ :new_message, :done, :actual, :hidden, :not_relevant ]
+	enum status: [ :for_moderation, :done, :actual, :not_relevant, :hidden ]
 
 	has_many :images, dependent: :destroy
 	belongs_to :category
