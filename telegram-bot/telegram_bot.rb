@@ -97,7 +97,7 @@ BOT_COMMAND = {
       Telegram::Bot::Client.run(TOKEN) do |bot|
         UserMessages.bot_messages(BOT_COMMAND[:send_geolocation], @current_chat)
         bot.listen do |location_message|
-          next if location_message.text == 'Сообщить о новой проблеме'
+          next if location_message.text == BOT_COMMAND[:new_problem]
           if !location_message.text.nil?
             @session.address = location_message.text
             break
@@ -155,7 +155,7 @@ BOT_COMMAND = {
   class UserMessages
     class << self
       def first_greeting_message
-        "Привет!\nЧтобы описать проблему\nнажмите на кнопку\n\"Сообщить о новой проблеме\""
+        "Чтобы описать проблему\nнажмите на кнопку\n\"Сообщить о новой проблеме\""
       end
 
       def second_greeting_message
