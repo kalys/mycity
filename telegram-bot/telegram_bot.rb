@@ -4,15 +4,15 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-  # TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
-TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
-BOT_COMMAND = {
-  start_bot: "/start",
-  new_problem: "Сообщить о новой проблеме",
-  send_problem: "Сообщить о проблеме",
-  cancel_problem: "Отменить",
-  send_geolocation: 'Отправить геопозицию'
-}
+  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
+
+  BOT_COMMAND = {
+    start_bot: "/start",
+    new_problem: "Сообщить о новой проблеме",
+    send_problem: "Сообщить о проблеме",
+    cancel_problem: "Отменить",
+    send_geolocation: 'Отправить геопозицию'
+  }
   class Run
     attr_accessor :session
 
