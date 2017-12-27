@@ -41,10 +41,17 @@ When(/^получивший сообщение о регистрации пол�
   visit('http://localhost:1080')
   sleep(1)
   find(:xpath, '//tr[@data-message-id=1]').click()
-  click_link('#user_id')
-  sleep(3)
+  within_frame(find('.body')) do
+    find(:xpath, '//*[@id="user_id"]').click()
+  end
+  sleep(5)
 end
 
 When(/^он окажется на странице регистрации, где сможет указать свой пароль и имя$/) do
-  pending
+  within('#edit_user') do
+    fill_in("Имя", with: "Somename")
+    fill_in("Пароль", with: "qweqweqwe")
+    fill_in("Подтверждение пароля", with: "qweqweqwe")
+    click_button("Сохранить")
+  end
 end
