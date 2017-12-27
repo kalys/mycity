@@ -20,7 +20,7 @@ TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
           current_chat = command.chat.id
           check_session(current_chat)
           case command.text
-          when '/start'
+          when '/start', 'Отмена'
             bot.api.send_message(chat_id: current_chat,
                                 text: UserMessages.first_greeting_message)
             bot.api.send_message(chat_id: current_chat,
@@ -38,6 +38,8 @@ TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
                 bot.api.send_message(chat_id: current_chat,
                                     text: UserMessages.success_input,
                                     reply_markup: UserMessages.buttons('Сообщить о новой проблеме'))
+                break
+              elsif message.text == 'Отмена'
                 break
               else
                 Message.new(message, current_chat, @session).save_message
@@ -180,14 +182,14 @@ TOKEN = '484322269:AAGmC6awc5ZWBev9PYkgEfE1tJjHXbeqvmc'
 
       def buttons(button_text, boolean=false)
         first_button = Telegram::Bot::Types::KeyboardButton.new(text: button_text, request_location: boolean)
-        second_button = Telegram::Bot::Types::KeyboardButton.new(text: 'Отменить')
-        if button_text == 'Сообщить о новой проблеме'
-          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button], resize_keyboard: true)
-        else
+        second_button = Telegram::Bot::Types::KeyboardButton.new(text: 'Отмена')
+
+        if button_text == 'Сообщить о проблеме'
           markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button, second_button], resize_keyboard: true)
+        else
+          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button], resize_keyboard: true)
         end
       end
     end
   end
 end
-
