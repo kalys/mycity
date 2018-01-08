@@ -1,6 +1,7 @@
 version: '3'
 services:
   web-app:
+    image: sulikdada/my-city-web-app:${TAG}
     build: ./web-app
     environment:
       RAILS_ENV: production
@@ -9,6 +10,7 @@ services:
       - rails_public:/app/public
       - ./app/logs:/app/log
   nginx:
+    image: sulikdada/my-city-nginx:${TAG}
     build: ./nginx
     ports:
       - 8080:80
@@ -19,6 +21,7 @@ services:
     depends_on:
       - web-app
   telegram-bot:
+    image: sulikdada/my-city-telegram-bot:${TAG}
     build: ./telegram-bot
     links:
       - web-app
