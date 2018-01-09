@@ -13,7 +13,7 @@ class RssController < ApplicationController
 
   def maker(xml)
     xml_link = "http://my-city.com/" + xml
-    messages = Message.all
+    messages = Message.all.where(status: :actual)
 
     rss = RSS::Maker.make(xml) do |maker|
       maker.channel.author = "my-city"
