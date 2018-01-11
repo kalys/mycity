@@ -28,9 +28,11 @@
 </div>
 <div class="col-sm-2"></div>
 <div class="col-sm-6 text-center">
-  <h2 class="page-header">RSS / ATOM</h2>
+  <h2 class="page-header">RSS</h2>
   <div class="breadcrumb">
-    <h1>list of messages</h1>
+    <% @messages.each do |message| %>
+      <h2><%= link_to message.body.truncate(30, separator: ' '), message_path(message.id) %></h2>
+    <% end %>
   </div>
 
 </div>
