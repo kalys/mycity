@@ -13,7 +13,7 @@ services:
     image: sulikdada/my-city-nginx:${TAG}
     build: ./nginx
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - rails_public:/rails_public
     links:
