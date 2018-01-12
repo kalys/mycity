@@ -30,9 +30,27 @@
 <div class="col-sm-6 text-center">
   <h2 class="page-header">RSS</h2>
   <div class="breadcrumb">
-    <% @messages.each do |message| %>
-      <h2><%= link_to message.body.truncate(30, separator: ' '), message_path(message.id) %></h2>
+    <% @messages.each_with_index do |message, index| %>
+      <h2><%= link_to message.body.truncate(30, separator: ' '), ("#message_modal_" + index.to_s), "data-toggle" => "modal" %></h2>
+      <div id="message_modal_<%= index %>" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= message.body %></h4>
+            </div>
+            <div class="modal-body">
+              <% message.images.each do |image| %>
+                <%= image_tag(image.image_url(:actual)) %>
+                <hr>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-
 </div>
