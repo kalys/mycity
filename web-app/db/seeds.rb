@@ -28,13 +28,19 @@ moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweq
 
 default_category = Category.create!(title: "default")
 
-40.times do
-    Message.create!(
+images_base_path = File.join(File.dirname(__FILE__), 'seed_images')
+images = Dir[images_base_path+'/*'].shuffle
+
+
+10.times do
+    message = Message.create!(
         body: Faker::LordOfTheRings.character,
         category_id: default_category.id,
         status: Faker::Number.between(0, 3))
+    2.times do
+    image = Image.create!(message: message, image: open(images.pop()))
+    end
 end
-
 test_message = Message.create!(body: "Тестовое сообщение",
 								category_id: default_category.id,
 								status: 0)
