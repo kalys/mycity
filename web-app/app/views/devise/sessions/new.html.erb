@@ -28,7 +28,6 @@
 </div>
 <div class="col-sm-2"></div>
 <div class="col-sm-6 text-center">
-  <h2 class="page-header">RSS</h2>
   <div class="breadcrumb">
     <% @messages.each_with_index do |message, index| %>
       <h2><%= link_to message.body.truncate(30, separator: ' '), ("#message_modal_" + index.to_s), "data-toggle" => "modal" %></h2>
