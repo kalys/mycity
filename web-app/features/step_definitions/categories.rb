@@ -1,7 +1,7 @@
-When(/^залогинен пользователь с email "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
+When(/^залогинен администратор с почтой "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
 	visit('/users/sign_in')
 	within('#new_user') do
-		fill_in('Email', with: email)
+		fill_in('Почта', with: email)
 		fill_in('Пароль', with: password)
 		click_button('Войти')
 	end
@@ -96,7 +96,7 @@ end
 
 When(/^отображены только сообщения этой категории$/) do
 	visit('/categories/2')
-end  
+end
 
 
 When(/^модератор попытается создать категорию с пустым названием$/) do
