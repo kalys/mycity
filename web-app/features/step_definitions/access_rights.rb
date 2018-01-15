@@ -1,7 +1,7 @@
 When(/^залогинен администратор с email "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
 	visit('/users/sign_in')
 	within('#new_user') do
-		fill_in('Email', with: email)
+		fill_in('Почта', with: email)
 		fill_in('Пароль', with: password)
 		click_button('Войти')
 	end
@@ -39,12 +39,12 @@ When(/^появится надпись "([^"]*)"$/) do |title|
 	page.has_xpath?("//*[@id='toast-container']//div[contains(text(), '#{title}')]")
 end
 
-When (/^залогинен пользователь с email "([^"]*)" и паролем "([^"]*)" и он попытается зайти в админку$/) do |email, password|
+When(/^залогинен пользователь с email "([^"]*)" и паролем "([^"]*)" и он попытается зайти в админку$/) do |email, password|
 	visit(root_path)
 	click_link('Выход')
 	visit('/users/sign_in')
 	within('#new_user') do
-		fill_in('Email', with: email)
+		fill_in('Почта', with: email)
 		fill_in('Пароль', with: password)
 		click_button('Войти')
 	end

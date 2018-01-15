@@ -14,7 +14,7 @@ end
 When(/^пользователь, будучи залогинен под "([^"]*)" и "([^"]*)", нажмёт на кнопку "([^"]*)"$/) do |email, password, button|
   visit('users/sign_in')
   within('#new_user') do
-    fill_in('Email', with: email)
+    fill_in('Почта', with: email)
     fill_in('Пароль', with: password)
     click_button("Войти")
   end
@@ -30,7 +30,7 @@ end
 When(/^пользователь при входе введёт заведомо неверные данные, например, "([^"]*)" и "([^"]*)"$/) do |email, password|
   visit('users/sign_in')
   within('#new_user') do
-    fill_in("Email", with: email)
+    fill_in("Почта", with: email)
     fill_in("Пароль", with: password)
     click_button('Войти')
   end

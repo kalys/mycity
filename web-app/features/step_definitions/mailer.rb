@@ -20,14 +20,14 @@ end
 When(/^администратор введёт в форме отправки "([^"]*)" и нажмёт кнопку отправки$/) do |email|
   visit('users/invitation/new')
   within('#new_user') do
-    fill_in("Email", with: email)
+    fill_in("Почта", with: email)
     sleep(2)
     click_button("Отправить")
     sleep(5)
   end
 end
 
-When(/^пользователь получит сообщение на свою почту "([^"]*)"$/) do |user_mail|
+When(/^пользователь получит сообщение на почту "([^"]*)"$/) do |user_mail|
   visit('http://localhost:1080')
   sleep(5)
   assert page.has_content?("<#{user_mail}>")

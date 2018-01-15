@@ -1,7 +1,7 @@
 When(/^залогинен модератор с email "([^"]*)" и паролем "([^"]*)"$/) do |email, password|
   visit('/users/sign_in')
   within('#new_user') do
-    fill_in('Email', with: email)
+    fill_in('Почта', with: email)
     fill_in('Пароль', with: password)
     click_button('Войти')
   end
