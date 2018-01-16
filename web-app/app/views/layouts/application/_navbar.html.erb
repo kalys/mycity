@@ -29,7 +29,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Все", root_path %></li>
-      <li><%= link_to "Ожидают модерации", messages_path(status: :new_message) %></li>
+      <li><%= link_to "Ожидают модерации", messages_path(status: :for_moderation) %></li>
       <li><%= link_to "Выполненные", messages_path(status: :done) %></li>
       <li><%= link_to "Актуальные", messages_path(status: :actual) %></li>
       <li><%= link_to "Неактуальные", messages_path(status: :not_relevant) %></li>
