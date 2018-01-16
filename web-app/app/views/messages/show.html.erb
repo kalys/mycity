@@ -30,14 +30,14 @@
 
   <div class="col-lg-6">
     <hr>
-    <h2>Status: <b><%= @message.status %></b></h2>
+    <h2>Статус: <b><%= I18n.t :"message_status.#{@message.status}" %></b></h2>
     <br />
     <div>
       <%= render partial: 'messages/change_status', locals: { message: @message } %>
     </div>
     <br />
     <hr>
-    <h2>Category: <b><%= @message.category.title %></b></h2>
+    <h2>Категория: <b><%= @message.category.title %></b></h2>
     <br />
     <div>
       <%= render partial: 'messages/change_category', locals: { message: @message } %>
