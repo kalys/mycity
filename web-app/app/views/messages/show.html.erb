@@ -14,7 +14,7 @@
 
     <div class="col-lg-6" style="display: flex; flex-direction: row; justify-content: space-between;">
       <div style='width: 600px;'>
-        <div id="map" style='width: 500px; height: 324px;'></div>
+        <div id="map" style='width: 540px; height: 324px;'></div>
       </div>
     </div>
   </div>
@@ -22,11 +22,14 @@
 <div class="col-lg-12">
   <div class="col-lg-6">
     <div class="message-body">
-      <h2 class="card-title"><%= @message.body %></h2>
+      <hr>
+      <h2 class="card-title"><b>Описание: </b></h2>
+      <h2><%= @message.body %></h2>
     </div>
   </div>
 
   <div class="col-lg-6">
+    <hr>
     <h2>Status: <b><%= @message.status %></b></h2>
     <br />
     <div>
