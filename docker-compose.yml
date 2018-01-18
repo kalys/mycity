@@ -1,14 +1,31 @@
 version: '3'
 services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./app/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mycitypassword
+      MYSQL_DATABASE: my_city_db
+      MYSQL_USER: mycityuser
+      MYSQL_PASSWORD: mycitypassword
   web-app:
     image: sulikdada/my-city-web-app:${TAG}
     build: ./web-app
     environment:
+      DB_NAME: my_city_db
+      DB_USER: mycityuser
+      DB_PASSWORD: mycitypassword
+      DB_HOST: db
       RAILS_ENV: production
       SECRET_KEY_BASE: secret
     volumes:
       - rails_public:/app/public
       - ./app/logs:/app/log
+    links:
+      - db
+    depends_on:
+      - db
   nginx:
     image: sulikdada/my-city-nginx:${TAG}
     build: ./nginx
