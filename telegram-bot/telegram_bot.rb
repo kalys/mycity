@@ -201,6 +201,10 @@ module TelegramBot
                                 text: information_message,
                                 reply_markup: buttons(BOT_COMMAND[:send_problem]))
           when BOT_COMMAND[:send_problem]
+            bot.api.send_message(chat_id: "-230900883",
+                                text: "Новое сообщение.",
+                                )
+
             bot.api.send_message(chat_id: current_chat,
                                 text: success_input,
                                 reply_markup: buttons(BOT_COMMAND[:new_problem]))
