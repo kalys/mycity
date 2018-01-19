@@ -10,31 +10,37 @@ end
 When(/^пользователь введёт в форме отправки "([^"]*)" и нажмёт кнопку отправки$/) do |email|
   visit('users/password/new')
   within('#new_user') do
-    sleep(5)
     fill_in("user_email", with: email)
-    sleep(2)
     click_button("Отправить инструкцию по восстановлению пароля")
-    sleep(5)
   end
 end
 
-When(/^пользователь получит сообщение на свою почту "([^"]*)"$/) do |user_mail|
+When(/^пользователь получит сообщение на свою почту <moder@moder.ru>$/) do
   visit('http://localhost:1080')
-  sleep(5)
-  assert page.has_content?("<#{user_mail}>")
+  find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]')
 end
 
 When(/^получивший сообщение о восстановлении пароля пользователь нажмёт на ссылку о подтверждении$/) do
-  sleep(5)
   visit('http://localhost:1080')
-  sleep(1)
-  find(:xpath, '//tr[@data-message-id=1]').click()
+  find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]').click
   within_frame(find('.body')) do
-    find(:xpath, '//*[@id="reset_password"]').click()
+    find_link("Change my password").click
+    sleep 20
   end
-  sleep(3)
 end
 
 When(/^он окажется на странице восстановлении пароля, где сможет указать себе новый пароль$/) do
-  pending
+  # visit('http://localhost:1080')
+  # find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]').click
+  # within_frame(find('.body')) do
+  #   find_link("Change my password").click
+  # end
+  # sleep 2
+  find(:xpath, '//*[contains(text(), "Измените свой пароль")]')
+  # within('#new_user') do
+  #   fill_in(" Новый пароль", with: "qweqweqwe")
+  #   fill_in(" Подтвердите свой пароль", with: "qweqweqwe")
+  #   click_button("Поменять пароль")
+  #   sleep 3
+  # end
 end
