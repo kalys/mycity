@@ -24,8 +24,8 @@ When(/^получивший сообщение о восстановлении �
   visit('http://localhost:1080')
   find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]').click
   within_frame(find('.body')) do
-    find_link("Change my password").click
-    sleep 20
+    change_password_link = find_link("Change my password")[:href]
+    visit(change_password_link)
   end
 end
 
@@ -33,14 +33,14 @@ When(/^он окажется на странице восстановлении 
   # visit('http://localhost:1080')
   # find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]').click
   # within_frame(find('.body')) do
-  #   find_link("Change my password").click
+  #   find_link("Change my password")
   # end
-  # sleep 2
-  find(:xpath, '//*[contains(text(), "Измените свой пароль")]')
-  # within('#new_user') do
-  #   fill_in(" Новый пароль", with: "qweqweqwe")
-  #   fill_in(" Подтвердите свой пароль", with: "qweqweqwe")
-  #   click_button("Поменять пароль")
-  #   sleep 3
-  # end
+  assert page.has_content?("Измените свой пароль")
+  sleep 2
+  within('#new_user') do
+   fill_in(" Новый пароль", with: "qweqweqwe")
+   fill_in(" Подтвердите свой пароль", with: "qweqweqwe")
+   click_button("Поменять пароль")
+   sleep 3
+  end
 end
