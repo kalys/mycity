@@ -29,10 +29,13 @@
 <div class="col-sm-2"></div>
 <div class="col-sm-6 text-center">
   <br />
-  <div class="breadcrumb">
+  <div class="panel">
     <% if !@messages.nil? %>
+      <b><p class="text-left">Recent activity</p></b>
       <% @messages.each_with_index do |message, index| %>
-        <h2><%= link_to message.body.truncate(30, separator: ' '), ("#message_modal_" + index.to_s), "data-toggle" => "modal" %></h2>
+        <h3 class="text-right"><%= link_to message.body.truncate(30, separator: ' '), ("#message_modal_" + index.to_s), "data-toggle" => "modal" %></h3>
+        <p><%= message.created_at %></p>
+        <hr />
         <div id="message_modal_<%= index %>" class="modal fade" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">

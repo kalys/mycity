@@ -20,7 +20,7 @@ end
 When(/^администратор введёт в форме отправки "([^"]*)" и нажмёт кнопку отправки$/) do |email|
   visit('users/invitation/new')
   within('#new_user') do
-    fill_in("Почта", with: email)
+    fill_in("user_email", with: email)
     sleep(2)
     click_button("Отправить")
     sleep(5)
@@ -37,12 +37,14 @@ When(/^получивший сообщение о регистрации пол�
   visit(root_path)
   sleep(1)
   click_link("Выход")
-  sleep(2)
+  sleep 4
   visit('http://localhost:1080')
-  sleep(1)
+  sleep 5
   find(:xpath, '//tr[@data-message-id=1]').click()
+  sleep 5
   within_frame(find('.body')) do
-    find(:xpath, '//*[@id="user_id"]').click()
+    registration_link = find(:xpath, '//*[@id="user_id"]')[:href]
+    visit(registration_link)
   end
   sleep(5)
 end
