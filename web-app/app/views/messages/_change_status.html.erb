@@ -4,10 +4,10 @@
 							options_for_select([['На модерацию', message.status = 'for_moderation'],
 																	['Выполнено', message.status = 'done'],
 																	['Актуально', message.status = 'actual'],
-																	['Не релевантно', message.status = 'not_relevant']])
-							) %>
+																	['Не релевантно', message.status = 'not_relevant']]),
+							{:include_blank => false}, {:class => 'form-control'}) %>
 	</div>
 	<div class="col-md-6">
-	<%= f.submit 'Обновить статус', class: 'btn btn-primary btn-sm' %>
+	<%= f.submit 'Обновить статус', class: 'btn btn-primary btn' %>
 	</div><br>
 <% end %>

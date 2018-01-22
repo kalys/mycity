@@ -5,10 +5,10 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB --> <!-- only if you need custom infoboxes -->
 
 <div class="row my-4">
-  <div class="col-lg-12">
-    <div class="fotorama col-lg-6" data-nav="thumbs" data-fit="cover" data-loop="true" data-width="600" data-max-width="100%">
+  <div class="col-md-12">
+    <div class="fotorama col-lg-6" data-nav="thumbs" data-loop="true" data-width="600" data-max-width="100%">
       <% @message.images.each do |image| %>
-        <%= image_tag(image.image_url(:medium)) %>
+        <%= link_to image_tag(image.image_url(:medium)), root_path %>
       <% end %>
     </div>
 
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-<div class="col-lg-12">
+<div class="col-md-12">
   <div class="col-lg-6">
     <div class="message-body">
       <hr>
