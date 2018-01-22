@@ -2,7 +2,7 @@ require 'rest-client'
 
 class Session
 	attr_reader   :chat_id
-	attr_accessor :status, :text, :images, :text, :address, :latitude, :longitude, :check_address
+	attr_accessor :status, :text, :images, :text, :address, :latitude, :longitude, :check_address, :check_validation
 
 	def initialize(chat_id)
 		@chat_id   = chat_id
@@ -12,6 +12,7 @@ class Session
 		@longitude = nil
 		@images    = []
 		@check_address = nil
+		@check_validation = nil
 	end
 
 	def send_parameters

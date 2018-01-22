@@ -5,6 +5,7 @@ module TelegramBot
   require './session.rb'
 
   TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
+  MODERATOR_CHAT_ID = "-1001247463742"
 
   BOT_COMMAND = {
     start_bot: "/start",
@@ -35,9 +36,13 @@ module TelegramBot
             UserMessages.bot_messages(command.text, current_chat)
             bot.listen do |message|
               if message.text == BOT_COMMAND[:send_problem]
-                @session.send_parameters
-                UserMessages.bot_messages(message.text, current_chat)
-                break
+                if @session.check_validation == true
+                  @session.send_parameters
+                  UserMessages.bot_messages(message.text, current_chat)
+                  break
+                else
+                  bot.api.send_message(chat_id: current_chat, text: "Вы ввели не все данные")
+                end
               elsif message.text == BOT_COMMAND[:cancel_problem]
                 UserMessages.bot_messages(message.text, current_chat)
                 break
@@ -132,6 +137,7 @@ module TelegramBot
         path_to_file = "./pictures/#{@current_chat}/image_#{@current_chat}.jpg"
         @session.images.push(File.new(path_to_file, 'rb'))
         FileUtils.rm(path_to_file)
+        @session.check_validation = true
       end
     end
   end
@@ -146,6 +152,7 @@ module TelegramBot
     def get_text
       if @session.check_address.nil?
         @session.text += @message.text + " "
+        @session.check_validation = true
       else
         @session.check_address = nil
       end
@@ -155,23 +162,23 @@ module TelegramBot
   class UserMessages
     class << self
       def first_greeting_message
-        "Чтобы описать проблему\nнажмите на кнопку\n\"Сообщить о новой проблеме\""
+        "Чтобы описать проблему нажмите на кнопку \"Сообщить о новой проблеме\""
       end
 
       def second_greeting_message
-        "Чтобы отправить ее на модерацию\nнажмите на кнопку\n\"Сообщить о проблеме\"."
+        "Чтобы отправить ее на модерацию нажмите на кнопку \"Сообщить о проблеме\"."
       end
 
       def success_input
-        "Ваще сообщение\nпринято и отправлено\nна модерацию"
+        "Ваще сообщение принято и отправлено на модерацию"
       end
 
       def error
-        "Простите, но я Вас не понимаю.\nУбедитесь, что вводите корректные данные"
+        "Простите, но я Вас не понимаю. Убедитесь, что вводите корректные данные"
       end
 
       def location
-        "Отправьте вашу геопозицию\nили введите адрес вручную"
+        "Отправьте вашу геопозицию или введите адрес вручную"
       end
 
       def information_message
@@ -201,8 +208,8 @@ module TelegramBot
                                 text: information_message,
                                 reply_markup: buttons(BOT_COMMAND[:send_problem]))
           when BOT_COMMAND[:send_problem]
-            bot.api.send_message(chat_id: "-230900883",
-                                text: "Новое сообщение.",
+            bot.api.send_message(chat_id: MODERATOR_CHAT_ID,
+                                text: "На сервере появилось новое обращение",
                                 )
 
             bot.api.send_message(chat_id: current_chat,
