@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+default_category = Category.create!(title: "default")
+test_category = Category.create!(title: "Тестовая категория")
+
 admin_role = ::Role.where(name: :admin).first_or_create!(
         name:        :admin,
         title:       "Администраторы",
@@ -21,12 +24,9 @@ moderator_role = Role.create!(name: 'moderator',
 	description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
 	the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
 
-test_category = Category.create!(title: "Тестовая категория")
 
 admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
 moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
-
-default_category = Category.create!(title: "default")
 
 images_base_path = File.join(File.dirname(__FILE__), 'seed_images')
 images = Dir[images_base_path+'/*'].shuffle
