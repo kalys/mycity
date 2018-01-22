@@ -21,39 +21,37 @@ When(/^администратор введёт в форме отправки "(
   visit('users/invitation/new')
   within('#new_user') do
     fill_in("user_email", with: email)
-    sleep(2)
     click_button("Отправить")
-    sleep(5)
   end
 end
 
 When(/^пользователь получит сообщение на почту "([^"]*)"$/) do |user_mail|
   visit('http://localhost:1080')
-  sleep(5)
   assert page.has_content?("<#{user_mail}>")
 end
+new_window = nil
 
 When(/^получивший сообщение о регистрации пользователь нажмёт на ссылку о подтверждении$/) do
   visit(root_path)
-  sleep(1)
   click_link("Выход")
-  sleep 4
   visit('http://localhost:1080')
-  sleep 5
   find(:xpath, '//tr[@data-message-id=1]').click()
-  sleep 5
+  registration_link = nil
   within_frame(find('.body')) do
     registration_link = find(:xpath, '//*[@id="user_id"]')[:href]
-    visit(registration_link)
   end
-  sleep(5)
+  new_window = window_opened_by { visit(registration_link) }
+  visit(registration_link)
 end
 
-When(/^он окажется на странице регистрации, где сможет указать свой пароль и имя$/) do
-  within('#edit_user') do
-    fill_in("Имя", with: "Somename")
-    fill_in("Пароль", with: "qweqweqwe")
-    fill_in("Подтверждение пароля", with: "qweqweqwe")
-    click_button("Сохранить")
-  end
-end
+# When(/^он окажется на странице регистрации, где сможет указать свой пароль и имя$/) do
+#   within_window new_window do
+#     within('#edit_user') do
+#       fill_in("Имя", with: "Somename")
+#       fill_in("Пароль", with: "qweqweqwe")
+#       fill_in("Подтверждение пароля", with: "qweqweqwe")
+#       click_button("Сохранить")
+#     end
+#   end
+#
+# end

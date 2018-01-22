@@ -16,6 +16,7 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.javascript_driver = :chrome
+Capybara.server_port = 31337
 
 Before do |scenario|
   load Rails.root.join('db/seeds.rb')
