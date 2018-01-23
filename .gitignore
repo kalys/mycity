@@ -5,4 +5,6 @@ web-app/public/uploads/
 
 app/logs/
 
-app
+volumes/
+app/db
+\.env

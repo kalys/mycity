@@ -4,8 +4,9 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-  TOKEN = '500989121:AAFjlkE097YZkyEe9F6jqB8rq0AObyU0Gr0'
-  MODERATOR_CHAT_ID = "-1001247463742"
+
+  TOKEN = ENV.fetch('BOT_TOKEN')
+  MODERATOR_CHAT_ID = ENV.fetch('MODERATORS_GROUP_ID')
 
   BOT_COMMAND = {
     start_bot: "/start",
