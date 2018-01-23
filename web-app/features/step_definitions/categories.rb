@@ -48,7 +48,7 @@ end
 
 When(/^он удаляет категорию "([^"]*)"$/) do |title|
 	visit('/categories')
-	page.find_by_id('archiving_category_1').click
+	page.find_by_id('archiving_category_2').click
 	assert page.has_no_content?(title)
 end
 
