@@ -49,3 +49,4 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'unicorn', '~> 5.3', '>= 5.3.1'
 gem 'mysql2'
+gem "sentry-raven"

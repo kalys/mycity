@@ -133,6 +133,8 @@ GEM
     execjs (2.7.0)
     faker (1.8.7)
       i18n (>= 0.7)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     geocoder (1.4.5)
     gherkin (5.0.0)
@@ -182,6 +184,7 @@ GEM
     minitest (5.11.1)
     multi_json (1.13.1)
     multi_test (0.1.2)
+    multipart-post (2.0.0)
     mysql2 (0.4.10)
     nio4r (2.2.0)
     nokogiri (1.8.1)
@@ -242,6 +245,8 @@ GEM
     selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    sentry-raven (2.7.1)
+      faraday (>= 0.7.6, < 1.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -335,6 +340,7 @@ DEPENDENCIES
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sentry-raven
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
