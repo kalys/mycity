@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :archiving, :unarchiving]
 
   def index
-    @categories = Category.where(archived: false)
+    @categories = Category.where(archived: false).order(created_at: :desc).order(:title).page(params[:page])
   end
 
   def new
@@ -35,9 +35,9 @@ class CategoriesController < ApplicationController
 
   def show
       if params[:status] == 'all'
-        @messages = @category.messages
+        @messages = @category.messages.order(created_at: :desc).order(:body).page(params[:page])
       else
-        @messages = @category.messages.where(status: params[:status])
+        @messages = @category.messages.where(status: params[:status]).order(created_at: :desc).order(:body).page(params[:page])
       end
   end
 
