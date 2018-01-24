@@ -3,5 +3,5 @@ class Category < ApplicationRecord
 
 	validates :title, presence: true, length: {maximum: 40}
 
-
+  paginates_per 10
 end
