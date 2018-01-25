@@ -6,8 +6,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  version :small do
-    process resize_to_fit: [150, 150]
+  def default_url
+    "/images/" + [version_name, "default.jpg"].compact.join('_')
   end
 
   version :medium do

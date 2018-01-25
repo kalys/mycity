@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+    @images = @message.images
     @hash = Gmaps4rails.build_markers(@message) do |message, marker|
       marker.lat message.latitude
       marker.lng message.longitude
