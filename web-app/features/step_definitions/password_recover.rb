@@ -24,7 +24,7 @@ When(/^получивший сообщение о восстановлении �
   visit('http://localhost:1080')
   find(:xpath, '//td[contains(text(), "<moder@moder.ru>")]').click
   within_frame(find('.body')) do
-    change_password_link = find_link("Change my password")[:href]
+    change_password_link = find_link("Изменить пароль")[:href]
     visit(change_password_link)
   end
 end
