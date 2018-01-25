@@ -64,7 +64,7 @@
   <div>
     <ul>
     <% Category.all.each do |category| %>
-      <li><%= link_to category.title, rss_path(category.id) %></li>
+      <li><%= link_to category.title, rss_show_path(category.id) %></li>
     <% end %>
     </ul>
   </div>
