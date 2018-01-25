@@ -4,7 +4,7 @@ class Session
 	attr_reader   :chat_id
 	attr_accessor :status, :text, :images, :text, :address, :latitude, :longitude, :check_address, :check_validation
 
-	def initialize(chat_id)
+	def initialize(chat_id, sender_name, sender_id)
 		@chat_id   = chat_id
 		@text      = ""
 		@address   = nil
@@ -13,6 +13,8 @@ class Session
 		@images    = []
 		@check_address = nil
 		@check_validation = nil
+		@sender_name = sender_name
+		@sender_id = sender_id
 	end
 
 	def send_parameters
@@ -23,7 +25,9 @@ class Session
 				 latitude:    @latitude,
 				 address:     @address,
 				 status:     'for_moderation',
-				 body:        @text },
+				 body:        @text,
+				 sender_name: @sender_name,
+				 sender_id:   @sender_id },
 		})
 
 		message_id = response.body
@@ -31,8 +35,6 @@ class Session
 		@images.each do |image|
 			RestClient.post("http://localhost:3000/messages/#{message_id}/image", :image => image)
 		end
-
-		initialize(@chat_id)
 	end
 end
 

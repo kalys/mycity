@@ -66,7 +66,7 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:body, :latitude, :longitude, :address, :status, :category_id)
+    params.require(:message).permit(:body, :latitude, :longitude, :address, :status, :category_id, :sender_name, :sender_id)
   end
 
   def image_params

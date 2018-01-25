@@ -27,7 +27,7 @@ module TelegramBot
       Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
         bot.listen do |command|
           current_chat = command.chat.id
-          check_session(current_chat)
+          check_session(command)
           case command.text
           when BOT_COMMAND[:start_bot], BOT_COMMAND[:cancel_problem]
             UserMessages.bot_messages(command.text, current_chat)
@@ -52,15 +52,15 @@ module TelegramBot
               end
             end
           else
-            UserMessages.bot_messages(current_chat)
+            UserMessages.bot_messages(current_chat) unless current_chat == MODERATOR_CHAT_ID
           end
         end
       end
     end
 
-    def check_session(chat_id)
-      @sessions.push(Session.new(chat_id)) unless @sessions.any? {|session| session.chat_id == chat_id}
-      @session = @sessions.find {|session| session.chat_id == chat_id}
+    def check_session(message)
+      @sessions.push(Session.new(message.chat.id, message.chat.username, message.chat.id)) unless @sessions.any? {|session| session.chat_id == message.chat.id}
+      @session = @sessions.find {|session| session.chat_id == message.chat.id}
     end
   end
 
@@ -199,6 +199,7 @@ module TelegramBot
 
       def bot_messages(message=nil, current_chat)
         Telegram::Bot::Client.run(TOKEN) do |bot|
+          
           case message
           when BOT_COMMAND[:start_bot], BOT_COMMAND[:cancel_problem]
             bot.api.send_message(chat_id: current_chat, text: first_greeting_message)

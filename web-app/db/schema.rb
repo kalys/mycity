@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124114054) do
+ActiveRecord::Schema.define(version: 20180124115523) do
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20171124114054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.string "sender_name"
+    t.integer "sender_id"
     t.index ["category_id"], name: "index_messages_on_category_id"
   end
 
