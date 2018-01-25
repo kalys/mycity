@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   end
   post '/messages/:message_id/image' => 'messages#image_save'
 
-  get '/rss' => 'rss#rss'
+  get '/rss/:id' => 'rss#rss', as: 'rss'
   get '/atom' => 'rss#atom'
 end

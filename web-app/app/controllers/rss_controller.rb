@@ -4,16 +4,16 @@ class RssController < ApplicationController
   skip_before_action :authenticate_user!, only: [:rss, :atom]
 
   def rss
-    render :plain => maker("2.0")
+    render :plain => maker("2.0", params[:id])
   end
 
   def atom
-    render :plain => maker("atom")
+    render :plain => maker("atom", params[:id])
   end
 
-  def maker(xml)
+  def maker(xml, category=nil)
     xml_link = "http://my-city.com/" + xml
-    messages = Message.all.where(status: :actual)
+    messages = Message.all.where(status: :actual).where(category_id: category)
 
     rss = RSS::Maker.make(xml) do |maker|
       maker.channel.author = "my-city"
