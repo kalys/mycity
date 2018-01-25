@@ -4,7 +4,6 @@ module TelegramBot
   require 'open-uri'
   require './session.rb'
 
-
   TOKEN = ENV.fetch('BOT_TOKEN')
   MODERATOR_CHAT_ID = ENV.fetch('MODERATORS_GROUP_ID')
 
@@ -52,7 +51,7 @@ module TelegramBot
               end
             end
           else
-            UserMessages.bot_messages(current_chat) unless current_chat == MODERATOR_CHAT_ID
+            UserMessages.bot_messages(current_chat)
           end
         end
       end
@@ -197,9 +196,18 @@ module TelegramBot
         end
       end
 
+      def notifator
+        system( '
+          TOKEN=408872207:AAGdhnoBG5tPJcFHsFPgZTY2s1ER9GnOoMg
+          CHAT_ID=-1001247463742
+          MESSAGE="Hello World"
+          URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+
+          curl -s -X POST $URL -d chat_id=$CHAT_ID -d text="$MESSAGE" ')
+      end
+
       def bot_messages(message=nil, current_chat)
         Telegram::Bot::Client.run(TOKEN) do |bot|
-          
           case message
           when BOT_COMMAND[:start_bot], BOT_COMMAND[:cancel_problem]
             bot.api.send_message(chat_id: current_chat, text: first_greeting_message)
@@ -210,9 +218,7 @@ module TelegramBot
                                 text: information_message,
                                 reply_markup: buttons(BOT_COMMAND[:send_problem]))
           when BOT_COMMAND[:send_problem]
-            bot.api.send_message(chat_id: MODERATOR_CHAT_ID,
-                                text: "На сервере появилось новое обращение",
-                                )
+            notifator
 
             bot.api.send_message(chat_id: current_chat,
                                 text: success_input,
