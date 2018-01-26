@@ -1,22 +1,29 @@
 <h2>Сообщения по категории: <b><%= @category.title %></b></h2>
 <br />
 <div>
-    <table class="table table-striped">
-      <tr>
-        <th>Описание</th>
-        <th>Адрес</th>
-        <th>Статус</th>
-        <th>Действия</th>
+  <table class="table table-striped">
+    <tr>
+      <th>Описание</th>
+      <th>Адрес</th>
+      <th>Статус</th>
+      <th>Действия</th>
+    </tr>
+    <% @messages.each_with_index do |message, index| %>
+      <tr id="message_<%= index %>">
+        <td><%= message.body.truncate(30, separator: ' ') %></td>
+        <td><%= message.address %></td>
+        <td><%= I18n.t :"message_status.#{message.status}" %></td>
+        <td><%= link_to "Редактировать", message_path(message.id), class: "btn btn-md btn-info" %></td>
       </tr>
-      <% @messages.each_with_index do |message, index| %>
-        <tr id="message_<%= index %>">
-          <td><%= message.body.truncate(30, separator: ' ') %></td>
-          <td><%= message.address %></td>
-          <td><%= I18n.t :"message_status.#{message.status}" %></td>
-          <td><%= link_to "Редактировать", message_path(message.id), class: "btn btn-md btn-info" %></td>
-        </tr>
-      <% end %>
-    </table>
-    <%= paginate @messages %>
-  </div>
+    <% end %>
+  </table>
+  <%= paginate @messages %>
+</div>
 
+<% unless @messages.nil? %>
+  <div>
+    <ul>
+      <li><%= link_to @category.title + ' rss', rss_show_path(@category.id) %></li>
+    </ul>
+  </div>
+<% end %>
