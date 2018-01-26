@@ -31,7 +31,7 @@
   <br />
   <div class="panel">
     <% if !@messages.nil? %>
-      <b><p class="text-left">Recent activity</p></b>
+      <b><p class="text-left">Недавние действия</p></b>
       <% @messages.each_with_index do |message, index| %>
         <h3 class="text-right"><%= link_to message.body.truncate(30, separator: ' '), ("#message_modal_" + index.to_s), "data-toggle" => "modal" %></h3>
         <p><%= time_ago_in_words(message.created_at, include_seconds: true) %>  назад</p>
