@@ -1,237 +1,77 @@
-module TelegramBot
-  require 'telegram/bot'
-  require 'fileutils'
-  require 'open-uri'
-  require './session.rb'
+require 'telegram/bot'
+require 'redis-objects'
+require 'json'
+require 'pry'
 
-  TOKEN = ENV.fetch('BOT_TOKEN')
-  MODERATOR_CHAT_ID = ENV.fetch('MODERATORS_GROUP_ID')
+raise "Set BOT_TOKEN environment variable" if ENV.fetch('BOT_TOKEN').nil?
 
-  BOT_COMMAND = {
-    start_bot: "/start",
-    new_problem: "Сообщить о новой проблеме",
-    send_problem: "Сообщить о проблеме",
-    cancel_problem: "Отменить",
-    send_geolocation: 'Отправить геопозицию'
-  }
-  class Run
-    attr_accessor :session
+NEW_REPORT_BUTTON = "Сообщить о новой проблеме".freeze
+SUBMIT_REPORT_BUTTON = "Сообщить о проблеме".freeze
+SEND_GEOPOSITION_BUTTON = "Отправить геопозицию".freeze
+CANCEL_BUTTON = "Отменить".freeze
 
-    def initialize
-      @sessions = []
-      @session  = nil
+def welcome_user(bot, message)
+  bot.api.send_message(chat_id: message.chat.id, text: "Чтобы описать проблему нажмите на кнопку \"#{NEW_REPORT_BUTTON}\"")
+
+  buttons = [Telegram::Bot::Types::KeyboardButton.new(text: NEW_REPORT_BUTTON)]
+  markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: buttons, resize_keyboard: true)
+  bot.api.send_message(chat_id: message.chat.id, text: "Чтобы отправить ее на модерацию нажмите на кнопку \"Сообщить о проблеме\".",
+                      reply_markup: markup)
+end
+
+def show_submit_button
+  buttons = [
+    Telegram::Bot::Types::KeyboardButton.new(text: SUBMIT_REPORT_BUTTON),
+    Telegram::Bot::Types::KeyboardButton.new(text: CANCEL_BUTTON)
+  ]
+  markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: buttons, resize_keyboard: true)
+  bot.api.send_message(chat_id: message.chat.id, text: "Чтобы отправить ее на модерацию нажмите на кнопку \"Сообщить о проблеме\".",
+                      reply_markup: markup)
+end
+
+Telegram::Bot::Client.run(ENV.fetch('BOT_TOKEN'), logger: Logger.new(STDOUT)) do |bot|
+  bot.listen do |message|
+
+    unless message.chat.type == "private"
+      bot.api.send_message(chat_id: message.chat.id, text: "Репорты принимаются только в приватных чатах")
+      return
     end
 
-    def client_run
-      Telegram::Bot::Client.run(TOKEN, logger: Logger.new(STDOUT)) do |bot|
-        bot.listen do |command|
-          current_chat = command.chat.id
-          check_session(command)
-          case command.text
-          when BOT_COMMAND[:start_bot], BOT_COMMAND[:cancel_problem]
-            UserMessages.bot_messages(command.text, current_chat)
-          when BOT_COMMAND[:new_problem]
-            Location.new(current_chat, @session).get_adress
-            @session.check_address = @session.address
-            UserMessages.bot_messages(command.text, current_chat)
-            bot.listen do |message|
-              if message.text == BOT_COMMAND[:send_problem]
-                if @session.check_validation == true
-                  @session.send_parameters
-                  UserMessages.bot_messages(message.text, current_chat)
-                  break
-                else
-                  bot.api.send_message(chat_id: current_chat, text: "Вы ввели не все данные")
-                end
-              elsif message.text == BOT_COMMAND[:cancel_problem]
-                UserMessages.bot_messages(message.text, current_chat)
-                break
-              else
-                Message.new(message, current_chat, @session).save_message
-              end
-            end
-          else
-            UserMessages.bot_messages(current_chat)
-          end
-        end
-      end
-    end
+    message_text = message.text
+    list_name = "messages-#{message.chat.id}"
 
-    def check_session(message)
-      @sessions.push(Session.new(message.chat.id, message.chat.username, message.chat.id)) unless @sessions.any? {|session| session.chat_id == message.chat.id}
-      @session = @sessions.find {|session| session.chat_id == message.chat.id}
-    end
-  end
+    if message_text == "/start" || message_text == CANCEL_BUTTON || message_text == "/cancel"
+      Redis::List.new(list_name).clear
+      welcome_user(bot, message)
 
-  class Message
-    def initialize(message, current_chat, session)
-      @message = message
-      @current_chat = current_chat
-      @session = session
-    end
 
-    def type
-      type = 'geolocation' unless @message.location.nil?
-      type = 'text' unless @message.text.nil?
-      type = 'image' unless @message.photo[0].nil?
-      type = 'incorrect' if type.nil?
-      return type
-    end
+    elsif message_text == NEW_REPORT_BUTTON || message_text == "/new"
+      buttons = [Telegram::Bot::Types::KeyboardButton.new(text: SEND_GEOPOSITION_BUTTON, request_location: true)]
+      markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: buttons, resize_keyboard: true, one_time_keyboard: true)
+      bot.api.send_message(chat_id: message.chat.id,
+                          text: "Отправьте вашу геопозицию или введите адрес вручную",
+                          reply_markup: markup)
 
-    def save_message
-      case type
-      when 'text'
-        Text.new(@message, @current_chat, @session).get_text
-      when 'image'
-        Image.new(@message, @current_chat, @session).get_image
-      when 'incorrect'
-        Telegram::Bot::Client.run(TOKEN) do |bot|
-          bot.api.send_message(chat_id: @current_chat, text: UserMessages.error)
-        end
-      end
-    end
-  end
 
-  class Location
-    def initialize(current_chat, session)
-      @current_chat = current_chat
-      @session = session
-    end
+    elsif message_text == SUBMIT_REPORT_BUTTON || message_text == "/submit"
+      list = Redis::List.new(list_name)
+      json = list.values.to_json
+      list.clear
+      # send json to server
+      puts json
+      welcome_user(bot, message)
 
-    def get_adress
-      Telegram::Bot::Client.run(TOKEN) do |bot|
-        UserMessages.bot_messages(BOT_COMMAND[:send_geolocation], @current_chat)
-        bot.listen do |location_message|
-          next if location_message.text == BOT_COMMAND[:new_problem]
-          if !location_message.text.nil?
-            @session.address = location_message.text
-            break
-          elsif !location_message.location.nil?
-            @session.latitude = location_message.location.latitude
-            @session.longitude = location_message.location.longitude
-            break
-          else
-            UserMessages.bot_messages(@current_chat)
-          end
-        end
-      end
-    end
-  end
 
-  class Image
-    def initialize(message, current_chat, session)
-      @message = message
-      @current_chat = current_chat
-      @session = session
-    end
+    elsif message.location
+      list = Redis::List.new(list_name, marshal: true)
+      list << {type: :location, lat: message.location.latitude, lng: message.location.longitude}
 
-    def get_image
-      Telegram::Bot::Client.run(TOKEN) do |bot|
-        Dir.mkdir("./pictures/") unless File.exists?("./pictures/")
-        Dir.mkdir("./pictures/#{@current_chat}") unless File.exists?("./pictures/#{@current_chat}/")
-
-        file = bot.api.get_file(file_id: @message.photo[2].file_id)
-        file_path = file.dig('result', 'file_path')
-        photo_url = "https://api.telegram.org/file/bot#{TOKEN}/#{file_path}"
-        File.write("./pictures/#{@current_chat}/image_#{@current_chat}.jpg", open(photo_url).read)
-        path_to_file = "./pictures/#{@current_chat}/image_#{@current_chat}.jpg"
-        @session.images.push(File.new(path_to_file, 'rb'))
-        FileUtils.rm(path_to_file)
-        @session.check_validation = true
-      end
-    end
-  end
-
-  class Text
-    def initialize(message, current_chat, session)
-      @message = message
-      @session = session
-      @current_chat = current_chat
-    end
-
-    def get_text
-      if @session.check_address.nil?
-        @session.text += @message.text + " "
-        @session.check_validation = true
-      else
-        @session.check_address = nil
-      end
-    end
-  end
-
-  class UserMessages
-    class << self
-      def first_greeting_message
-        "Чтобы описать проблему нажмите на кнопку \"Сообщить о новой проблеме\""
-      end
-
-      def second_greeting_message
-        "Чтобы отправить ее на модерацию нажмите на кнопку \"Сообщить о проблеме\"."
-      end
-
-      def success_input
-        "Ваще сообщение принято и отправлено на модерацию"
-      end
-
-      def error
-        "Простите, но я Вас не понимаю. Убедитесь, что вводите корректные данные"
-      end
-
-      def location
-        "Отправьте вашу геопозицию или введите адрес вручную"
-      end
-
-      def information_message
-        "Теперь Вы можете отправить любое количество сообщений и фотографий. Чтобы отправить сообщение на модерацию нажмите на кнопку \"Сообщить о проблеме\""
-      end
-
-      def buttons(button_text, boolean=false)
-        first_button = Telegram::Bot::Types::KeyboardButton.new(text: button_text, request_location: boolean)
-        second_button = Telegram::Bot::Types::KeyboardButton.new(text: BOT_COMMAND[:cancel_problem])
-
-        if button_text == BOT_COMMAND[:send_problem]
-          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button, second_button], resize_keyboard: true)
-        else
-          markup = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [first_button], resize_keyboard: true)
-        end
-      end
-
-      def notifator
-        system( '
-          TOKEN=408872207:AAGdhnoBG5tPJcFHsFPgZTY2s1ER9GnOoMg
-          CHAT_ID=-1001247463742
-          MESSAGE="Hello World"
-          URL="https://api.telegram.org/bot$TOKEN/sendMessage"
-
-          curl -s -X POST $URL -d chat_id=$CHAT_ID -d text="$MESSAGE" ')
-      end
-
-      def bot_messages(message=nil, current_chat)
-        Telegram::Bot::Client.run(TOKEN) do |bot|
-          case message
-          when BOT_COMMAND[:start_bot], BOT_COMMAND[:cancel_problem]
-            bot.api.send_message(chat_id: current_chat, text: first_greeting_message)
-            bot.api.send_message(chat_id: current_chat, text: second_greeting_message,
-                                reply_markup: buttons(BOT_COMMAND[:new_problem]))
-          when BOT_COMMAND[:new_problem]
-            bot.api.send_message(chat_id: current_chat,
-                                text: information_message,
-                                reply_markup: buttons(BOT_COMMAND[:send_problem]))
-          when BOT_COMMAND[:send_problem]
-            notifator
-
-            bot.api.send_message(chat_id: current_chat,
-                                text: success_input,
-                                reply_markup: buttons(BOT_COMMAND[:new_problem]))
-          when BOT_COMMAND[:send_geolocation]
-            bot.api.send_message(chat_id: current_chat,
-                                text: location,
-                                reply_markup: buttons(BOT_COMMAND[:send_geolocation], true))
-          else
-            bot.api.send_message(chat_id: current_chat, text: error)
-          end
-        end
-      end
+    elsif message.photo.any?
+      list = Redis::List.new(list_name, marshal: true)
+      list << {type: :file, file_id: message.photo[2].file_id}
+    elsif message_text
+      list = Redis::List.new(list_name, marshal: true)
+      list << {type: :text, text: message_text}
     end
   end
 end
