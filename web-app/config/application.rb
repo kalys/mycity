@@ -14,5 +14,5 @@ module WebApp
 end
 
 Raven.configure do |config|
-  config.dsn = 'https://880b31936a6b4bbcafed5443d5cd906d:5dbab763de0a43c1b134b3cff620cd26@sentry.io/276188'
+  config.dsn = 'https://9876e84c8c794f3abf626f72177cefd8:0b286452fad24e43a86bea419a62d5fd@sentry.io/290632'
 end

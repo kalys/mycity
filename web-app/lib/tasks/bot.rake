@@ -35,11 +35,13 @@ namespace :mycity do
 
         if message.text == "/start" || message.text == CANCEL_BUTTON || message.text == "/cancel"
           redis_list.clear
+          redis_list << {type: :meta, sender_name: message.from.username}
           welcome_user(bot, message)
 
 
         elsif message.text == SUBMIT_REPORT_BUTTON || message.text == "/submit"
-          HandleMessageJob.perform_later redis_list.key, redis_list.values.to_json
+          key = redis_list.key.split('-').last
+          HandleMessageJob.perform_later key, redis_list.values.to_json
           redis_list.clear
           welcome_user(bot, message)
 
