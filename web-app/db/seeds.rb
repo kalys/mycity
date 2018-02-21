@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-default_category = Category.create!(title: "default")
-test_category = Category.create!(title: "Тестовая категория")
+Category.create!(title: "default")
+Category.create!(title: "Тестовая категория")
 
 admin_role = ::Role.where(name: :admin).first_or_create!(
         name:        :admin,
@@ -16,31 +16,13 @@ admin_role = ::Role.where(name: :admin).first_or_create!(
       )
 admin_role.create_rule(:system, :administrator)
 admin_role.rule_on(:system, :administrator)
-admin_role
 
 
 moderator_role = Role.create!(name: 'moderator',
-	title: 'Модераторы',
-	description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
-	the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
+  title: 'Модераторы',
+  description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
+  the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
 
 
-admin = User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
-moder = User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
-
-images_base_path = File.join(File.dirname(__FILE__), 'seed_images')
-images = Dir[images_base_path+'/*'].shuffle
-
-
-10.times do
-    message = Message.create!(
-        body: Faker::LordOfTheRings.character,
-        category_id: default_category.id,
-        status: Faker::Number.between(0, 3))
-    2.times do
-    image = Image.create!(message: message, image: open(images.pop()))
-    end
-end
-test_message = Message.create!(body: "Тестовое сообщение",
-								category_id: default_category.id,
-								status: 0)
+User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
+User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)

@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
     config.storage    = :file
   elsif Rails.env.production?
     config.storage    = :aws
-    config.aws_bucket = 'mycity-dev'
+    config.aws_bucket = ENV.fetch('AWS_BUCKET')
     config.aws_acl    = 'public-read'
 
     config.aws_credentials = {
