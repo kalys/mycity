@@ -41,7 +41,7 @@ en:
         role_export:  Выгрузить роль
         role_info: Информация Роль
         role_rules: правила Ролевые
-          
+
       sidebar:
         roles_list: Список ролей
         role_nav: Меню 

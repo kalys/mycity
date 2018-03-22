@@ -1,8 +1,10 @@
 class User < ApplicationRecord
-	include TheRole::Api::User
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable, :invitable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true, length: { minimum: 2 }
+
+  # TODO by @kalys
+  # remove later
+  def admin?
+    true
+  end
 end

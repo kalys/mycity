@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'messages#index'
-  TheRoleManagementPanel::Routes.mixin(self)
   devise_for :users, except: :new, controllers: { invitations: 'invitations', sessions: 'sessions'}
   resources :users, only: [:index, :destroy]
 

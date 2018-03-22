@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:update, :show, :edit, :archiving]
-  before_action :role_required, except: [:create, :image_save]  # проверяет роль юзера
   skip_before_action :authenticate_user!, only: [:create, :image_save]
 
   def index

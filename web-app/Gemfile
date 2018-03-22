@@ -8,7 +8,6 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'puma'
 gem 'kaminari'
-gem 'the_role', '~> 3.5'
 gem 'audited', '~> 4.5'
 gem 'simple_form'
 gem 'jbuilder', '~> 2.5'
@@ -19,7 +18,6 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'geocoder'
 gem 'sidekiq'
-gem 'rails_12factor'
 gem 'pg', '~> 0.21'
 
 # files
@@ -39,6 +37,10 @@ gem 'turbolinks', '~> 5'
 # monitoring
 gem "sentry-raven"
 
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'capybara', '~> 2.13'
@@ -50,6 +52,7 @@ group :test do
   gem 'database_cleaner'
   gem 'chromedriver-helper'
   gem 'faker'
+  gem 'launchy'
 end
 group :development do
   gem 'web-console', '>= 3.3.0'
