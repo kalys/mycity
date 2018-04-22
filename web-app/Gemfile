@@ -43,16 +43,19 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem 'pry'
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'chromedriver-helper'
   gem 'faker'
   gem 'launchy'
+  gem 'rspec-rails'
+  gem 'capybara', '~> 2.13'
+
+  gem 'chromedriver-helper'
+  gem 'cucumber-rails', require: false
+  gem 'selenium-webdriver'
 end
 group :development do
   gem 'web-console', '>= 3.3.0'
