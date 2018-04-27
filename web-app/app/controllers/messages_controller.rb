@@ -1,8 +1,12 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:update, :show, :edit, :archiving]
-  skip_before_action :authenticate_user!, only: [:create, :image_save]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @messages = Message.where(status: :actual)
+  end
+
+  def index_old
     if params[:status].nil?
       @messages = Message.all.where.not(status: :hidden).order(created_at: :desc).order(:body).page(params[:page])
       @title = "Все сообщения"
@@ -20,15 +24,6 @@ class MessagesController < ApplicationController
         "Неактуальные сообщения"
       end
     end
-  end
-
-  def create
-    @message = Message.create(message_params)
-    render plain: @message.id
-  end
-
-  def image_save
-    Image.create(image: params[:image], message_id: params[:message_id])
   end
 
   def show

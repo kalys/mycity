@@ -42,8 +42,7 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'byebug'
-  gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :test do
@@ -52,11 +51,13 @@ group :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'capybara', '~> 2.13'
+  gem 'ffactory_girl_rails'
 
   gem 'chromedriver-helper'
   gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
 end
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

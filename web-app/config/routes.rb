@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'messages#index'
   devise_for :users, except: :new, controllers: { invitations: 'invitations', sessions: 'sessions'}
   resources :users, only: [:index, :destroy]
 
@@ -26,4 +25,6 @@ Rails.application.routes.draw do
 
   get '/atom_index' => 'rss#atom_index'
   get '/atom_show/:id' => 'rss#atom_show', as: 'atom_show'
+
+  root 'messages#index'
 end
