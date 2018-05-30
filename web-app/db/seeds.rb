@@ -9,20 +9,5 @@
 Category.create!(title: "default")
 Category.create!(title: "Тестовая категория")
 
-admin_role = ::Role.where(name: :admin).first_or_create!(
-        name:        :admin,
-        title:       "Администраторы",
-        description: "Пользователи этой группы имеют глобальный доступ"
-      )
-admin_role.create_rule(:system, :administrator)
-admin_role.rule_on(:system, :administrator)
-
-
-moderator_role = Role.create!(name: 'moderator',
-  title: 'Модераторы',
-  description: 'Пользователи этой группы могут обрабатывать сообщения от пользователей',
-  the_role: "{\"messages\":{\"index\":true,\"edit\":true,\"show\":true,\"archiving\":true,\"update\":true},\"categories\":{\"index\":true,\"show\":true,\"edit\":true,\"new\":true,\"create\":true,\"update\":true,\"archiving\":true,\"unarchiving\":true,\"archived_categories\":true}}")
-
-
-User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe', role_id: 1)
-User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe', role_id: moderator_role.id)
+User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe')
+User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe')

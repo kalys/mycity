@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180124115523) do
+ActiveRecord::Schema.define(version: 20171124114054) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -36,16 +39,16 @@ ActiveRecord::Schema.define(version: 20180124115523) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
+    t.boolean "archived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "archived", default: false
   end
 
   create_table "images", force: :cascade do |t|
-    t.integer "message_id"
+    t.bigint "message_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["message_id"], name: "index_images_on_message_id"
   end
 
@@ -55,21 +58,12 @@ ActiveRecord::Schema.define(version: 20180124115523) do
     t.float "longitude"
     t.string "address"
     t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "category_id"
     t.string "sender_name"
     t.integer "sender_id"
-    t.index ["category_id"], name: "index_messages_on_category_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "title", null: false
-    t.text "description", null: false
-    t.text "the_role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_messages_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,21 +80,10 @@ ActiveRecord::Schema.define(version: 20180124115523) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer "invitation_limit"
-    t.string "invited_by_type"
-    t.integer "invited_by_id"
-    t.integer "invitations_count", default: 0
-    t.integer "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-    t.index ["invitations_count"], name: "index_users_on_invitations_count"
-    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "messages"
+  add_foreign_key "messages", "categories"
 end

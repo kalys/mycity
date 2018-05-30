@@ -5,7 +5,9 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.float :latitude
       t.float :longitude
       t.string :address
-      t.string :status
+      t.integer :status
+      t.string :sender_name
+      t.integer :sender_id
 
       t.timestamps
     end

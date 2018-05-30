@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :role_required # проверяет роль юзера
   before_action :set_category, only: [:show, :edit, :update, :archiving, :unarchiving]
 
   def index
