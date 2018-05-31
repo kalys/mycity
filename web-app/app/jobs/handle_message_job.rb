@@ -40,7 +40,7 @@ class HandleMessageJob < ApplicationJob
   end
 
   def text
-    @text ||= items.select {|item| item['type'] == 'text'}.join('\n')
+    @text ||= items.select {|item| item['type'] == 'text'}.map {|item| item["text"]}.join('\n')
   end
 
   def images
