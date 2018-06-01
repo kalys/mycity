@@ -1,5 +1,5 @@
 
-\.idea/
+/.idea/
 
 web-app/public/uploads/
 
@@ -7,4 +7,4 @@ app/logs/
 
 volumes/
 app/db
-\.env
+/env

@@ -1,51 +1,37 @@
 version: '3'
 services:
-  db:
-    env_file:
-      - .env
-    image: mysql:5.7
-    volumes:
-      - ./volumes/db:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
   web-app:
-    image: sulikdada/my-city-web-app:${TAG}
+    image: kalys/mycity:latest
     build: ./web-app
     env_file:
-      - .env
-    environment:
-      DB_HOST: db
-      RAILS_ENV: production
+      - env
     volumes:
       - rails_public:/app/public
-      - ./volumes/logs:/app/log
-    links:
-      - db
-    depends_on:
-      - db
+
   nginx:
-    image: sulikdada/my-city-nginx:${TAG}
-    build: ./nginx
+    image: nginx:latest
     ports:
       - 80:80
+      - 443:443
     volumes:
       - rails_public:/rails_public
+      - ./nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
     links:
       - web-app
     depends_on:
       - web-app
+
   telegram-bot:
-    image: sulikdada/my-city-telegram-bot:${TAG}
-    build: ./telegram-bot
+    image: kalys/mycity:latest
     env_file:
-      - .env
-    links:
-      - web-app
-    depends_on:
-      - web-app
+      - env
+    command: "rake mycity:start_bot"
+
+  sidekiq:
+    image: kalys/mycity:latest
+    env_file:
+      - env
+    command: "sidekiq"
 
 volumes:
   rails_public:
