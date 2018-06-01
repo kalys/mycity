@@ -38,6 +38,7 @@ gem 'turbolinks', '~> 5'
 gem "sentry-raven"
 
 group :production, :staging do
+  gem 'lograge'
   gem 'rails_12factor'
 end
 

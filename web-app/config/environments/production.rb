@@ -33,6 +33,8 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.lograge.enabled = true
+
   config.active_record.dump_schema_after_migration = false
 
   config.active_job.queue_adapter = :sidekiq
