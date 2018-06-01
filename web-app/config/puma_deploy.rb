@@ -1,4 +1,3 @@
-workers 2
 threads 1, 6
 app_dir = File.expand_path("../..", __FILE__)
 rails_env = ENV['RAILS_ENV'] || "production"

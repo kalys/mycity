@@ -5,4 +5,4 @@ RUN apt-get update && apt-get install -y nodejs && bundle install
 COPY ./ ./
 RUN rake assets:precompile
 EXPOSE 3000
-CMD ["puma", "-C", "config/puma_deploy.rb"]
+CMD ["puma", "-C", "config/puma.rb"]
