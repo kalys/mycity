@@ -34,7 +34,5 @@ Rails.application.configure do
 
   config.assets.quiet = true
 
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
   config.active_job.queue_adapter = :sidekiq
 end
