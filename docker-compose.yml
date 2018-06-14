@@ -7,6 +7,7 @@ services:
       - env
     volumes:
       - rails_public:/app/public
+    restart: always
 
   nginx:
     image: nginx:latest
@@ -26,12 +27,14 @@ services:
     env_file:
       - env
     command: "rake mycity:start_bot"
+    restart: always
 
   sidekiq:
     image: kalys/mycity:latest
     env_file:
       - env
     command: "sidekiq"
+    restart: always
 
 volumes:
   rails_public:
