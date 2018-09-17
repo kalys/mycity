@@ -11,3 +11,4 @@ Category.create!(title: "Тестовая категория")
 
 User.create!(name: 'Administrator', email: 'admin@admin.ru', password: 'qweqweqwe')
 User.create!(name: 'Moderator', email: 'moder@moder.ru', password: 'qweqweqwe')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

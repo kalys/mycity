@@ -1,24 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, except: :new, controllers: { invitations: 'invitations', sessions: 'sessions'}
-  resources :users, only: [:index, :destroy]
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
-  resources :categories, except: [:destroy] do
-    collection do
-      get :archived_categories, as: 'archived'
-    end
-    member do
-      post :archiving
-      post :unarchiving
-    end
-  end
-
-  resources :messages do
-    collection do
-      post ':id/destroy' => 'messages#archiving', as: 'archiving'
-    end
-    resources :images, only: [:create]
-  end
-  post '/messages/:message_id/image' => 'messages#image_save'
+  resources :messages, only: :index
 
   get '/rss_index' => 'rss#rss_index'
   get '/rss_show/:id' => 'rss#rss_show', as: 'rss_show'
