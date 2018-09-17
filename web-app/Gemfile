@@ -19,6 +19,7 @@ gem 'devise_invitable'
 gem 'geocoder'
 gem 'sidekiq'
 gem 'pg', '~> 0.21'
+gem 'activeadmin'
 
 # files
 gem 'carrierwave'
