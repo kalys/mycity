@@ -54,10 +54,6 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara', '~> 2.13'
   gem 'ffactory_girl_rails'
-
-  gem 'chromedriver-helper'
-  gem 'cucumber-rails', require: false
-  gem 'selenium-webdriver'
 end
 
 group :development do

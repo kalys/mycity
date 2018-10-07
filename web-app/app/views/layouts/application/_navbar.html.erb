@@ -13,22 +13,9 @@
     <ul class="nav navbar-nav">
       <li class="dropdown">
         <ul class="dropdown-menu">
-          <li><%= link_to "Категории", categories_path %></li>
           <li><%= link_to "Сообщения", messages_path %></li>
         </ul>
       </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" id="user_actions">
-      <li><%= link_to 'Выход', root_path %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "Все", root_path %></li>
-      <li><%= link_to "Ожидают модерации", messages_path(status: :for_moderation) %></li>
-      <li><%= link_to "Выполненные", messages_path(status: :done) %></li>
-      <li><%= link_to "Актуальные", messages_path(status: :actual) %></li>
-      <li><%= link_to "Неактуальные", messages_path(status: :not_relevant) %></li>
-      <li><%= link_to image_tag("rss.png", :alt => "rss feed", size: "20x20"), rss_index_path %></li>
-      <li style="visibility: hidden;">Divider</li>
     </ul>
   </div>
 </nav>
