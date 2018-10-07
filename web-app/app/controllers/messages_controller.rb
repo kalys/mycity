@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:update, :show, :edit, :archiving]
-  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @messages = Message.where(status: :actual)

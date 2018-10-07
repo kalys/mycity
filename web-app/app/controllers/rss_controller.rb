@@ -1,8 +1,6 @@
 require "rss"
 
 class RssController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:rss_index, :atom_index, :rss_show, :atom_show]
-
   def rss_index
     render :plain => maker("2.0")
   end
