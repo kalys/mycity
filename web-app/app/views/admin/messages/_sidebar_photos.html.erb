@@ -1,0 +1,3 @@
+<% resource.images.each do |image_record| %>
+  <a href="<%= admin_image_path(image_record) %>"><%= image_tag(image_record.image.url, width: '200px') %></a>
+<% end %>
