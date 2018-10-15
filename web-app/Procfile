@@ -1,0 +1,3 @@
+web: bundle exec rails s
+sidekiq: bundle exec sidekiq
+bot: bundle exec rake mycity:start_bot

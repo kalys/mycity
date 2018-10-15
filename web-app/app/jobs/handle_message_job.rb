@@ -11,7 +11,7 @@ class HandleMessageJob < ApplicationJob
                                sender_id: sender_id, sender_name: username, status: :for_moderation)
       if message.valid?
         images.each do |image_url|
-          Image.create message: message, remote_image_url: image_url
+          Image.create(message: message, remote_image_url: image_url)
         end
       end
     end

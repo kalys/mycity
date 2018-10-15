@@ -4,6 +4,19 @@ require 'redis-objects'
 namespace :mycity do
   desc "Start bot"
   task start_bot: :environment do
+    $stdout.sync = true
+    # Trap ^C
+    Signal.trap("INT") {
+      puts "Terminated by SIGINT"
+      exit
+    }
+
+    # Trap `Kill`
+    Signal.trap("TERM") {
+      puts "Terminated by SIGTERM"
+      exit
+    }
+
     raise "Set BOT_TOKEN environment variable" if ENV.fetch('BOT_TOKEN').nil?
 
     SUBMIT_REPORT_BUTTON = "Сообщить о проблеме".freeze
@@ -23,7 +36,12 @@ namespace :mycity do
                           reply_markup: markup)
     end
 
-    Telegram::Bot::Client.run(ENV.fetch('BOT_TOKEN'), logger: Logger.new(STDOUT)) do |bot|
+    logger = Logger.new($stdout)
+    if ENV['BOT_TOKEN'] == 'development'
+      logger.level = Logger::DEBUG
+    end
+
+    Telegram::Bot::Client.run(ENV.fetch('BOT_TOKEN'), logger: logger) do |bot|
       bot.listen do |message|
 
         unless message.chat.type == "private"
@@ -37,6 +55,7 @@ namespace :mycity do
           redis_list.clear
           redis_list << {type: :meta, sender_name: message.from.username}
           welcome_user(bot, message)
+          bot.logger.debug("List state #{redis_list}")
 
 
         elsif message.text == SUBMIT_REPORT_BUTTON || message.text == "/submit"
@@ -48,12 +67,15 @@ namespace :mycity do
 
         elsif message.location
           redis_list << {type: :location, lat: message.location.latitude, lng: message.location.longitude}
+          bot.logger.debug("List state #{redis_list}")
 
         elsif message.photo.any?
           redis_list << {type: :file, file_id: message.photo[2].file_id}
+          bot.logger.debug("List state #{redis_list}")
 
         elsif message.text
           redis_list << {type: :text, text: message.text}
+          bot.logger.debug("List state #{redis_list}")
         end
       end
     end
