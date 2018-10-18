@@ -2,26 +2,14 @@ require "rss"
 
 class RssController < ApplicationController
   def rss_index
-    render :plain => maker("2.0")
+    render :plain => maker
   end
 
-  def rss_show
-    render :plain => maker("2.0", params[:id])
-  end
-
-  def atom_index
-    render :plain => maker("atom")
-  end
-
-  def atom_show
-    render :plain => maker("atom", params[:id])
-  end
-
-  def maker(xml, category=nil)
-    xml_link = "http://my-city.com/" + xml
+  def maker(category=nil)
+    xml_link = feed_url
+    xml = '2.0'
 
     messages = Message.all.where(status: :actual)
-    messages = Message.all.where(status: :actual).where(category_id: category) unless category.nil?
 
     rss = RSS::Maker.make(xml) do |maker|
       maker.channel.author = "my-city"
