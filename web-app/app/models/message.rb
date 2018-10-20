@@ -1,6 +1,7 @@
-class Message < ApplicationRecord
+# frozen_string_literal: true
 
-  enum status: [ :for_moderation, :done, :actual, :not_relevant, :hidden ]
+class Message < ApplicationRecord
+  enum status: %i[for_moderation done actual not_relevant hidden]
 
   has_many :images, dependent: :destroy
   belongs_to :category, optional: true

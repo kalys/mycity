@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'homepage' do
   scenario 'happy path' do
-    create_list :message, 5, status: :actual
+    Fabricate.times(5, :message, status: :actual)
     visit '/'
-    expect(all('.messages tbody tr')).not_to be_empty
+    expect(all('.messages .item')).not_to be_empty
   end
 end

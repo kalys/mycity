@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :archiving, :unarchiving]
+  before_action :set_category, only: %i[show edit update archiving unarchiving]
 
   def index
     @categories = Category.where(archived: false).order(created_at: :desc).order(:title).page(params[:page])
@@ -13,44 +15,43 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to categories_path
-      flash[:success] = "Категория успешно создана."
+      flash[:success] = 'Категория успешно создана.'
     else
       render 'new'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)
       redirect_to root_path
-      flash[:success] = "Категория успешно обновлена."
+      flash[:success] = 'Категория успешно обновлена.'
     else
       render 'edit'
-      flash[:danger] = "Ошибка."
+      flash[:danger] = 'Ошибка.'
     end
   end
 
   def show
-      if params[:status] == 'all'
-        @messages = @category.messages.order(created_at: :desc).order(:body).page(params[:page])
-      else
-        @messages = @category.messages.where(status: params[:status]).order(created_at: :desc).order(:body).page(params[:page])
-      end
+    if params[:status] == 'all'
+      @messages = @category.messages.order(created_at: :desc).order(:body).page(params[:page])
+    else
+      @messages = @category.messages.where(status: params[:status]).order(created_at: :desc).order(:body).page(params[:page])
+    end
   end
 
   def archiving
     @category.archived = true
     @category.save
-    flash[:success] = "Категория успешно архивирована."
+    flash[:success] = 'Категория успешно архивирована.'
     redirect_to categories_path
   end
 
   def unarchiving
     @category.archived = false
     @category.save
-    flash[:success] = "Категория успешно восстановлена."
+    flash[:success] = 'Категория успешно восстановлена.'
     redirect_to categories_path
   end
 

@@ -1,5 +1,6 @@
-Devise.setup do |config|
+# frozen_string_literal: true
 
+Devise.setup do |config|
   config.mailer_sender = 'no-reply@my-city.com'
   config.secret_key = '9b5fa0bee984d99671555449f459684f8c0e431037c208e548ff138d6340c5cbb9232d27d1c5186e96d3c76cb1b36ba20ede01570a6f8485ecfdb76ccaee9754'
 

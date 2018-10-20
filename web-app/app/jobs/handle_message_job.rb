@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'telegram/bot'
 
 class HandleMessageJob < ApplicationJob
@@ -20,32 +22,30 @@ class HandleMessageJob < ApplicationJob
   private
 
   # private reader
-  def items
-    @items
-  end
+  attr_reader :items
 
   def valid?
     location.present? &&
-      items.any? {|item| item['type'] == 'text' } &&
-      items.any? {|item| item['type'] == 'file' }
+      items.any? { |item| item['type'] == 'text' } &&
+      items.any? { |item| item['type'] == 'file' }
   end
 
   def username
-    items.find {|item| item['type'] == 'meta'}&.fetch('sender_name')
+    items.find { |item| item['type'] == 'meta' }&.fetch('sender_name')
   end
 
   def location
     # `reverse` is used to find the most recent location
-    @location ||= items.reverse.find {|item| item['type'] == 'location' }
+    @location ||= items.reverse.find { |item| item['type'] == 'location' }
   end
 
   def text
-    @text ||= items.select {|item| item['type'] == 'text'}.map {|item| item["text"]}.join('\n')
+    @text ||= items.select { |item| item['type'] == 'text' }.map { |item| item['text'] }.join('\n')
   end
 
   def images
     api = Telegram::Bot::Api.new(ENV.fetch('BOT_TOKEN'))
-    items.select {|item| item['type'] == 'file'}.map do |item|
+    items.select { |item| item['type'] == 'file' }.map do |item|
       file_id = item['file_id']
       response = api.getFile(file_id: file_id)
       "https://api.telegram.org/file/bot#{ENV.fetch('BOT_TOKEN')}/#{response['result']['file_path']}"

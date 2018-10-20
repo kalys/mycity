@@ -1,7 +1,9 @@
-class Category < ApplicationRecord
-	has_many :messages, dependent: :destroy
+# frozen_string_literal: true
 
-	validates :title, presence: true, length: {maximum: 40}
+class Category < ApplicationRecord
+  has_many :messages, dependent: :destroy
+
+  validates :title, presence: true, length: { maximum: 40 }
 
   paginates_per 10
 end

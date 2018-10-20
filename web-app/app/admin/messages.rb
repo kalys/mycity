@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Message do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -7,7 +9,7 @@ ActiveAdmin.register Message do
   # or
   #
   permit_params do
-    permitted = [:body, :latitude, :longitude, :address, :status, :sender_name, :sender_id, :category_id]
+    permitted = %i[body latitude longitude address status sender_name sender_id category_id]
     # permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end

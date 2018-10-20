@@ -2,7 +2,7 @@
   <% @messages.each do |message| %>
     <div class="item  col-xs-4 col-lg-4">
       <div class="thumbnail">
-        <img class="group list-group-image" src="<%= message.images.first.image.url %>" alt="" />
+        <img class="group list-group-image" src="<%= message.images.first&.image&.url %>" alt="" />
         <div class="caption">
           <p class="group inner list-group-item-text"><%= message.body %></p>
         </div>

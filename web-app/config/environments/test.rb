@@ -1,5 +1,6 @@
-Rails.application.configure do
+# frozen_string_literal: true
 
+Rails.application.configure do
   config.cache_classes = true
 
   config.eager_load = false
@@ -18,10 +19,9 @@ Rails.application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'localhost', port: 31337 }
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 31_337 }
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
   config.action_mailer.perform_caching = false
 
   config.active_support.deprecation = :stderr
-
 end
