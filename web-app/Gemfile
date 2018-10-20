@@ -21,7 +21,6 @@ gem 'redis-objects'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'telegram-bot-ruby'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # files
 gem 'carrierwave'
@@ -39,6 +38,10 @@ gem 'uglifier', '>= 1.3.0'
 
 # monitoring
 gem 'sentry-raven'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-leaflet'
+end
 
 group :production, :staging do
   gem 'lograge'

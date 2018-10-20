@@ -1,0 +1,22 @@
+jQuery(function($) {
+  $('.message-details #map').each(function(index, map) {
+    var latitude = $(map).data('latitude');
+    var longitude = $(map).data('longitude');
+
+    var map = L.map('map').setView([latitude, longitude], 20);
+    var attributionString = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {attribution: attributionString}).addTo(map);
+
+    var myIcon = L.icon({
+        iconUrl: '<%= asset_path 'leaflet/dist/images/marker-icon.png'%>',
+        iconRetinaUrl: '<%= asset_path 'leaflet/dist/images/marker-icon-2x.png'%>',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: '<%= asset_path 'leaflet/dist/images/marker-shadow.png'%>',
+        shadowSize: [41, 41],
+    });
+
+    L.marker([latitude, longitude], {icon: myIcon}).addTo(map);
+  });
+});
