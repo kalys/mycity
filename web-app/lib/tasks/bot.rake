@@ -5,7 +5,7 @@ require 'redis-objects'
 
 namespace :mycity do
   desc 'Start bot'
-  task start_bot: :environment do
+  task :start_bot do
     $stdout.sync = true
     # Trap ^C
     Signal.trap('INT') do
