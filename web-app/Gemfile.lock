@@ -139,7 +139,6 @@ GEM
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    gmaps4rails (2.1.2)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -354,7 +353,6 @@ DEPENDENCIES
   fabrication
   faker
   geocoder
-  gmaps4rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
