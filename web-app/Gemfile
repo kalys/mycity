@@ -21,6 +21,8 @@ gem 'redis-objects'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'telegram-bot-ruby'
+gem 'dry-transaction', require: false
+gem 'dry-system-rails'
 
 # files
 gem 'carrierwave'
@@ -58,6 +60,7 @@ group :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'fabrication'
+  gem 'webmock'
 end
 
 group :development do

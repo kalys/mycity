@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Message < ApplicationRecord
+  attr_accessor :built_images
+
   enum status: %i[for_moderation done actual not_relevant hidden]
 
   has_many :images, dependent: :destroy
@@ -13,4 +15,9 @@ class Message < ApplicationRecord
   # after_validation :reverse_geocode, if: ->(obj){ obj.latitude.present? and obj.longitude.present? and obj.address.nil? }
 
   paginates_per 10
+
+  def location=(location)
+    self.latitude = location&.fetch(:latitude, nil)
+    self.longitude = location&.fetch(:longitude, nil)
+  end
 end

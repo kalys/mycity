@@ -52,18 +52,17 @@ namespace :mycity do
 
         if message.text == '/start' || message.text == CANCEL_BUTTON || message.text == '/cancel'
           redis_list.clear
-          redis_list << { type: :meta, sender_name: message.from.username }
+          redis_list << { type: :meta, sender_name: message.from.username, sender_id: message.from.id }
           welcome_user(bot, message)
           bot.logger.debug("List state #{redis_list}")
 
         elsif message.text == SUBMIT_REPORT_BUTTON || message.text == '/submit'
-          key = redis_list.key.split('-').last
-          HandleMessageJob.perform_later key, redis_list.values.to_json
+          HandleMessageJob.perform_later(redis_list.values.to_json)
           redis_list.clear
           welcome_user(bot, message)
 
         elsif message.location
-          redis_list << { type: :location, lat: message.location.latitude, lng: message.location.longitude }
+          redis_list << { type: :location, latitude: message.location.latitude, longitude: message.location.longitude }
           bot.logger.debug("List state #{redis_list}")
 
         elsif message.photo.any?
