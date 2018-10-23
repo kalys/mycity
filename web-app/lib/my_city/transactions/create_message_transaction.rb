@@ -5,7 +5,11 @@ module MyCity
   module Transactions
     class CreateMessageTransaction
       include Dry::Transaction
-      include WebApp::Import['my_city.repositories.message_repository', 'telegram.bot']
+      include WebApp::Import[
+        'my_city.repositories.admin_user_repository',
+        'my_city.repositories.message_repository',
+        'telegram.bot',
+      ]
 
       map :build
       check :validate
@@ -44,9 +48,19 @@ module MyCity
       end
 
       def notify_moderators(message)
+        admin_user_repository.telegram_moderators.each do |user|
+          bot.api.send_message(
+            chat_id: "@#{user.telegram_login}",
+            text: "https://mycity.osmonov.com/messages/#{message.id}"
+          )
+        end
       end
 
       def notify_reporter(message)
+        bot.api.send_message(
+          chat_id: message.sender_id,
+          text: "Ваше сообщение принято: https://mycity.osmonov.com/admin/messages/#{(message.id)}"
+        )
       end
     end
   end

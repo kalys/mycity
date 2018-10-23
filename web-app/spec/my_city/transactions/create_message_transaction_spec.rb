@@ -1,18 +1,16 @@
 require 'rails_helper'
 
 describe MyCity::Transactions::CreateMessageTransaction do
-  let(:transaction) { described_class.new(notify_moderators: notify_moderators, notify_reporter: notify_reporter) }
+  let(:transaction) { described_class.new }
   subject { transaction.call(items) }
-  let(:sender_id) { 11111 }
-  let(:notify_reporter) { double(:notify_reporter).tap {|nr| allow(nr).to receive(:call) } }
-  let(:notify_moderators) { double(:notify_moderators).tap {|nm| allow(nm).to receive(:call) } }
+
+  let(:api) { double(:api) }
 
   before do
     ENV['BOT_TOKEN'] = 'telegrambottoken'
-    api = double(:api)
     allow(api).to receive(:getFile).with(file_id: 'blabla.jpg') { {'result' => {'file_path' => 'filepath.jpg'}} }
-    fake_bot = double(:fake_bot, api: api)
-    WebApp::Container.stub('telegram.bot', fake_bot)
+    allow(api).to receive(:send_message)
+    WebApp::Container.stub('telegram.bot', double(:fake_bot, api: api))
     stub_request(:get, "https://api.telegram.org/file/bottelegrambottoken/filepath.jpg").
       to_return(status: 200, body: "", headers: {})
   end
@@ -58,6 +56,25 @@ describe MyCity::Transactions::CreateMessageTransaction do
       expect(message.sender_name).to eq("johndoe")
       expect(message.sender_id).to eq(1234567)
       expect(message.images.count).to eq(1)
+    end
+
+    describe 'telegram notifications' do
+      it 'should notify moderators' do
+        telegram_users = Fabricate.times(2, :admin_user)
+        allow(api).to receive(:send_message).exactly(3).times
+
+        subject
+
+        telegram_users.each do |user|
+          expect(api).to have_received(:send_message).with(chat_id: "@#{user.telegram_login}", text: anything)
+        end
+      end
+
+      it 'should notify reporter' do
+        allow(api).to receive(:send_message).once
+        message = subject.value_or(nil)
+        expect(api).to have_received(:send_message).with(chat_id: message.sender_id, text: anything)
+      end
     end
   end
 end
