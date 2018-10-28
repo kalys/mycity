@@ -5,7 +5,7 @@ require 'redis-objects'
 
 namespace :mycity do
   desc 'Start bot'
-  task :start_bot do
+  task start_bot: :environment do
     $stdout.sync = true
     # Trap ^C
     Signal.trap('INT') do
@@ -59,7 +59,6 @@ namespace :mycity do
         elsif message.text == SUBMIT_REPORT_BUTTON || message.text == '/submit'
           HandleMessageJob.perform_later(redis_list.values.to_json)
           redis_list.clear
-          welcome_user(bot, message)
 
         elsif message.location
           redis_list << { type: :location, latitude: message.location.latitude, longitude: message.location.longitude }

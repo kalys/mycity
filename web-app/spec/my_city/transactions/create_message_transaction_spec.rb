@@ -66,7 +66,7 @@ describe MyCity::Transactions::CreateMessageTransaction do
         subject
 
         telegram_users.each do |user|
-          expect(api).to have_received(:send_message).with(chat_id: "@#{user.telegram_login}", text: anything)
+          expect(api).to have_received(:send_message).with(chat_id: user.telegram_login, text: anything)
         end
       end
 

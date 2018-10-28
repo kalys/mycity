@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Server: nginx/1.12.2
+Date: Fri, 26 Oct 2018 20:01:00 GMT
+Content-Type: application/json
+Content-Length: 138
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Expose-Headers: Content-Length,Content-Type,Date,Server,Connection
+Strict-Transport-Security: max-age=31536000; includeSubdomains
+
+{"ok":true,"result":{"file_id":"AgADAgADO6kxG2SWYErYp7ZP3DmjCRPjtw4ABPd5BzxzGWNJFJcBAAEC","file_size":121708,"file_path":"photos/file_4"}}

@@ -18,8 +18,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :actual do
     process resize_to_fill: [860, 800]
   end
-
-  def extension_whitelist
-    %w[jpg jpeg]
-  end
 end
