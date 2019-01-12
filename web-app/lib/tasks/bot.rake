@@ -50,9 +50,12 @@ namespace :mycity do
 
         redis_list = Redis::List.new("messages-#{message.chat.id}-#{message.from.id}", marshal: true, expiration: EXPIRATION_SECONDS, maxlength: 50)
 
+        unless redis_list.any? { |item| item[:type] == :meta }
+          redis_list << { type: :meta, sender_name: message.from.username, sender_id: message.from.id }
+        end
+
         if message.text == '/start' || message.text == CANCEL_BUTTON || message.text == '/cancel'
           redis_list.clear
-          redis_list << { type: :meta, sender_name: message.from.username, sender_id: message.from.id }
           welcome_user(bot, message)
           bot.logger.debug("List state #{redis_list}")
 

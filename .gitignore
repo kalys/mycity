@@ -2,9 +2,13 @@
 /.idea/
 
 web-app/public/uploads/
+/web-app/.env
 
 app/logs/
 
 volumes/
 app/db
 /env
+
+
+airquality/volantmq.yml

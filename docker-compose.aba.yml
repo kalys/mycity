@@ -1,0 +1,11 @@
+version: '3'
+services:
+  volantmq:
+    image: volantmq/volantmq
+    ports:
+      - 1883:1883
+      - 8080:8080
+    volumes:
+      - ./airquality/volantmq.yml:/etc/volantmq/config.yml
+    environment:
+      - VOLANTMQ_CONFIG=/etc/volantmq/config.yml
